@@ -1,6 +1,7 @@
 from math import *
 import xlrd
 import numpy as np
+import string
 
 def getData(path):
     content=""
@@ -34,6 +35,20 @@ def round_err(num, err,  sig=2):
     
 
     return(srnum + '(' + str(ceil(abrerr)) + ')')
+
+def Alind(String):
+    return [string.ascii_uppercase.index(String[0]),int(String[1:])-1]
+
+def getAxisFromCell(Cell1,Cell2,path,sheet,plusCol=0):
+    row1=Alind(Cell1)[1]
+    collumn1 = Alind(Cell1)[0]+plusCol
+    row2 = Alind(Cell2)[1]
+    data = []
+    workbook = xlrd.open_workbook(path)
+    worksheet = workbook.sheet_by_name(sheet)
+    for i in range(row1,row2):
+        data.append(worksheet.cell(i, collumn1).value)    
+    return data
 
 def getAxis(row1,collumn1,row2,path,sheet):
     data = []
