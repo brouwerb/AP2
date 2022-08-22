@@ -34,10 +34,11 @@
 
     \section{Einleitung}
 
-    Bei diesem Versuch werden Elektronenladung bzw -Masse und Elementarladung bestimmt. Ersteres durch die Ablenkung eines Elektronenstrahls im
-    Fadenstrahlrohr, letzteres durch den Millikan-Versuch.
+    Bei diesem Versuch werden die Eigenschaften des Elektrons betrachtet und dazu zwei Experimente durchgeführt. Zunächst wird duch das Fadenstrahlrohr
+    der Quotient $\frac{e}{m}$ (spezifische Elektronenladung) berechnet. Durch den Milikam-Versuch kann anschließend die Elementarladung $e$ bestimmt
+    werden, sodass auch die Masse des Elektrons $m_e$ berechnet werden kann.
 
-    \section{Bestimmung der spezigischen Elektronenladung}
+    \section{Bestimmung der spezifischen Elektronenladung}
 
     \subsection{Theorie}
 
@@ -47,6 +48,14 @@
     \frac{mv^2}{2} = E_{kin} &= E_{elek} = q \cdot U \label{geschw}\\
     \Rightarrow v &= \sqrt{\frac{2qU}{m}}
     \end{align}
+    
+    Das Magnetfeld $B$ der Helmholzspulen kann mithilfe der Biot-Savart-Gesetzes bestimmt werden.
+    Mit dem Strom $I$, der Windungszahl $N$ und dem Radius $R$ ergibt sich für diesen Versuch:
+
+    \begin{align}
+        B = \frac{\mu_0 N I}{R} \cdot \frac{4}{5}^{\frac{3}{2}}
+    \end{align}
+
     Die spezifische Elektronenladung ist der Quotient aus Ladung und Masse $\frac{e}{m}$.
     Diese kann durch die Messung des Radius des Strahls im Fadenstrahlrohr bestimmt werden. Es gilt:
 
@@ -55,17 +64,27 @@
         \overset{\text{(\ref{geschw})}}{\Rightarrow} \ \  \frac{q}{m} &= \frac{2U}{B^2 \cdot r^2} \\
     \end{align}
 
-    Das Magnetfeld $B$ der Helmholzspulen kann mithilfe der Biot-Savart-Gesetzes bestimmt werden.
-    Mit dem Strom $I$, der Windungszahl $N$ und dem Radius $R$ ergibt sich für diesen Versuch:
+    \subsection{Ergebnisse}
+    \paragraph{Vorüberlegungen}
 
+    Aus einer Beschleunigungsspannung von maximal $300 \si{V}$ kann die maximale Geschwindigkeit eines Elektrons mit Ladung $e$ im nichtrelativistischen Fall
     \begin{align}
-        B = \frac{\mu_0 N I}{R} \cdot \frac{4}{5}^{\frac{3}{2}}
+        v = \sqrt{\frac{2 e U}{m_e}} = 1,02 \cdot 10^{7} \si{m/s} < 2,9 \cdot 10^{7} \si{m/s} = 10\% \cdot c
     \end{align}
 
+    berechnet werden, da diese Kleiner als zehn Prozent der Lichtgeschwindigkeit ist, kann im weiteren auch nichtrelativistisch gerechnet werden.
 
-    \subsection{Ergebnisse}
-    \paragraph*{Vorüberlegungen}
-    Aus einer Beschleunigungsspannung von
+    Jetzt muss noch überprüft werden, ob die thermische Energie der Glühkathode die Messungen verfälschen könnte.
+    \begin{align}
+        v_{tmax} = \frac{v_{100V}}{100} = \frac{\sqrt{\frac{2 e \cdot 100 \si{V}}{m_e}}}{100} = 59310 \si{m \per s} \\
+        E_{tmax} = \frac{m_e \cdot v_{tmax}^2}{2} = 1,602 \cdot 10^{-21} \si{J} = \frac{3}{2} k T_{max} \\
+        \Rightarrow T_{max} = \frac{2 E_{tmax}}{3 k} = 77K
+    \end{align}
+    Die thermische Energie plus die Austrittsarbeit muss kleiner als $E_{tmax}$ sein, da sonst die Messungen verfälscht würden. Da die Austrittsarbeit des Material leider nicht bekannt ist, kann die eigenlich maximale Temperatur aber nicht bestimmt werden.
+
+    \paragraph{Magnetfeld}
+
+    
 
     \section{Diskussion}
 
