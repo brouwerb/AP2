@@ -2,6 +2,7 @@ from math import *
 import xlrd
 import numpy as np
 import string
+from uncertainties import unumpy
 
 def getData(path):
     content=""
@@ -49,6 +50,17 @@ def getAxisFromCell(Cell1,Cell2,path,sheet,plusCol=0):
     for i in range(row1,row2):
         data.append(worksheet.cell(i, collumn1).value)    
     return data
+
+def arrToUnumpy(arr,uncertantie):
+    narr = []
+    if isinstance(uncertantie,int):
+        for i in arr:
+            narr.append(unumpy.uarray(i,uncertantie))
+    else:
+        for i in range(len(arr)):
+            narr.append(unumpy.uarray(arr[i],uncertantie))
+    return narr
+
 
 def getAxis(row1,collumn1,row2,path,sheet):
     data = []
