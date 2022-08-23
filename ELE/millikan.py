@@ -6,6 +6,8 @@ from AP import *
 sys.path.pop(0)
 from uncertainties import unumpy , ufloat
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
+import matplotlib as mpl
 
 #Unsere Daten
 col = ["A","B","C"]
@@ -68,5 +70,25 @@ x = np.array(unumpy.nominal_values(q))/1.602176634e-19
 y = np.array(unumpy.nominal_values(rkorr))
 print(x, y)
 
-plt.scatter(x, y)
+#Plot
+
+
+
+Y_LABEL = r"Radius $r$ in $\mu m$"
+X_LABEL = r"Ladung in $e$"
+X_ERROR = np.array(unumpy.std_devs(q))/1.602176634e-19
+Y_ERROR = np.array(unumpy.std_devs(rkorr))
+X_MAJOR_TICK = 1
+SAVE_AS = "./ELE/millikan.pdf"
+#plot figure
+fig, ax = plt.subplots()
+ax.plot(x, y, "x", label="Messwerte")
+#ax.errorbar(x, y, xerr=X_ERROR, yerr=Y_ERROR, fmt='.', label="Messwerte")
+ax.set_xlabel(X_LABEL)
+ax.set_ylabel(Y_LABEL)
+ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
+ax.grid()
+plt.savefig(SAVE_AS)
 plt.show()
+plt.close()
+
