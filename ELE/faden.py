@@ -32,7 +32,7 @@ for i in range (3):
         uarr.append(arr[j]*0.08+8)
     gewMitt.append(uarray(gewichteterMittelwert(arr,uarr),intExtFehler(arr,uarr)))
     em_buf =eDruchm(calHelmholtzB(B_Feld_I),radien[i],gewMitt[i])
-    print(round_err(float(nominal_values(em_buf)),float(std_devs(em_buf))))
+    print(round_err(float(nominal_values(em_buf))*1e-11,float(std_devs(em_buf))*1e-11))
     em[0].append(float(nominal_values(em_buf)))
     em[1].append(float(std_devs(em_buf)))
 
@@ -47,13 +47,13 @@ for i in range (3):
         uarr.append(arr[j]*0.025+0.1)
     gewMitt.append(uarray(gewichteterMittelwert(arr,uarr),intExtFehler(arr,uarr)))
     em_buf =eDruchm(calHelmholtzB(gewMitt[i]),radien[i],uarray(150,150*0.08+8))
-    print(round_err(float(nominal_values(em_buf)),float(std_devs(em_buf))))
+    print(round_err(float(nominal_values(em_buf)*1e-11),float(std_devs(em_buf))*1e-11))
     em[0].append(float(nominal_values(em_buf)))
     em[1].append(float(std_devs(em_buf)))
 
 
-print("final result")
-print(round_err(gewichteterMittelwert(em[0],em[1]),intExtFehler(em[0],em[1])))
+print("final result mal 10^-11")
+print(round_err(gewichteterMittelwert(em[0],em[1])*1e-11,intExtFehler(em[0],em[1])*1e-11))
 
     
 
