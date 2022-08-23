@@ -89,7 +89,7 @@
             \centering
           
 
-            \begin{tabular}{c}
+            \begin{tabular}{c | c}
                 Messgröße & Unsicherheit \\ \hline
                 Stromstärke der Helmholzspulen  & $2.5 \% \pm 0.1 \si{\ampere}$ \cite{vc130} \\
                 Beschleunigungsspannung & $ 8\% \pm 8 \si{\volt}$ \cite{vc120}\\
@@ -120,7 +120,7 @@
         vernachlässigt. In Garching bertägt die magnetischen Feldstärke $B_{gar} = 48,7 \si{\micro\tesla}$ \cite[]{magnetic_field} bei einem Inklinationswinkel von $\Theta_{incl,gar} = 64.4\si{\degree}$ \cite[]{magnetic_field}. 
         Daraus folgt eine maximale senkrechete Komponente (in Bezug auf die Kreisbahnen) von 
         \begin{align}
-        $ B_{\bot,gar} = B_{gar} * \cos(\Theta_{incl,gar} = 21.0 \si{\micro\tesla})$
+        B_{\bot,gar} = B_{gar} \cdot \cos (\Theta_{incl,gar} = 21.0 \si{\micro\tesla})
         \end{align}
         Dies würde die von uns gemessenen spezifischen Elementarladung um ca. 0.03 \% beeinflussen was im Vergleich zu anderen
         Fehlerquellen vernachlässigbar ist. 
@@ -131,7 +131,7 @@
 
     
 
-    \section{Milllikam}
+    \section{Millikan}
 
     In diesem Versuch werden Öltröpfchen mithilfe eines Elektischen Feldes mit und entgegen die Schwerkraft bewegt. Dadurch kann der Einfluss der E-Felds auf die Tröpfchen und der Radius der Tröpfchen und damit die Ladung dieser bestimmt werden.
 
@@ -164,6 +164,14 @@
         \caption{Ladung der Tröpfchen und Radius im Milllikamversuch}
         \label{fig:milllikam}
     \end{figure}
+
+    Die in Tabele \ref{unsichmili} angegebenen Unisccherheiten wurden berücksichtigt.
+    \begin{table}
+        \begin{tabular}{c | c | c}
+            Spannung $U$ in $\si{\volt}$ & 1 Digit = 1V & $u_U = \frac{1}{2\sqrt(3)} \si{\volt}$ \\
+            Zeit $t$ in $\si{\second}$ & 1 Digit = 0s1s + Reaktionszeit 0,2s & $u_t = \sqrt(\frac{0.1}{2\sqrt(3)}^2 + 0.4) \si{\second}$ \\
+        \end{tabular}
+    \end{table}
 
 
     \section{Diskussion}
