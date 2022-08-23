@@ -76,7 +76,7 @@ def getRow(collumn1,row1,collumn2,path,sheet):
     worksheet = workbook.sheet_by_name(sheet)
     for i in range(collumn1,collumn2):
         data.append(worksheet.cell(row1, i).value)    
-    return np.array(data)
+    return data
 
 
 
