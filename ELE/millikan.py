@@ -15,10 +15,14 @@ data = []
 for i in range(8, 33):
     data.append(getRow(0,i,3, "./ELE/data.xls","Millikan") + [0.5*(7.57-3.72)*1e-3])
 
+unsere_daten = len(data)
+
 #tommys Daten
 for i in range(5, 26):
     row = getRow(0,i,3, "./ELE/tommy.xls","Tabelle1")
     data.append([row[2], row[1], row[0], 0.5*(3.55)*1e-3])
+
+tommys_daten = len(data)
 
 
 #import data from txt file
@@ -27,13 +31,12 @@ with open("./ELE/datamoodle.txt") as f:
         row = line.split()
         data.append([float(row[1].replace(",",".")),float(row[3].replace(",",".")),float(row[2].replace(",",".")), float(row[0].replace(",","."))])
 
+sass_date = len(data)
 
 #Unsicherheiten:
 #Spannung: 1/(2*sqrt(3))
 #Zeit: Ablese sprt((0.1/(2*sqrt(3)))**2 + 0.4) Reaktions 0.2
 #Abstand: 0.5*10e-3/(2*sqrt(3))
-
-print(data)
 
 udata = unumpy.umatrix(data, [[1/(2*sqrt(3)), sqrt((0.1/(2*sqrt(3)))**2 + 0.4), sqrt((0.1/(2*sqrt(3)))**2 + 0.4), 0.5e-3/(2*sqrt(3))]])
 
@@ -63,12 +66,10 @@ nlkorr = nl/(1 + A*lam/r0)
 
 d = ufloat(0.006, 0.00005)
 
-print(r0, rkorr)
-
 q = 3*np.pi*d*np.divide(np.multiply(np.multiply(rkorr, (vst-vsi)), nlkorr), np.squeeze(umat[0]))
 
 x = np.array(unumpy.nominal_values(q))/1.602176634e-19
-y = np.array(unumpy.nominal_values(rkorr))
+y = np.array(unumpy.nominal_values(rkorr))*1e6
 print(x, y)
 
 #Plot
@@ -78,13 +79,15 @@ print(x, y)
 Y_LABEL = r"Radius $r$ in $\mu m$"
 X_LABEL = r"Ladung in $e$"
 X_ERROR = np.array(unumpy.std_devs(q))/1.602176634e-19
-Y_ERROR = np.array(unumpy.std_devs(rkorr))
+Y_ERROR = np.array(unumpy.std_devs(rkorr))*1e6
 X_MAJOR_TICK = 1
 SAVE_AS = "./ELE/millikan.pdf"
 #plot figure
 fig, ax = plt.subplots()
-ax.plot(x, y, "x", label="Messwerte")
-#ax.errorbar(x, y, xerr=X_ERROR, yerr=Y_ERROR, fmt='.', label="Messwerte")
+ax.plot(x[0:tommys_daten], y[0:tommys_daten], "x", label="Messwerte")
+ax.plot(x[tommys_daten:], y[tommys_daten:], "o", label="Messwerte")
+
+ax.errorbar(x, y, xerr=X_ERROR, yerr=Y_ERROR)
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
