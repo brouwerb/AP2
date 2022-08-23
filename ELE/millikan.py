@@ -36,7 +36,7 @@ sass_date = len(data)
 #Unsicherheiten:
 #Spannung: 1/(2*sqrt(3))
 #Zeit: Ablese sprt((0.1/(2*sqrt(3)))**2 + 0.4) Reaktions 0.2
-#Abstand: 0.5*10e-3/(2*sqrt(3))
+#Abstand: 0.5e-3/(2*sqrt(3))
 
 udata = unumpy.umatrix(data, [[1/(2*sqrt(3)), sqrt((0.1/(2*sqrt(3)))**2 + 0.4), sqrt((0.1/(2*sqrt(3)))**2 + 0.4), 0.5e-3/(2*sqrt(3))]])
 

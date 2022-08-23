@@ -103,7 +103,7 @@
         \begin{table}[H]
             \centering
 
-            \begin{tabular}{c}
+            \begin{tabular}{c | c | c | c}
                 Radius &  $30 \si{mm}$ & $40 \si{mm}$& $50 \si{mm}$  \\ \hline
                 Magnetfeld konstant & $1.96(44) * 10^{-11} \si{\coulomb\kilogram}$ & $1.76(39) * 10^{-11} \si{\coulomb\kilogram}$ &$1.74(38) * 10^{-11} \si{\coulomb\kilogram}$ \\
                 Beschleunigungsspannung konstant& $1.81(30) * 10^{-11} \si{\coulomb\kilogram}$ & $1.79(29) * 10^{-11} \si{\coulomb\kilogram}$ &$1.84(30) * 10^{-11} \si{\coulomb\kilogram}$ \\
@@ -159,24 +159,34 @@
     Wenn alles richtig berechnet wurde, müssten die Errechneten Werte vielfache der Elementarladung $e = 1.602 \cdot 10^{-19} \si{C}$ sein.
 
     \subsection{Ergebnisse}
-    Um die Verteilung zu veranschaulichen, wurde die Ladung $q$ gegen den errecchneten Radius $r_{korr}$ geplottet. Im Plot kann leicht erkannt werden, dass die Ladung quantisiert ist, da die Verteilung nicht zufällig oder nach größe ist, sonder sich vertikale linier bilden.
+    Um die Verteilung zu veranschaulichen, wurde im Graphen \ref{fig:milllikam} die Ladung $q$ gegen den errecchneten Radius $r_{korr}$ geplottet.
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\textwidth]{millikan.pdf}
         \caption{Ladung der Tröpfchen und Radius im Milllikamversuch}
         \label{fig:milllikam}
     \end{figure}
+    Außerdem wurde die Häufigkeitsvertielung der Ladungen im Graphen \ref{fig:hauf} ermittelt.
+    
+    Durch die Position der Maxima kann die Elementarladung bestimmt werden.
 
     Die in Tabele \ref{unsichmili} angegebenen Unisccherheiten wurden berücksichtigt.
     \begin{table}
         \begin{tabular}{c | c | c}
             Spannung $U$ in $\si{\volt}$ & 1 Digit = 1V & $u_U = \frac{1}{2\sqrt(3)} \si{\volt}$ \\
-            Zeit $t$ in $\si{\second}$ & 1 Digit = 0s1s + Reaktionszeit 0,2s & $u_t = \sqrt(\frac{0.1}{2\sqrt(3)}^2 + 0.4) \si{\second}$ \\
+            Zeit $t$ in $\si{\second}$ & 1 Digit = 0,1s + Reaktionszeit 0,2s & $u_t = \sqrt(\frac{0.1}{2\sqrt(3)}^2 + 0.4) \si{\second}$ \\
+            Abstand $s$ in $\si{\metre}$ & 1 Strich = 0,1mm & $u_s = \frac{0.0001}{4\sqrt(3)} \si{\metre}$ \\
+            freie Weglänge $\lambda$ & Siehe \cite{ELE} & $u_\lambda = 2 \si{\nano\metre}$ \\
         \end{tabular}
+        \caption{Unsicherheiten der Messwerte}
+        \label{unsichmili}
     \end{table}
+    Die Werte für Viskosität $\eta_{Luft}$ und Dichte $\rho_{Luft}$ der Luft \cite[]{Luft} sowie Dichte des Öls \cite{ELE} wurden ohne Unsicherheiten benutzt.
 
 
-    \section{Diskussion}
+
+
+    \subsection{Diskussion}
 
     \bibliographystyle{plain}
     \bibliography{literature}
