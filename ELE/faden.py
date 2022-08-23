@@ -17,7 +17,7 @@ B_Feld_I = uarray(1.3 + Erd_fehler,1.3*0.025+0.1)
 
 
 col = ["A","D","G"]
-radien =  [uarray(0.03,0.0005),uarray(0.04,0.0005),uarray(0.05,0.005)]
+radien =  [uarray(0.03,0.001),uarray(0.04,0.001),uarray(0.05,0.001)]
 
 def calHelmholtzB (I):
     Helm_R = uarray(0.15,0.002)
