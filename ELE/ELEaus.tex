@@ -59,9 +59,9 @@
     Die spezifische Elektronenladung ist der Quotient aus Ladung und Masse $\frac{e}{m}$.
     Diese kann durch die Messung des Radius des Strahls im Fadenstrahlrohr bestimmt werden. Es gilt:
 
-    \begin{align}{}
+    \begin{align}
         \frac{mv^2}{r} = F_{rot} &= F_{mag} = q \cdot v \cdot B \\
-        \overset{\text{(\ref{geschw})}}{\Rightarrow} \ \  \frac{q}{m} &= \frac{2U}{B^2 \cdot r^2} \\
+        \overset{\text{(\ref{geschw})}}{\Rightarrow} \ \  \frac{q}{m} &= \frac{2U}{B^2 \cdot r^2} \label{qm_formel}
     \end{align}
 
     \subsection{Ergebnisse}
@@ -84,11 +84,18 @@
 
     \paragraph{Magnetfeld}
         Bei der Bestimmung spezifischen Elementarladung wurde zunächst der Effekt des Erdmagnetfeldes auf den Versuchsaufbau
-        vernachlässigt. In Garching bertägt die magnetischen Feldstärke $B_{gar} = 48,7 \si{\nano\tesla}$ \cite[]{magnetic_field} bei einem Inklinationswinkel von $\Theta_{incl,gar} = 64.4\si{\degree}$ \cite[]{magnetic_field}. 
-        Daraus resultiert eine maximale senkrechete Komponente (in Bezug auf die Kreisbahnen) von 
-        $ B_{\bot,gar} = B_{gar} * \cos(\Theta_{incl,gar} = 21.0 \si{\nano\tesla})$
-        
-        Dies würde den von uns gemessenen spezifischen 
+        vernachlässigt. In Garching bertägt die magnetischen Feldstärke $B_{gar} = 48,7 \si{\micro\tesla}$ \cite[]{magnetic_field} bei einem Inklinationswinkel von $\Theta_{incl,gar} = 64.4\si{\degree}$ \cite[]{magnetic_field}. 
+        Daraus folgt eine maximale senkrechete Komponente (in Bezug auf die Kreisbahnen) von 
+        \begin{align}
+        $ B_{\bot,gar} = B_{gar} * \cos(\Theta_{incl,gar} = 21.0 \si{\micro\tesla})$
+        \end{align}
+        Dies würde die von uns gemessenen spezifischen Elementarladung um ca. 0.03 \% beeinflussen was im Vergleich zu anderen
+        Fehlerquellen vernachlässigbar ist. 
+        Um diesen Effekt nachzuweisen bietet es sich an, den Versuchsaufbau so zu positionieren, dass das Erdmagnetfeld senkrecht zum Elektronenring steht.
+        Anschließend wird der Versuchsaufbau um 180 \si{\degree} gedreht um den maximalen Effekt des Erdmagnetfeldes zu messen.
+        Zur Abschätzung des Effekts lässt sich $B_{min,gar} = B - B_{gar}$ und $B_{max,gar} = B + B_{gar}$ mit einer Beispielspannung von $ U = 300 \si{\volt}$ in \ref{qm_formel} einsetzen.
+        Daraus resultiert eine Differenz in den Radien von $5.5 \si{\milli\metre}$ welche  im messbaren Bereich liegt.
+
 
 
     \section{Diskussion}

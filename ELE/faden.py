@@ -7,7 +7,13 @@ sys.path.pop(0)
 from uncertainties.unumpy  import uarray, nominal_values,std_devs
 import math
 
-B_Feld_I = uarray(1.3,1.3*0.025+0.1)
+
+Erd_fehler = -48e-6
+#Erd_fehler = 0
+#0.055205
+#0.060714
+
+B_Feld_I = uarray(1.3 + Erd_fehler,1.3*0.025+0.1)
 
 
 col = ["A","D","G"]
@@ -18,6 +24,7 @@ def calHelmholtzB (I):
     N = 130
     mu0 = 1.256637e-6
     return mu0 * math.pow(4/5,3/2) * N * I / Helm_R
+print(calHelmholtzB(B_Feld_I))
 def eDruchm(B,r,Ubesch):
     return (2*Ubesch/(B**2*r**2))
 
@@ -42,6 +49,8 @@ gewMitt = []
 
 for i in range (3):
     arr = getAxisFromCell(col[i]+"29",col[i]+"39","./ELE/data.xls","Faden")
+    for j in range(len (arr)):
+        arr[i] = arr[i]+Erd_fehler
     uarr= []
     for j in range(len (arr)):
         uarr.append(arr[j]*0.025+0.1)
@@ -55,12 +64,14 @@ for i in range (3):
 print("final result mal 10^-11")
 print(round_err(gewichteterMittelwert(em[0],em[1])*1e-11,intExtFehler(em[0],em[1])*1e-11))
 
-    
+print(gewichteterMittelwert(em[0],em[1])*1e-11,intExtFehler(em[0],em[1])*1e-11)
 
 
+#1.8134926891561864 erd b = true 
+#1.8135479532157475 erd b = 0
+print(1-1.8134926891561864 /1.8135479532157475)
 
 
-
-
-
-
+#1.8134216461012869
+#1.8136742985119574
+print(1- 1.8134216461012869/1.8136742985119574)
