@@ -50,13 +50,14 @@ drho = 871 - 1.17228
 vst = np.squeeze(umat[3]/umat[1])
 vsi = np.squeeze(umat[3]/umat[2])
 
-r0 = (3/2)*unumpy.sqrt((nl*(vst + vsi)/drho*9.8072914)) #https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjrtI2vstv5AhVfQvEDHUCBChMQFnoECAQQAQ&url=https%3A%2F%2Fwww.uni-kassel.de%2Ffb10%2Findex.php%3FeID%3DdumpFile%26t%3Df%26f%3D2720%26token%3Dd35b3b1bc0149f09f203a8d91bdbf963e8108572&usg=AOvVaw0pgyv1jNUF-dF_znxzshgh
+r0 = (3/2)*unumpy.sqrt((nl*(vst + vsi)/drho/9.8072914)) #https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjrtI2vstv5AhVfQvEDHUCBChMQFnoECAQQAQ&url=https%3A%2F%2Fwww.uni-kassel.de%2Ffb10%2Findex.php%3FeID%3DdumpFile%26t%3Df%26f%3D2720%26token%3Dd35b3b1bc0149f09f203a8d91bdbf963e8108572&usg=AOvVaw0pgyv1jNUF-dF_znxzshgh
+
 
 #Nach skript:
 A = 1.257
-lam = ufloat(72, 2)*1**-9
+lam = ufloat(72, 2)*1e-9
 
-rkorr = np.squeeze(unumpy.sqrt(r0 + A**2*lam**2/4) - A*lam/2)
+rkorr = np.squeeze(unumpy.sqrt(np.multiply(r0,r0) + A**2*lam**2/4) - A*lam/2)
 
 nlkorr = nl/(1 + A*lam/r0)
 
