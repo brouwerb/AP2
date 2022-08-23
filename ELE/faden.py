@@ -9,7 +9,7 @@ import math
 
 
 Erd_fehler = -48e-6
-#Erd_fehler = 0
+Erd_fehler = 0
 #0.055205
 #0.060714
 
