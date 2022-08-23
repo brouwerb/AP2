@@ -61,7 +61,7 @@ A = 1.257
 lam = ufloat(72, 2)*1e-9
 
 rkorr = np.squeeze(unumpy.sqrt(np.multiply(r0,r0) + A**2*lam**2/4) - A*lam/2)
-
+#print(rkorr)
 nlkorr = nl/(1 + A*lam/r0)
 
 d = ufloat(0.006, 0.00005)
@@ -77,7 +77,7 @@ ye = np.array(unumpy.std_devs(rkorr))*1e6
 xel = xe.tolist()[0]
 yel = ye.tolist()[0]
 
-print(data[0], r0[0], rkorr[0], nlkorr[0], q[0], x[0], y[0], xel[0], yel[0])
+#print(data[0], r0[0], rkorr[0], nlkorr[0], q[0], x[0], y[0], xel[0], yel[0])
 #Plot
 
 
@@ -104,4 +104,77 @@ ax.legend()
 plt.savefig(SAVE_AS)
 plt.show()
 plt.close()
+
+
+def smooth(y, box_pts):
+    box = np.ones(box_pts)/box_pts
+    y_smooth = np.convolve(y, box, mode='same')
+    return y_smooth
+X_START =0
+Y_START =0
+X_END = 9.3
+Y_END = 9.3
+
+X_MAJOR_TICK = 1
+Y_MAJOR_TICK = 1
+X_MINOR_TICK = X_MAJOR_TICK /5
+
+#TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
+Y_LABEL = r"Anzahl der Elektronen"
+X_LABEL = r"Ladung in $e$"
+
+SAVE_AS = "./ELE/Ladungsverteilung.pdf"
+
+
+arr = []
+arrx = []
+
+#print(xl)
+peak_charge = 0.6902
+singCh = [[],[]]
+for i in range(1000):
+    arrx.append(0.01*i)
+    count =0 
+    for J,j in enumerate(xl):
+        if j*-1 > i *0.01 and j*-1 < (i+1) *0.01:
+            count+=1
+        if j*-1 > peak_charge*0.5 and j*-1 < peak_charge*1.5:
+            singCh[0].append(j)
+            singCh[1].append(xel[J])
+    arr.append(count)
+print(round_err(gewichteterMittelwert(singCh[0],singCh[1]),intExtFehler(singCh[0],singCh[1])))
+    
+
+
+#print(arr)
+fig, ax = plt.subplots()
+ax.set_xlim(X_START,X_END)
+ax.set_ylim(Y_START,Y_END)
+ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
+ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
+
+ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
+
+
+ax.plot(arrx,np.array(smooth(smooth(arr,50),50))*10)
+
+
+arr =[]
+arrx = []
+for i in range(100):
+    arrx.append(0.1*i)
+    count =0 
+    for J,j in enumerate(xl):
+        if j*-1 > i *0.1 and j*-1 < (i+1) *0.1:
+            count+=1
+    arr.append(count)
+
+ax.bar(arrx,arr,0.1,color = "orange", alpha = 0.7 )
+ax.legend(["Ladungsverteilung geglättet","Ladungsverteilung"])
+ax.grid()
+plt.show()
+plt.savefig(SAVE_AS)
+
+
+        
 
