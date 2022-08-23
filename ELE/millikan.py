@@ -38,7 +38,7 @@ udata = unumpy.umatrix(data, [[1/(2*sqrt(3)), sqrt((0.1/(2*sqrt(3)))**2 + 0.4), 
 umat = udata.transpose()
 
 # Viskosität Luft http://www.peacesoftware.de/einigewerte/luft.html bei 1 bar und 24°C: 18.4304*10e-6
-nl = 18.4304*10**-6
+nl = 18.4304e-6
 #Dichte Öl = 871 kg/m³
 #Dichte Luft = 1.17228 kg/m³ http://www.peacesoftware.de/einigewerte/luft.html
 
