@@ -172,8 +172,10 @@ for i in range(100):
 ax.bar(arrx,arr,0.1,color = "orange", alpha = 0.7 )
 ax.legend(["Ladungsverteilung geglättet","Ladungsverteilung"])
 ax.grid()
-plt.show()
+
 plt.savefig(SAVE_AS)
+plt.show()
+
 
 
         
