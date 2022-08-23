@@ -142,7 +142,7 @@ for i in range(1000):
             singCh[0].append(j)
             singCh[1].append(xel[J])
     arr.append(count)
-print(round_err(gewichteterMittelwert(singCh[0],singCh[1]),intExtFehler(singCh[0],singCh[1])))
+e = ufloat(gewichteterMittelwert(singCh[0],singCh[1]),intExtFehler(singCh[0],singCh[1]))*1.602176634e-19
     
 
 
@@ -175,6 +175,14 @@ ax.grid()
 
 plt.savefig(SAVE_AS)
 plt.show()
+
+em = ufloat(1.8128751720384433, 0.13490253869421437)*1e11
+print(e)
+print(em)
+m = e/em
+print(m)
+print(round_err(float(unumpy.nominal_values(m*1e31)) ,float(unumpy.std_devs(m*1e31))))
+
 
 
 
