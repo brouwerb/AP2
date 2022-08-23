@@ -53,7 +53,7 @@
     Mit dem Strom $I$, der Windungszahl $N$ und dem Radius $R$ ergibt sich für diesen Versuch:
 
     \begin{align}
-        B = \frac{\mu_0 N I}{R} \cdot \frac{4}{5}^{\frac{3}{2}} \label{B-Helm}
+        B = \frac{\mu_0 N I}{R} \cdot \left(\frac{4}{5}^{\frac{3}{2}}\right) \label{B-Helm}
     \end{align}
 
     Die spezifische Elektronenladung ist der Quotient aus Ladung und Masse $\frac{e}{m}$.
@@ -84,7 +84,30 @@
 
 
     \paragraph{Auswertung der Messungen}
-        Zur Bestimmung des spezifischen Weiderstands wurden zwei Messreihen aufgenommen \a' 30 Durchführung jeweils mit konstantem B-Feld bzw. konstanter Beschleunigungsspannung mit unterschiedlichen Kreisradien. Dabei gibt es eineige Unsicherheiten zu beachten:
+        Zur Bestimmung des spezifischen Weiderstands wurden zwei Messreihen aufgenommen \'{a} 30 Durchführung jeweils mit konstantem B-Feld bzw. konstanter Beschleunigungsspannung mit unterschiedlichen Kreisradien.
+        
+        Die Ergebnisse der einzelnen Messreihen wurden in der Tabelle \ref{tab:einzelmessungen} ausgegeben.
+        \begin{table}[H]
+            \centering
+
+            \begin{tabular}{c | c | c | c}
+                Radius &  $30 \si{mm}$ & $40 \si{mm}$& $50 \si{mm}$  \\ \hline
+                Magnetfeld konstant & $1.96(44) * 10^{11} \si{\coulomb\kilogram}$ & $1.76(39) * 10^{11} \si{\coulomb\kilogram}$ &$1.74(38) * 10^{11} \si{\coulomb\kilogram}$ \\
+                Beschleunigungsspannung konstant& $1.81(30) * 10^{11} \si{\coulomb\kilogram}$ & $1.79(29) * 10^{11} \si{\coulomb\kilogram}$ &$1.84(30) * 10^{11} \si{\coulomb\kilogram}$ \\
+            \end{tabular}
+            \label{tab:einzelmessungen}
+            \caption{Einzelmessungen}
+        \end{table}
+        
+        Daraus folgt als Endergebnis: 
+        \begin{align}
+            \frac{e}{m_e} &= 1.81(14) \cdot 10^{11} \frac{\si{\coulomb}}{\si{\kilogram}} \label{emend}
+            \text{Literaturwert:} \frac{e}{m_e} &= 1,7588 \cdot 10^{11} \frac{\si{\coulomb}}{\si{\kilogram}}
+        \end{align}
+
+        Die Messdaten wurden durch den gewichteten Mittelwert \cite{ABW} mit dem zugehörigen internen bzw. externen Fehler für jeden Radius einzelnd gemittelt.
+        Mit diesen Mittelwerten lässt sich unter berücksichtigung der Gaußschenfehlerfortpflanzung \cite{ABW} mittels Gleichung \ref{B-Helm} und \ref{qm_formel} die spezifische Elementarladung für jeden Radius berechen. Die einzelnen Werte lassen sich abermals mit dem gewichteten Mittelwert zum Endergebnis zusammenfassen und mit dem zugehörigen Fehler angeben.
+        Dabei gibt es einige Unsicherheiten zu beachten:
         \begin{table}[H]
             \centering
           
@@ -98,22 +121,7 @@
             \end{tabular}
         \end{table}
         
-        Die Messdaten wurden durch den gewichteten Mittelwert \cite{ABW} mit dem zugehörigen internen bzw. externen Fehler für jeden Radius einzelnd gemittelt.
-        Mit diesen Mittelwerten lässt sich unter berücksichtigung der Gaußschenfehlerfortpflanzung \cite{ABW} mittels Gleichung \ref{B-Helm} und \ref{qm_formel} die spezifische Elementarladung für jeden Radius berechen.
-        \begin{table}[H]
-            \centering
-
-            \begin{tabular}{c | c | c | c}
-                Radius &  $30 \si{mm}$ & $40 \si{mm}$& $50 \si{mm}$  \\ \hline
-                Magnetfeld konstant & $1.96(44) * 10^{11} \si{\coulomb\kilogram}$ & $1.76(39) * 10^{11} \si{\coulomb\kilogram}$ &$1.74(38) * 10^{11} \si{\coulomb\kilogram}$ \\
-                Beschleunigungsspannung konstant& $1.81(30) * 10^{11} \si{\coulomb\kilogram}$ & $1.79(29) * 10^{11} \si{\coulomb\kilogram}$ &$1.84(30) * 10^{11} \si{\coulomb\kilogram}$ \\
-            \end{tabular}
-        \end{table}
         
-        Die einzelnen Werte lassen sich abermals mit dem gewichteten Mittelwert zusammenfassen und mit dem zugehörigen Fehler angeben als 
-        \begin{align}
-            \frac{q}{m_e} = 1.81(14) \cdot 10^{11} \frac{\si{\coulomb}}{\si{\kilogram}}
-        \end{align}
 
     \paragraph{Einfluss des Erdmagnetfeldes}
         Bei der Bestimmung spezifischen Elementarladung wurde zunächst der Effekt des Erdmagnetfeldes auf den Versuchsaufbau
@@ -143,7 +151,7 @@
     \end{align}
     Wobei $\rho$ die Dichte des jeweilligen Stoffes ist, $v_{steig}$ die Geschwindigkeit, mit der die Tröpfchen steigen und $v_{sink}$ die Geschwindigkeit, mit der die Tröpfchen sinken. Da die Tröpfchen so klein sind, muss die Viskosität mit einem Korrekturterm versehen werden:
     \begin{align}
-        \nabla_{korr} = \nabla_{Luft}(1+\frac{A \lambda}{r_0})^{-1}
+        \eta_{korr} = \eta_{Luft}\left(1+\frac{A \lambda}{r_0}\right)^{-1}
     \end{align}
     Hier wurden die Werte $A = 1,257$ und $\lambda = 72(2) \si{\nano\metre}$ eingesetzt.
     Auch der Tröpfchenradius muss korrigiert werden:
@@ -152,7 +160,7 @@
     \end{align}
     Damit kann dann die Ladung der Tröpfchen $q$ mit der Angelegten Spannung $U$ und dem Abstand der Platten $d$ bestimmt werden:
     \begin{align}
-        q = \frac{3 \pi d}{U} \cdot \nabla_{korr} \cdot r_{korr} \cdot \left(v_{steig} - v_{sink}\right)
+        q = \frac{3 \pi d}{U} \cdot \eta_{korr} \cdot r_{korr} \cdot \left(v_{steig} - v_{sink}\right)
     \end{align}
     Wenn alles richtig berechnet wurde, müssten die Errechneten Werte vielfache der Elementarladung $e = 1.602 \cdot 10^{-19} \si{C}$ sein.
 
@@ -166,11 +174,21 @@
     \end{figure}
     Außerdem wurde die Häufigkeitsvertielung der Ladungen im Graphen \ref{fig:hauf} ermittelt.
     
-    Durch die Position der Maxima kann die Elementarladung bestimmt werden.
+    Durch die Position der Maxima kann die Elementarladung bestimmt werden:
+    \begin{align}
+        e &= 1,03056(99) \cdot 10^{-19} \si{\coulomb} \\
+        \text{Literaturwert:} e &= 1,602 \cdot 10^{-19} \si{\coulomb}
+    \end{align}
+    Anhand von diese Berechnung und der Elektonenladung kann die Masse der Elektrons berechnet werden:
+    \begin{align}
+        m = e \cdot \left(\frac{e}{m}\right)^{-1} &= \\
+        \text{Literaturwert:} m &= 9.10938 \cdot 10^{-31} \si{\kilogram}
+    \end{align}
 
     Die in Tabele \ref{unsichmili} angegebenen Unisccherheiten wurden berücksichtigt.
     \begin{table}
         \begin{tabular}{c | c | c}
+            Messgröße & Beschreibung & Unsicherheit \\ \hline
             Spannung $U$ in $\si{\volt}$ & 1 Digit = 1V & $u_U = \frac{1}{2\sqrt(3)} \si{\volt}$ \\
             Zeit $t$ in $\si{\second}$ & 1 Digit = 0,1s + Reaktionszeit 0,2s & $u_t = \sqrt(\frac{0.1}{2\sqrt(3)}^2 + 0.4) \si{\second}$ \\
             Abstand $s$ in $\si{\metre}$ & 1 Strich = 0,1mm & $u_s = \frac{0.0001}{4\sqrt(3)} \si{\metre}$ \\
@@ -184,7 +202,18 @@
 
 
 
-    \subsection{Diskussion}
+    \section{Diskussion}
+    Während der Versuch mit dem Fadenstrahlrohr sehr genaue Ergebnisse erbrachte, bei denen der Literaturwert im Konfidenzintervall lag, gab es beim Millikan-Versuch leider durch die ungenaue Messmethode einen sehr ungenauen Wert, es müssten wahrsceinlich noch viel mehr Datenpunkte gemessen werden und weitere systematisch abweichungen beachtet werden.
+
+    \section{Zusammenfassung}
+
+    Anhand von den Endergebnissen beider Versuche kann die Masse der Elektrons berechnet werden:
+    \begin{align}
+        m = e \cdot \left(\frac{e}{m}\right)^{-1} &= \\
+        \text{Literaturwert:} m &= 9.10938 \cdot 10^{-31} \si{\kilogram}
+    \end{align}
+    
+    
 
     \bibliographystyle{plain}
     \bibliography{literature}
