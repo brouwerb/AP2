@@ -77,7 +77,7 @@ ye = np.array(unumpy.std_devs(rkorr))*1e6
 xel = xe.tolist()[0]
 yel = ye.tolist()[0]
 
-
+print(data[0], r0[0], rkorr[0], nlkorr[0], q[0], x[0], y[0], xel[0], yel[0])
 #Plot
 
 
@@ -89,10 +89,13 @@ X_MAJOR_TICK = 1
 SAVE_AS = "./ELE/millikan.pdf"
 #plot figure
 fig, ax = plt.subplots()
-ax.plot(xl[0:tommys_daten], yl[0:tommys_daten], "x", label="Messwerte")
-ax.plot(xl[tommys_daten:], yl[tommys_daten:], "o", label="Messwerte")
+# ax.plot(xl[0:tommys_daten], yl[0:tommys_daten], "x", label="Messwerte")
+# ax.plot(xl[0:tommys_daten], yl[0:tommys_daten], "x", label="Messwerte")
+# ax.plot(xl[tommys_daten:], yl[tommys_daten:], "o", label="Messwerte")
 
-ax.scatter(xl, yl, xerr=xel, yerr=yel)
+ax.errorbar(xl[0:unsere_daten], yl[0:unsere_daten], xerr=xel[0:unsere_daten], yerr=yel[0:unsere_daten], fmt="none", ecolor="red", label="Eigene Messwerte")
+ax.errorbar(xl[unsere_daten:tommys_daten], yl[unsere_daten:tommys_daten], xerr=xel[unsere_daten:tommys_daten], yerr=yel[unsere_daten:tommys_daten], fmt="none", ecolor="blue", label="Tommys Messwerte")
+ax.errorbar(xl[tommys_daten:], yl[tommys_daten:], xerr=xel[tommys_daten:], yerr=yel[tommys_daten:], fmt="none", ecolor="green", label="Sass Messwerte")
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
