@@ -72,8 +72,8 @@
         v = \sqrt{\frac{2 e U}{m_e}} = 1,02 \cdot 10^{7} \si{m/s} < 2,9 \cdot 10^{7} \si{m/s} = 10\% \cdot c
     \end{align}
 
-    berechnet werden. Da diese kleiner als zehn Prozent der Lichtgeschwindigkeit ist, kann auch im weiteren nichtrelativistischen gerechnet werden
 
+    berechnet werden. Da diese kleiner als zehn Prozent der Lichtgeschwindigkeit ist, kann auch im weiteren nichtrelativistischen gerechnet werden
     Jetzt muss noch überprüft werden, ob die thermische Energie der Glühkathode die Messungen verfälschen könnte.
     \begin{align}
         v_{tmax} = \frac{v_{100V}}{100} = \frac{\sqrt{\frac{2 e \cdot 100 \si{V}}{m_e}}}{100} = 59310 \si{m \per s} \\
@@ -96,6 +96,41 @@
         Zur Abschätzung des Effekts lässt sich $B_{min,gar} = B - B_{gar}$ und $B_{max,gar} = B + B_{gar}$ mit einer Beispielspannung von $ U = 300 \si{\volt}$ in \ref{qm_formel} einsetzen.
         Daraus resultiert eine Differenz in den Radien von $5.5 \si{\milli\metre}$ welche  im messbaren Bereich liegt.
 
+
+
+    \section{Milllikam}
+
+    In diesem Versuch werden Öltröpfchen mithilfe eines Elektischen Feldes mit und entgegen die Schwerkraft bewegt. Dadurch kann der Einfluss der E-Felds auf die Tröpfchen und der Radius der Tröpfchen und damit die Ladung dieser bestimmt werden.
+
+    \subsection{Theorie}
+
+    Durch vorraussetze eines Kräftegleichgewichts bei gleichförmiger Bewegung erhält man einen Radius
+    \begin{align}
+        r_0 = \frac{3}{2} \sqrt{\frac{\eta_{Luft} (v_{steig} + v_{sink})}{(\rho_{\ddot{Ol}} - \rho_{Luft}) \cdot g}}%{ \rho_{Öl} - \rho_{Luft} \cdot g }
+    \end{align}
+    Wobei $\rho$ die Dichte des jeweilligen Stoffes ist, $v_{steig}$ die Geschwindigkeit, mit der die Tröpfchen steigen und $v_{sink}$ die Geschwindigkeit, mit der die Tröpfchen sinken. Da die Tröpfchen so klein sind, muss die Viskosität mit einem Korrekturterm versehen werden:
+    \begin{align}
+        \nabla_{korr} = \nabla_{Luft}(1+\frac{A \lambda}{r_0})^{-1}
+    \end{align}
+    Hier wurden die Werte $A = 1,257$ und $\lambda = 72(2) \si{\nano\metre}$ eingesetzt.
+    Auch der Tröpfchenradius muss korrigiert werden:
+    \begin{align}
+        r_{korr} = \sqrt{r_0^2 + (\frac{A \lambda}{2})^2} - (\frac{A \lambda}{2})
+    \end{align}
+    Damit kann dann die Ladung der Tröpfchen $q$ mit der Angelegten Spannung $U$ und dem Abstand der Platten $d$ bestimmt werden:
+    \begin{align}
+        q = \frac{3 \pi d}{U} \cdot \nabla_{korr} \cdot r_{korr} \cdot (v_{steig} - v_{sink})
+    \end{align}
+    Wenn alles richtig berechnet wurde, müssten die Errechneten Werte vielfache der Elementarladung $e = 1.602 \cdot 10^{-19} \si{C}$ sein.
+
+    \subsection{Ergebnisse}
+    Um die Verteilung zu veranschaulichen, wurde die Ladung $q$ gegen den errecchneten Radius $r_{korr}$ geplottet. Im Plot kann leicht erkannt werden, dass die Ladung quantisiert ist, da die Verteilung nicht zufällig oder nach größe ist, sonder sich vertikale linier bilden.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{millikan.pdf}
+        \caption{Ladung der Tröpfchen und Radius im Milllikamversuch}
+        \label{fig:milllikam}
+    \end{figure}
 
 
     \section{Diskussion}
