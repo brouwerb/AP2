@@ -50,8 +50,8 @@ nl = 18.4304e-6
 drho = 871 - 1.17228
 
 # s = vt  v = s/t
-vst = np.squeeze(umat[3]/umat[1])
-vsi = np.squeeze(umat[3]/umat[2])
+vst = np.squeeze(np.divide(umat[3],umat[1]))
+vsi = np.squeeze(np.divide(umat[3],umat[2]))
 
 r0 = (3/2)*unumpy.sqrt((nl*(vst + vsi)/drho/9.8072914)) #https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjrtI2vstv5AhVfQvEDHUCBChMQFnoECAQQAQ&url=https%3A%2F%2Fwww.uni-kassel.de%2Ffb10%2Findex.php%3FeID%3DdumpFile%26t%3Df%26f%3D2720%26token%3Dd35b3b1bc0149f09f203a8d91bdbf963e8108572&usg=AOvVaw0pgyv1jNUF-dF_znxzshgh
 
@@ -70,7 +70,13 @@ q = 3*np.pi*d*np.divide(np.multiply(np.multiply(rkorr, (vst-vsi)), nlkorr), np.s
 
 x = np.array(unumpy.nominal_values(q))/1.602176634e-19
 y = np.array(unumpy.nominal_values(rkorr))*1e6
-print(x, y)
+xl = x.tolist()[0]
+yl = y.tolist()[0]
+xe = np.array(unumpy.std_devs(q))/1.602176634e-19
+ye = np.array(unumpy.std_devs(rkorr))*1e6
+xel = xe.tolist()[0]
+yel = ye.tolist()[0]
+
 
 #Plot
 
@@ -78,16 +84,15 @@ print(x, y)
 
 Y_LABEL = r"Radius $r$ in $\mu m$"
 X_LABEL = r"Ladung in $e$"
-X_ERROR = np.array(unumpy.std_devs(q))/1.602176634e-19
-Y_ERROR = np.array(unumpy.std_devs(rkorr))*1e6
+
 X_MAJOR_TICK = 1
 SAVE_AS = "./ELE/millikan.pdf"
 #plot figure
 fig, ax = plt.subplots()
-ax.plot(x[0:tommys_daten], y[0:tommys_daten], "x", label="Messwerte")
-ax.plot(x[tommys_daten:], y[tommys_daten:], "o", label="Messwerte")
+ax.plot(xl[0:tommys_daten], yl[0:tommys_daten], "x", label="Messwerte")
+ax.plot(xl[tommys_daten:], yl[tommys_daten:], "o", label="Messwerte")
 
-ax.errorbar(x, y, xerr=X_ERROR, yerr=Y_ERROR)
+ax.scatter(xl, yl, xerr=xel, yerr=yel)
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
