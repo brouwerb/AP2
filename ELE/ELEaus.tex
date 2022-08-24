@@ -76,11 +76,11 @@
     berechnet werden. Da diese kleiner als zehn Prozent der Lichtgeschwindigkeit ist, kann auch im weiteren nichtrelativistischen gerechnet werden
     Jetzt muss noch überprüft werden, ob die thermische Energie der Glühkathode die Messungen verfälschen könnte.
     \begin{align}
-        v_{tmax} = \frac{v_{100V}}{100} = \frac{\sqrt{\frac{2 e \cdot 100 \si{V}}{m_e}}}{100} = 59310 \si{m \per s} \\
-        E_{tmax} = \frac{m_e \cdot v_{tmax}^2}{2} = 1,602 \cdot 10^{-21} \si{J} = \frac{3}{2} k T_{max} \\
-        \Rightarrow T_{max} = \frac{2 E_{tmax}}{3 k} = 77K
+        v_{tmax} &= \frac{v_{100V}}{100} = \frac{\sqrt{\frac{2 e \cdot 100 \si{V}}{m_e}}}{100} = 59310 \si{m \per s} \\
+        E_{tmax} &= \frac{m_e \cdot v_{tmax}^2}{2} = 1,602 \cdot 10^{-21} \si{J} = \frac{3}{2} k T_{max} \\
+        \Rightarrow \ T_{max} &= \frac{2 E_{tmax}}{3 k} = 77K
     \end{align}
-    Die thermische Energie plus die Austrittsarbeit muss kleiner als $E_{tmax}$ sein, da sonst die Messungen verfälscht würden. Da die Austrittsarbeit des Material leider nicht bekannt ist, kann die eigenlich maximale Temperatur aber nicht bestimmt werden.
+    Die thermische Energie plus die Austrittsarbeit muss kleiner als $E_{tmax}$ sein, da sonst die Messungen verfälscht würden. Wenn die Austrittsarbeit $0$ ist, dann dürfte die Temperatur maximal 77K betragen. Da die Austrittsarbeit des Material aber $\gg0$ und leider nicht bekannt ist, kann die eigenlich maximale Temperatur aber nicht bestimmt werden.
 
 
     \paragraph{Auswertung der Messungen}
@@ -92,8 +92,8 @@
 
             \begin{tabular}{c | c | c | c}
                 Radius &  $30 \si{mm}$ in $\si{\coulomb\per\kilogram}$ & $40 \si{mm}$ in $\si{\coulomb\per\kilogram}$& $50 \si{mm}$ in $\si{\coulomb\per\kilogram}$ \\ \hline
-                $I = 1,3 \si{\ampere}$  & $1.96(44) * 10^{11}$ & $1.76(39) * 10^{11}$ &$1.74(38) * 10^{11}$ \\
-                $U = 150 \si{\volt}$ & $1.81(30) * 10^{11}$ & $1.79(29) * 10^{11}$ &$1.84(30) * 10^{11}$ \\
+                $I = 1,3 \si{\ampere}$  & $1.96(44) \cdot 10^{11}$ & $1.76(39) \cdot 10^{11}$ &$1.74(38) \cdot 10^{11}$ \\
+                $U = 150 \si{\volt}$ & $1.81(30) \cdot 10^{11}$ & $1.79(29) \cdot 10^{11}$ &$1.84(30) \cdot 10^{11}$ \\
             \end{tabular}
             \label{tab:einzelmessungen}
             \caption{Einzelmessungen}
@@ -165,7 +165,7 @@
     Wenn alles richtig berechnet wurde, müssten die errechneten Werte vielfache der Elementarladung $e = 1.602 \cdot 10^{-19} \si{C}$ sein.
 
     \subsection{Ergebnisse}
-    Um die Verteilung zu veranschaulichen, wurde im Graphen \ref{fig:milllikam} die Ladung $q$ gegen den errecchneten Radius $r_{korr}$ geplottet.
+    Um die Verteilung zu veranschaulichen, wurde im Graphen \ref{fig:milllikam} die Ladung $q$ gegen den errechneten Radius $r_{korr}$ geplottet.
     \begin{figure}[h]
         \centering
         \includegraphics[width=\textwidth]{millikan.pdf}
