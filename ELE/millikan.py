@@ -8,6 +8,7 @@ from uncertainties import unumpy , ufloat
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
+from scipy import interpolate
 
 #Unsere Daten
 col = ["A","B","C"]
@@ -101,21 +102,43 @@ ax.set_ylabel(Y_LABEL)
 ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 ax.grid()
 ax.legend()
-plt.savefig(SAVE_AS)
-plt.show()
-plt.close()
+#plt.savefig(SAVE_AS)
+#plt.show()
+#plt.close()
 
-dtype = [("number",float),("error",float)]  # https://numpy.org/doc/stable/reference/generated/numpy.sort.html
-sortArr =[]
-for i,I in enumerate (xl):
-    sortArr.append((I,xel[i]))
+# dtype = [("number",float),("error",float)]  # https://numpy.org/doc/stable/reference/generated/numpy.sort.html
+# sortArr =[]
+# for i,I in enumerate (xl):
+#     sortArr.append((I,xel[i]))
 
-sortArr = np.array(sortArr,dtype=dtype)
-print(sortArr)
-sortArr = np.sort(sortArr,order="number")
-print(sortArr)
+#sortArr = np.array(sortArr,dtype=dtype)
+#print(sortArr)
+#sortArr = np.sort(sortArr,order="number")
+#print(sortArr)
+
+qs = np.sort(q)
 
 
+qe = np.array(unumpy.nominal_values(qs))/1.602176634e-19
+qerr = np.array(unumpy.std_devs(qs))/1.602176634e-19
+
+fig, ax = plt.subplots()
+
+qep = qe.tolist()[0]
+qerrp = qerr.tolist()[0]
+
+qx = np.arange(0, len(qep), 1)
+qxp = qx.tolist()
+print(qxp, qep, qerrp)
+ax.scatter(qxp, qep, label="Messwerte", marker="x" , color="black")
+ax.errorbar(qxp, qep, yerr=qerrp, fmt="none", ecolor="red", label="Fehler")
+
+ax.yaxis.set_major_locator(MultipleLocator(1))
+ax.legend()
+ax.grid()
+
+#plt.savefig("./ELE/millikan_q.pdf")
+#plt.show()
 
 
 def smooth(y, box_pts):
@@ -167,8 +190,11 @@ ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 
+#plot interpolated data sopline interplolation
 
-ax.plot(arrx,np.array(smooth(arr,50))*10)
+
+
+ax.plot(arrx,np.array(smooth(smooth(arr,30), 20))*10)
 
 
 arr =[]
@@ -181,12 +207,12 @@ for i in range(200):
             count+=1
     arr.append(count)
 
-ax.bar(arrx,arr,0.05,color = "orange", alpha = 0.7 )
-ax.legend(["Ladungsverteilung geglättet","Ladungsverteilung"])
+ax.bar(arrx,arr,0.05,color = "orange", alpha = 0.7 , label="Ladungsverteilung")
+ax.legend()
 ax.grid()
 
-plt.savefig(SAVE_AS)
-plt.show()
+#plt.savefig(SAVE_AS)
+#plt.show()
 
 em = ufloat(1.8128751720384433, 0.13490253869421437)*1e11
 print(e)
