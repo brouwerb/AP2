@@ -42,18 +42,18 @@
 
     \subsection{Theorie}
 
-    Im Fadenstrahlrohr werden die Elektronen durch ein elektrisches Feld beschleunigt und durch ein Magnetfeld zu einem Ring abgelenkt. Die Endgeschwindigkeit kann durch gleichsetzten der Energien bestimmt werden.
+    Im Fadenstrahlrohr werden die Elektronen durch ein elektrisches Feld beschleunigt und durch ein Magnetfeld zu einem Ring abgelenkt. Die Endgeschwindigkeit kann durch gleichsetzten der Energien bestimmt werden, unter der Annahme, dass keine Verluste entstehen
 
     \begin{align}
     \frac{mv^2}{2} = E_{kin} &= E_{elek} = q \cdot U \label{geschw}\\
-    \Rightarrow v &= \sqrt{\frac{2qU}{m}}
+    \Rightarrow v &= \sqrt{\frac{2qU}{m}} \,.
     \end{align}
     
     Das Magnetfeld $B$ der Helmholzspulen kann mithilfe der Biot-Savart-Gesetzes bestimmt werden.
-    Mit dem Strom $I$, der Windungszahl $N$ und dem Radius $R$ ergibt sich für diesen Versuch:
+    Mit dem Strom $I$, der Windungszahl $N$ und dem Radius $R$ ergibt sich für diesen Versuch
 
     \begin{align}
-        B = \frac{\mu_0 N I}{R} \cdot \left(\frac{4}{5}^{\frac{3}{2}}\right) \label{B-Helm}
+        B = \frac{\mu_0 N I}{R} \cdot \left(\frac{4}{5}^{\frac{3}{2}}\right) \label{B-Helm} \,.
     \end{align}
 
     Die spezifische Elektronenladung ist der Quotient aus Ladung und Masse $\frac{e}{m}$.
@@ -92,8 +92,8 @@
 
             \begin{tabular}{c | c | c | c}
                 Radius &  $30 \si{mm}$ in $\si{\coulomb\per\kilogram}$ & $40 \si{mm}$ in $\si{\coulomb\per\kilogram}$& $50 \si{mm}$ in $\si{\coulomb\per\kilogram}$ \\ \hline
-                $I = 1,3 \si{\ampere}$  & $1.96(44) \cdot 10^{11}$ & $1.76(39) \cdot 10^{11}$ &$1.74(38) \cdot 10^{11}$ \\
-                $U = 150 \si{\volt}$ & $1.81(30) \cdot 10^{11}$ & $1.79(29) \cdot 10^{11}$ &$1.84(30) \cdot 10^{11}$ \\
+                $I = 1,3(1) \si{\ampere}$  & $1.96(44) \cdot 10^{11}$ & $1.76(39) \cdot 10^{11}$ &$1.74(38) \cdot 10^{11}$ \\
+                $U = 150(14) \si{\volt}$ & $1.81(30) \cdot 10^{11}$ & $1.79(29) \cdot 10^{11}$ &$1.84(30) \cdot 10^{11}$ \\
             \end{tabular}
             \label{tab:einzelmessungen}
             \caption{Einzelmessungen}
@@ -105,6 +105,7 @@
             \text{Literaturwert:} \ \ \frac{e}{m_e} &= 1,7588 \cdot 10^{11} \frac{\si{\coulomb}}{\si{\kilogram}}
         \end{align}
 
+        Der Literaturwert liegt also im Konfidenzintervall der Messung und die Abweichung ist für diese Messmethode sehr gut. \\
         Die Messdaten wurden durch den gewichteten Mittelwert \cite[Kapitel 5]{ABW} mit dem zugehörigen internen bzw. externen Fehler für jeden Radius einzelnd gemittelt.
         Mit diesen Mittelwerten lässt sich unter berücksichtigung der gaußschen Fehlerfortpflanzung \cite[(19)]{ABW} mittels Gleichung \ref{B-Helm} und \ref{qm_formel} die spezifische Elementarladung für jeden Radius berechen. Die einzelnen Werte lassen sich abermals mit dem gewichteten Mittelwert zum Endergebnis zusammenfassen und mit dem zugehörigen Fehler angeben.
         Dabei gibt es einige Unsicherheiten zu beachten:
@@ -145,11 +146,11 @@
 
     \subsection{Theorie}
 
-    Durch vorraussetzen eines Kräftegleichgewichts bei gleichförmiger Bewegung erhält man einen Radius
+    Durch vorraussetzen eines Kräftegleichgewichts zwischen Reibungskraft und elektrischer Kraft $\pm$ Gravitationskraft bei gleichförmiger Bewegung erhält man einen Radius
     \begin{align}
         r_0 = \frac{3}{2} \sqrt{\frac{\eta_{Luft} (v_{steig} + v_{sink})}{(\rho_{\ddot{Ol}} - \rho_{Luft}) \cdot g}}%{ \rho_{Öl} - \rho_{Luft} \cdot g }
     \end{align}
-    Wobei $\rho$ die Dichte des jeweilligen Stoffes ist und $v_{steig}$ bzw. $v_{sink}$ ist die Geschwindigkeit mit der die Tröpfchen steigen bzw. sinken. Aufgrund der kleinen Größe der Tröpfchen muss die Viskosität mit einem Korrekturterm versehen werden:
+    Wobei $\rho$ die Dichte des jeweilligen Stoffes ist und $v_{steig}$ bzw. $v_{sink}$ ist die Geschwindigkeit mit der die Tröpfchen steigen bzw. sinken. Dabei muss $v_{steig}$ negativ sein. Aufgrund der kleinen Größe der Tröpfchen muss die Viskosität mit einem Korrekturterm versehen werden:
     \begin{align}
         \eta_{korr} = \eta_{Luft}\left(1+\frac{A \lambda}{r_0}\right)^{-1}
     \end{align}
@@ -220,8 +221,10 @@
 
 
     \section{Diskussion}
-    Bei der Bestimmung der spezifischen Elementarladung erhielten wir sehr genaue Ergebnisse, bei denen der Literaturwert im Konfidenzintervall liegt. Im Gegensatz dazu weicht das Ergebniss des Millikan-Versuch um fast 40 \% vom Literaturwert ab, sodass dieser nicht mehr im Konfidenzintervall ist.
-    Dies liegt vermutlich an einer vergleichsweise geringen Anzahl an Versuchsdurchführungen verbunden mit einer ungenauen Messmethode. Außerdem gibt es wahrscheinlich in unserer Auswertung oder im experimentellen Vorgehen weitere systematische Fehler, da sich die Öltröpfchenladung eindeutig um einen fehlerhaften Wert häuft.
+    Bei der Bestimmung der spezifischen Elementarladung erhielten wir sehr genaue Ergebnisse, bei denen der Literaturwert im Konfidenzintervall liegt. Auch die errechneten Werte beim Millikan-Versuch sind sehr nah an den Literaturwerten dran. Durch den Tipp unseres Tutors konnte der Fehler in der Rechung gefunden werden. Insgesamt konnten trotz der "ungenauen" Messmethoden durch die große Anzahl an Datenpunkten relativ genaue Werte ermittelt werden98
+    
+    % Im Gegensatz dazu weicht das Ergebniss des Millikan-Versuch um fast 40 \% vom Literaturwert ab, sodass dieser nicht mehr im Konfidenzintervall ist.
+    % Dies liegt vermutlich an einer vergleichsweise geringen Anzahl an Versuchsdurchführungen verbunden mit einer ungenauen Messmethode. Außerdem gibt es wahrscheinlich in unserer Auswertung oder im experimentellen Vorgehen weitere systematische Fehler, da sich die Öltröpfchenladung eindeutig um einen fehlerhaften Wert häuft.
     
 
     \bibliographystyle{plain}
