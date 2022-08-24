@@ -42,7 +42,7 @@
 
     \subsection{Theorie}
 
-    Im Fadenstrahlrohr werden die Elektronen durch ein elektrisches Feld beschleunigt. Die Endgeschwindigkeit kann durch gleichsetzten der Energien bestimmt werden.
+    Im Fadenstrahlrohr werden die Elektronen durch ein elektrisches Feld beschleunigt und durch ein Magnetfeld zu einem Ring abgelenkt. Die Endgeschwindigkeit kann durch gleichsetzten der Energien bestimmt werden.
 
     \begin{align}
     \frac{mv^2}{2} = E_{kin} &= E_{elek} = q \cdot U \label{geschw}\\
@@ -84,7 +84,7 @@
 
 
     \paragraph{Auswertung der Messungen}
-        Zur Bestimmung des spezifischen Weiderstands wurden zwei Messreihen aufgenommen \'{a} 30 Durchführung jeweils mit konstantem B-Feld bzw. konstanter Beschleunigungsspannung mit unterschiedlichen Kreisradien.
+        Zur Bestimmung des spezifischen Weiderstands wurden zwei Messreihen a 30 Durchführung jeweils mit konstantem B-Feld bzw. konstanter Beschleunigungsspannung mit unterschiedlichen Kreisradien aufgenommen.
         
         Die Ergebnisse der einzelnen Messreihen wurden in der Tabelle \ref{tab:einzelmessungen} ausgegeben.
         \begin{table}[H]
@@ -128,7 +128,7 @@
         vernachlässigt. In Garching bertägt die magnetischen Feldstärke $B_{gar} = 48,7 \si{\micro\tesla}$ \cite[]{magnetic_field} bei einem Inklinationswinkel von $\Theta_{incl,gar} = 64.4\si{\degree}$ \cite[]{magnetic_field}. 
         Daraus folgt eine maximale senkrechete Komponente (in Bezug auf die Kreisbahnen) von 
         \begin{align}
-        B_{\bot,gar} = B_{gar} \cdot \cos (\Theta_{incl,gar} = 21.0 \si{\micro\tesla})
+        B_{\bot,gar} = B_{gar} \cdot \cos (\Theta_{incl,gar}) = 21.0 \si{\micro\tesla}
         \end{align}
         Dies würde die von uns gemessenen spezifischen Elementarladung um ca. 0.03 \% beeinflussen was im Vergleich zu anderen
         Fehlerquellen vernachlässigbar ist. 
@@ -141,7 +141,7 @@
 
     \section{Millikan}
 
-    In diesem Versuch werden Öltröpfchen mithilfe eines Elektischen Feldes mit und entgegen die Schwerkraft bewegt. Dadurch kann der Einfluss der E-Felds auf die Tröpfchen und der Radius der Tröpfchen und damit die Ladung dieser bestimmt werden.
+    In diesem Versuch werden Öltröpfchen mithilfe eines Elektischen Feldes mit und entgegen der Schwerkraft bewegt. Durch den Einfluss des E-Felds auf die Tröpfchen kann Radius und damit die Ladung der Tröpfchen bestimmt werden.
 
     \subsection{Theorie}
 
@@ -149,7 +149,7 @@
     \begin{align}
         r_0 = \frac{3}{2} \sqrt{\frac{\eta_{Luft} (v_{steig} + v_{sink})}{(\rho_{\ddot{Ol}} - \rho_{Luft}) \cdot g}}%{ \rho_{Öl} - \rho_{Luft} \cdot g }
     \end{align}
-    Wobei $\rho$ die Dichte des jeweilligen Stoffes ist, $v_{steig}$ die Geschwindigkeit, mit der die Tröpfchen steigen und $v_{sink}$ die Geschwindigkeit, mit der die Tröpfchen sinken. Da die Tröpfchen so klein sind, muss die Viskosität mit einem Korrekturterm versehen werden:
+    Wobei $\rho$ die Dichte des jeweilligen Stoffes ist und $v_{steig}$ bzw. $v_{sink}$ ist die Geschwindigkeit mit der die Tröpfchen steigen bzw. sinken. Aufgrund der kleinen Größe der Tröpfchen muss die Viskosität mit einem Korrekturterm versehen werden:
     \begin{align}
         \eta_{korr} = \eta_{Luft}\left(1+\frac{A \lambda}{r_0}\right)^{-1}
     \end{align}
@@ -158,11 +158,11 @@
     \begin{align}
         r_{korr} = \sqrt{r_0^2 + \left(\frac{A \lambda}{2}\right)^2} - \left(\frac{A \lambda}{2}\right)
     \end{align}
-    Damit kann dann die Ladung der Tröpfchen $q$ mit der Angelegten Spannung $U$ und dem Abstand der Platten $d$ bestimmt werden:
+    Damit lässt sich die Ladung der Tröpfchen $q$ mit der Angelegten Spannung $U$ und dem Abstand der Platten $d$ bestimmen:
     \begin{align}
         q = \frac{3 \pi d}{U} \cdot \eta_{korr} \cdot r_{korr} \cdot \left(v_{steig} - v_{sink}\right)
     \end{align}
-    Wenn alles richtig berechnet wurde, müssten die Errechneten Werte vielfache der Elementarladung $e = 1.602 \cdot 10^{-19} \si{C}$ sein.
+    Wenn alles richtig berechnet wurde, müssten die errechneten Werte vielfache der Elementarladung $e = 1.602 \cdot 10^{-19} \si{C}$ sein.
 
     \subsection{Ergebnisse}
     Um die Verteilung zu veranschaulichen, wurde im Graphen \ref{fig:milllikam} die Ladung $q$ gegen den errecchneten Radius $r_{korr}$ geplottet.
@@ -181,7 +181,8 @@
         \label{fig:hauf}
     \end{figure}
     
-    Durch die Position des ersten Maximums kann die Elementarladung bestimmt werden:
+    Durch die Position des ersten Maximums kann die Elementarladung grob abgeschätzt werden. Durch diesen Schätzwert lassen sich nun Intervallgrenzen definieren um die Tröpfchen nach Ladungsanzahl zu sortieren.
+    Daraus lässt sich die Elementarladung bestimmen, indem der gewichtete Mittelwert zzgl. Fehler berechnet\cite[Kapitel 5]{ABW} wird:
     \begin{align}
         e &= 1,03056(99) \cdot 10^{-19} \si{\coulomb} \\
         \text{Literaturwert:} \ \ e &= 1,602 \cdot 10^{-19} \si{\coulomb}
@@ -209,9 +210,8 @@
 
 
     \section{Diskussion}
-    Während der Versuch mit dem Fadenstrahlrohr sehr genaue Ergebnisse erbrachte, bei denen der Literaturwert im Konfidenzintervall lag, gab es beim Millikan-Versuch leider durch die ungenaue Messmethode einen sehr ungenauen Wert, es müssten wahrsceinlich noch viel mehr Datenpunkte gemessen werden. Außerdem liegt wahrscheinlich entweder in unserer Auswertung oder im experimentellen Vorgehen weitere systematische Fehler, da die Abweichungen zwischen den Messwerten und der Literaturwerten außerhalb des Konfidenzintervalls liegen und sehr groß sind.
-
-    
+    Bei der Bestimmung der spezifischen Elementarladung erhielten wir sehr genaue Ergebnisse, bei denen der Literaturwert im Konfidenzintervall liegt. Im Gegensatz dazu weicht das Ergebniss des Millikan-Versuch um fast 40 \% vom Literaturwert ab, sodass dieser nicht mehr im Konfidenzintervall ist.
+    Dies liegt vermutlich an einer vergleichsweise geringen Anzahl an Versuchsdurchführungen verbunden mit einer ungenauen Messmethode. Außerdem gibt es wahrscheinlich in unserer Auswertung oder im experimentellen Vorgehen weitere systematische Fehler, da sich die Öltröpfchenladung eindeutig um einen fehlerhaften Wert häuft.
     
 
     \bibliographystyle{plain}
