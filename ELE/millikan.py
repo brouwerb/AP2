@@ -105,6 +105,18 @@ plt.savefig(SAVE_AS)
 plt.show()
 plt.close()
 
+dtype = [("number",float),("error",float)]  # https://numpy.org/doc/stable/reference/generated/numpy.sort.html
+sortArr =[]
+for i,I in enumerate (xl):
+    sortArr.append((I,xel[i]))
+
+sortArr = np.array(sortArr,dtype=dtype)
+print(sortArr)
+sortArr = np.sort(sortArr,order="number")
+print(sortArr)
+
+
+
 
 def smooth(y, box_pts):
     box = np.ones(box_pts)/box_pts
@@ -113,7 +125,7 @@ def smooth(y, box_pts):
 X_START =0
 Y_START =0
 X_END = 9.3
-Y_END = 9.3
+Y_END = 15
 
 X_MAJOR_TICK = 1
 Y_MAJOR_TICK = 1
@@ -130,15 +142,15 @@ arr = []
 arrx = []
 
 #print(xl)
-peak_charge = 0.6902
+peak_charge = 1
 singCh = [[],[]]
 for i in range(1000):
     arrx.append(0.01*i)
     count =0 
     for J,j in enumerate(xl):
-        if j*-1 > i *0.01 and j*-1 < (i+1) *0.01:
+        if abs(j) > i *0.01 and abs(j) < (i+1) *0.01:
             count+=1
-        if j*-1 > peak_charge*0.5 and j*-1 < peak_charge*1.5:
+        if abs(j) > peak_charge*0.5 and abs(j) < peak_charge*1.5:
             singCh[0].append(j)
             singCh[1].append(xel[J])
     arr.append(count)
@@ -156,20 +168,20 @@ ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 
 
-ax.plot(arrx,np.array(smooth(smooth(arr,50),50))*10)
+ax.plot(arrx,np.array(smooth(arr,50))*10)
 
 
 arr =[]
 arrx = []
-for i in range(100):
-    arrx.append(0.1*i)
+for i in range(200):
+    arrx.append(0.05*i)
     count =0 
     for J,j in enumerate(xl):
-        if j*-1 > i *0.1 and j*-1 < (i+1) *0.1:
+        if abs(j) > i *0.05 and abs(j) < (i+1) *0.05:
             count+=1
     arr.append(count)
 
-ax.bar(arrx,arr,0.1,color = "orange", alpha = 0.7 )
+ax.bar(arrx,arr,0.05,color = "orange", alpha = 0.7 )
 ax.legend(["Ladungsverteilung geglättet","Ladungsverteilung"])
 ax.grid()
 
