@@ -120,12 +120,15 @@ SAVE_AS = ""
 COLOR_STYLE =["blue","red","green"]
 
 numResWiederstand = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resWiederstand]]))
+numResP = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resP]]))
 numResI = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resI]]))
 erResWiederstand = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resWiederstand]]))
 erResI = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resI]]))
+erResP = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resP]]))
 
 print(numResWiederstand)
 print(numResI)
+print(numResP)
 fig, ax = plt.subplots()
 ax.grid()
 for i in range(len(numResI)):
@@ -141,6 +144,17 @@ ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 # ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 # ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 # ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
+
+
+fig, ax2 = plt.subplots()
+ax2.grid()
+for i in range(len(numResI)):
+    ax2.errorbar(numResP[i],numResWiederstand[i],fmt="none",yerr=erResWiederstand[i],xerr=erResP[i],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8,
+        color=COLOR_STYLE[0],zorder=11)
+    ax2.scatter(numResP[i],numResWiederstand[i],s=10,linewidths=0.5,edgecolors="black",zorder=10,color = COLOR_STYLE[i])
+ax2.set(xlabel=X_LABEL, ylabel=Y_LABEL)
+plt.yscale("log")
+plt.xscale("log")
 plt.show()
 #fig.savefig(SAVE_AS)
 
