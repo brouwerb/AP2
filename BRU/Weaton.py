@@ -78,6 +78,7 @@ resistors =getAxisFromCell("A36","A39","./BRU/Mappe1.xls","wheaton")
 poti = []
 for i in range(1, len(Spannung)+1):
     poti.append(getAxis(35,i,38,"./BRU/Mappe1.xls","wheaton"))
+print(poti)
 #print(resistors,poti)
 uresistors = [] 
 upoti = []
@@ -123,12 +124,12 @@ Y_MINOR_TICK = 1
 SAVE_AS = ""
 COLOR_STYLE =["blue","red","green"]
 
-numResWiederstand = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resWiederstand]]))
-numResP = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resP]]))
-numResI = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resI]]))
-erResWiederstand = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resWiederstand]]))
-erResI = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resI]]))
-erResP = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resP]]))
+numResWiederstand = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resWiederstand]]),3)
+numResP = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resP]]),3)
+numResI = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resI]]),3)
+erResWiederstand = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resWiederstand]]),3)
+erResI = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resI]]),3)
+erResP = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resP]]),3)
 
 print(numResWiederstand)
 print(numResI)
