@@ -36,7 +36,7 @@ for i in range(len(hauptPoti)):
 
 
 
-print("Spulenrehenfolge :",spulenName)
+print("Wert d.Spule , Spule ME , Spule AM")
 print("spule 1")
 print(uarrayToString( resR[0]),uarrayToString(resL[0]))
 print("spule 2")
