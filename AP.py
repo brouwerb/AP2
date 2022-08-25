@@ -62,6 +62,20 @@ def arrToUnumpy(arr,uncertantie):
     return narr
 
 
+def analogErr(a):
+    return a/(2*np.sqrt(6))
+
+def uarrrayToString(arr):
+    buf = [] 
+    for i in range(len(arr)):
+        
+        buf.append(round_err(float('{:f}'.format(unumpy.nominal_values(arr[i]))),float('{:f}'.format(unumpy.std_devs(arr[i])))))
+        
+        #buf.append("scheiß Zehnerpotenzen")
+
+    return buf
+
+
 def getAxis(row1,collumn1,row2,path,sheet):
     data = []
     workbook = xlrd.open_workbook(path)
