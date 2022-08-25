@@ -202,13 +202,14 @@ def printtableaslatex(data, name, header):
     print("\\caption{"+name+"}")
     print("\\end{table}")
 
-def savetableastxt(data, name, header):
-    with open(name+".txt", "w") as f:
+def savetableastxt(data, name, file, header):
+    with open(file+".txt", "w") as f:
         f.write("\\begin{table}[h]\n")
         f.write("\\centering\n")
         f.write("\\begin{tabular}{c" + "|c"*(len(data[0])-1) + "}\n")
-        #f.write("\\hline\n")
+        
         f.write("\\textbf{" + "} & \\textbf{".join(header) + "} \\\\ \n")
+        f.write("\\hline\n")
         for i in range(len(data)):
             f.write(" & ".join(data[i]) + "\\\\ \n")
         # f.write("\\hline\n")
