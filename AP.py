@@ -62,20 +62,6 @@ def arrToUnumpy(arr,uncertantie):
     return narr
 
 
-def analogErr(a):
-    return a/(2*np.sqrt(6))
-
-def uarrrayToString(arr):
-    buf = [] 
-    for i in range(len(arr)):
-        
-        buf.append(round_err(float('{:f}'.format(unumpy.nominal_values(arr[i]))),float('{:f}'.format(unumpy.std_devs(arr[i])))))
-        
-        #buf.append("scheiß Zehnerpotenzen")
-
-    return buf
-
-
 def getAxis(row1,collumn1,row2,path,sheet):
     data = []
     workbook = xlrd.open_workbook(path)
@@ -179,3 +165,41 @@ def cut(xy):
             n = i
             break
     return(n)
+
+def constructdata(udata):
+    data = []
+    for i, I in enumerate(udata):
+        data.append([])
+        for j in I:
+            data[i].append(round_err(float(unumpy.nominal_values(j)), float(unumpy.std_devs(j))))
+    return data
+
+
+def printtableaslatex(data, name, header):
+    print("\\begin{table}[h]")
+    print("\\centering")
+    print("\\begin{tabular}{c" + "|c"*(len(data[0])-1) + "}")
+    #print("\\hline")
+    print("\\textbf{", end="")
+    print( *header, sep ="} & \\textbf{", end="} \\\\ \n")
+    print("\\hline")
+    for i in range(len(data)):
+        print(*data[i], sep=" & ", end="\\\\ \n",)
+    # print("\\hline")
+    print("\\end{tabular}")
+    print("\\caption{"+name+"}")
+    print("\\end{table}")
+
+def savetableastxt(data, name, header):
+    with open(name+".txt", "w") as f:
+        f.write("\\begin{table}[h]\n")
+        f.write("\\centering\n")
+        f.write("\\begin{tabular}{c" + "|c"*(len(data[0])-1) + "}\n")
+        #f.write("\\hline\n")
+        f.write("\\textbf{" + "} & \\textbf{".join(header) + "} \\\\ \n")
+        for i in range(len(data)):
+            f.write(" & ".join(data[i]) + "\\\\ \n")
+        # f.write("\\hline\n")
+        f.write("\\end{tabular}\n")
+        f.write("\\caption{"+name+"}\n")
+        f.write("\\end{table}\n")
