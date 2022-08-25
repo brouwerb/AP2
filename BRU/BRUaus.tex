@@ -64,15 +64,16 @@
 
     Wenn eine Spule gemessen wird, gilt speziell
     \begin{align}
-        R_1 &= \frac{A}{1\si{\kilo\ohm} - A} \cdot \left(R_S + R_V\right) \\
-        L_1 &= \frac{A}{1\si{\kilo\ohm} - A} \cdot \left(L_S\right) \\
+        R_1 &= \frac{R_P}{1\si{\kilo\ohm} - R_P} \cdot \left(R_S + R_V\right) \\
+        L_1 &= \frac{R_P}{1\si{\kilo\ohm} - R_P} \cdot \left(L_S\right) \\
         \text{mit} \ \ Z_2 &= R_2 + j\omega L_2 = R_V + R_S + j\omega L_S \,,
     \end{align}
     wobei $R_S$ der bekannte Widerstand und $L_S$ die bekannte Induktivität der Spule sind und $R_V$ der Wert der zweiten (kleinen) Potentiometer ist, welcher in Reihe mit der bekannten Spule geschaltet wurde.
 
     Wenn ein Kondensator gemessen wird, gilt analog
     \begin{align}
-        C_1 = \frac{1 \si{\kilo\ohm} - A}{A} \cdot C_2 \,,
+        \frac{Z_1}{Z_2} = \frac{R_1 + \frac{1}{i \omega C_1}}{R_2 + \frac{1}{i \omega C_2}} = \frac{R_p}{1\si{\kilo\ohm} - R_p} \\
+        C_1 = \frac{1 \si{\kilo\ohm} - R_P}{R_P} \cdot C_2 \,,
     \end{align}
     wobei $C_2$ die Kapazität des bekannten Kondensator ist.
     
@@ -82,20 +83,32 @@
     \input{wiepo.txt}
 
     \paragraph{Aufgabe 8}
-    Hier wurden die reellen Widerstände der verschiedenen Spulen gemessen. Die Ergebnisse sind in Tabelle \ref{tab:./BRU/wieps} aufgeführt. Auf den Spulen waren leider keine Werte angegeben. Die Werte der großen Spule sind aber in sich relativ konsistent, da die zwei Messungen mit dem Mittelabgriff M ungefähr halb so groß wie der Widerstand der gesamten Spule sind.
+    Hier wurden die reellen Widerstände der verschiedenen Spulen gemessen. Die Ergebnisse sind in Tabelle \ref{tab:./BRU/wiespu} aufgeführt. Auf den Spulen waren leider keine Werte angegeben. Die Werte der großen Spule sind aber in sich relativ konsistent, da die zwei Messungen mit dem Mittelabgriff M ungefähr halb so groß wie der Widerstand der gesamten Spule sind.
 
     \input{wiespu.txt}
 
     \paragraph{Aufgabe 9 und 10}
-    Die Messwerte dieser Aufgaben können im Anhang \ref{tab:./BRU/eigglueh} gefunden werden. In Graph \ref{amp} wurde die Beziehung zwischen Stromstärke und Widerstand aufgetragen. In Graph \ref{pow} jene zwischen Leistung ung Widerstand. Wie zu erwarten, ist der Widerstand nichtohmsch, sondern steigt bei größerer Stromstärke / Leistung an. Der Widerstand steigt, da die Glühlampe zu leuchten beginnt und Energie durch Licht abgibt.
+    Die Messwerte dieser Aufgaben können im Anhang \ref{tab:./BRU/eigglueh} gefunden werden. In Graph \ref{amp} wurde die Beziehung zwischen Stromstärke und Widerstand aufgetragen. In Graph \ref{pow} jene zwischen Leistung ung Widerstand. Wie zu erwarten, ist der Widerstand nichtohmsch, sondern steigt bei größerer Stromstärke / Leistung an. Deshalb stimmen die Werte auch trotz ihren Unsicherheitsbereiches nicht überein. Der Widerstand steigt, da die Glühlampe zu leuchten beginnt und Energie durch Licht abgibt.
 
     \begin{figure}
         \centering
-        \includegraphics[width=0.5\textwidth]{}
+        \includegraphics[width=\textwidth]{amp.pdf}
         \caption{Beziehung zwischen Stromstärke und Widerstand}
         \label{amp}
     \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{pow.pdf}
+        \caption{Beziehung zwischen Leistung und Widerstand}
+        \label{pow}
+    \end{figure}
 
+    \paragraph{Aufgabe 11}
+    In der Tabelle \ref{Induc} sind die Messwerte und Ergebnisse für die verschiedenen Spulen aufgeführt. Es wurden beide Spulen unbekannte Spulen gemessen. Approximiert man die Spule als lange Spule gilt
+    \begin{align}
+        L &= \mu_0 \frac{A\cdot N^2}{l} \\
+        \Rightarrow \ \ L_{1/2} &= mu_0 \frac{A\cdot \left(\frac{N}{2}\right)^2}{l} = \frac{1}{4} \cdot L \,.
+    \end{align}
 
     \section{Anhang}
     \subsection{Messwerte Aufgabe 9 und 10}
