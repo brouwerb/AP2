@@ -7,6 +7,7 @@ from AP import *
 sys.path.pop(0)
 from uncertainties.unumpy  import uarray, nominal_values,std_devs
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
 
 # Aufgabe 7  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 7________________________________________________")
@@ -81,7 +82,7 @@ for j in range(len(Spannung)):
     resWiederstand.append([])
     resI.append([])
     resP.append([])
-    #print(Spannung[j])
+    
     for i in range(len(resistors)):
         uresistors[j].append(uarray(resistors[i],resistors[i]*0.01))
         upoti[j].append(uarray(poti[j][i],analogErr(1)))
@@ -99,8 +100,8 @@ Y_START =12
 X_END = 4.2 
 Y_END = 45.5 
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"Druck $p$ in $MPa$"
-X_LABEL = r"Molares Volumen $V_m$ in $\frac{cm^3}{mol}$"
+Y_LABEL = r"Wiederstand $U$ in $V$"
+X_LABEL = r"Stromstärke in $I$ in $A$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 250
@@ -108,13 +109,27 @@ Y_MAJOR_TICK = 5
 X_MINOR_TICK = 50
 Y_MINOR_TICK = 1
 SAVE_AS = ""
+COLOR_STYLE =["blue","red","green"]
 
-numResWiederstand = [nominal_values(j).tolist() for j in np.array(resWiederstand).flatten()]
-numResI = [nominal_values(j).tolist() for j in np.array(resI).flatten()]
+numResWiederstand = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resWiederstand]]))
 
+numResI = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resI]]))
+
+print(numResWiederstand)
+print(numResI)
 fig, ax = plt.subplots()
 ax.grid()
-ax.scatter(numResI,numResWiederstand,s=10,linewidths=0.5,edgecolors="black",zorder=10)
+for i in range(len(numResI)):
+    ax.scatter(numResI[i],numResWiederstand[i],s=10,linewidths=0.5,edgecolors="black",zorder=10,color = COLOR_STYLE[i])
+ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
+
+# ax.set_xlim(X_START,X_END)
+# ax.set_ylim(Y_START,Y_END)
+
+# ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
+# ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
+# ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
+# ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 plt.show()
 #fig.savefig(SAVE_AS)
 
