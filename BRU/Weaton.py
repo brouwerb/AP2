@@ -108,11 +108,11 @@ printtableaslatex(constructdata(data9), "Eigenschaften Glühlampe", ["Spannung i
 savetableastxt(constructdata(data9), "Eigenschaften Glühlampe", "./BRU/eigglueh", ["$U$ in $\\si{\\volt}$", "$R_2$ in $\\si{\\ohm}$", "$Poti$ in $\\si{\\ohm}$", "$R_G$ in $\\si{\\ohm}$", "$I$ in $\\si{\\ampere}$", "$P$ in $\\si{\\watt}$"])
 
 X_START =0
-Y_START =12 
-X_END = 4.2 
-Y_END = 45.5 
+Y_START =0
+X_END = 0.3 
+Y_END = 15 
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"Wiederstand $U$ in $V$"
+Y_LABEL = r"Wiederstand $R$ in $\Omega$"
 X_LABEL = r"Stromstärke in $I$ in $A$"
 X_ERROR = 4
 Y_ERROR = 1
@@ -124,27 +124,44 @@ SAVE_AS = ""
 COLOR_STYLE =["blue","red","green"]
 
 numResWiederstand = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resWiederstand]]))
+numResP = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resP]]))
 numResI = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resI]]))
 erResWiederstand = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resWiederstand]]))
 erResI = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resI]]))
+erResP = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resP]]))
 
 print(numResWiederstand)
 print(numResI)
+print(numResP)
 fig, ax = plt.subplots()
 ax.grid()
 for i in range(len(numResI)):
     ax.errorbar(numResI[i],numResWiederstand[i],fmt="none",yerr=erResWiederstand[i],xerr=erResI[i],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8,
-        color=COLOR_STYLE[0],zorder=11)
-    ax.scatter(numResI[i],numResWiederstand[i],s=10,linewidths=0.5,edgecolors="black",zorder=10,color = COLOR_STYLE[i])
+        color=COLOR_STYLE[0],zorder=9)
+    ax.scatter(numResI[i],numResWiederstand[i],s=20,linewidths=0.5,edgecolors="black",zorder=10,color = COLOR_STYLE[i])
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
-
-# ax.set_xlim(X_START,X_END)
-# ax.set_ylim(Y_START,Y_END)
+ax.legend([r"R = 10$\Omega$",r"R = 30$\Omega$",r"R = 200$\Omega$"])
+ax.set_xlim(X_START,X_END)
+ax.set_ylim(Y_START,Y_END)
 
 # ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 # ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 # ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 # ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
+
+
+Y_LABEL = r"Wiederstand $R$ in $\Omega$"
+X_LABEL = r"Leistung $P$ in $mW$"
+
+fig, ax2 = plt.subplots()
+ax2.grid()
+for i in range(len(numResI)):
+    ax2.errorbar(np.array(numResP[i])*1e3,numResWiederstand[i],fmt="none",yerr=erResWiederstand[i],xerr=np.array(erResP[i])*1e3,ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8,
+        color=COLOR_STYLE[0],zorder=9)
+    ax2.scatter(np.array(numResP[i])*1e3,numResWiederstand[i],s=20,linewidths=0.5,edgecolors="black",zorder=10,color = COLOR_STYLE[i])
+ax2.set(xlabel=X_LABEL, ylabel=Y_LABEL)
+plt.yscale("log")
+plt.xscale("log")
+ax2.legend([r"R = 10$\Omega$",r"R = 30$\Omega$",r"R = 200$\Omega$"])
 plt.show()
 #fig.savefig(SAVE_AS)
-
