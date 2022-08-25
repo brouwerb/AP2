@@ -73,12 +73,12 @@ for i in range(len(resistors)):
 print("Aufgabe 10_____________________________________________")
  
 Spannung = arrToUnumpy([1,2,3,4,5,6],[1*0.005+0.008,2*0.005+0.08,3*0.005+0.08,4*0.005+0.08,5*0.005+0.08,6*0.005+0.08])
-print(Spannung)
+#print(Spannung)
 resistors =getAxisFromCell("A36","A39","./BRU/Mappe1.xls","wheaton")
 poti = []
 for i in range(len(Spannung)):
     poti.append(getAxis(35,i,38,"./BRU/Mappe1.xls","wheaton"))
-print(resistors,poti)
+#print(resistors,poti)
 uresistors = [] 
 upoti = []
 resWiederstand = []
@@ -92,16 +92,16 @@ for j in range(len(Spannung)):
     resP.append([])
     
     for i in range(len(resistors)):
-        uresistors[j].append(uarray(resistors[i],resistors[i]*0.01))
-        upoti[j].append(uarray(poti[j][i],analogErr(1)))
+        uresistors[j].append(ufloat(resistors[i],resistors[i]*0.01))
+        upoti[j].append(ufloat(poti[j][i],analogErr(1)))
         resWiederstand[j].append(upoti[j][i]/(1000-upoti[j][i])*uresistors[j][i])
-        resI[j].append(Spannung[j]/resWiederstand[j][i])#
+        resI[j].append(Spannung[j]/(resWiederstand[j][i]+uresistors[j][i]))#
         #print(Spannung[j]/resWiederstand[j][i])
-        resP[j].append(resWiederstand[j][i]*resI[j][i]*resI[j][i])
+        resP[j].append(Spannung[j]*resI[j][i])
 
-    print(uarrayToString(resWiederstand[j]))   
-    print(uarrayToString(resI[j]))
-    print(uarrayToString(resP[j]))
+print(constructdata(resWiederstand))   
+print(constructdata(resI))
+print(constructdata(resP))
 
 X_START =0
 Y_START =12 
