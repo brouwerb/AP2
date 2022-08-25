@@ -204,7 +204,7 @@ def printtableaslatex(data, name, header):
 
 def savetableastxt(data, name, file, header):
     with open(file+".txt", "w") as f:
-        f.write("\\begin{table}[h]\n")
+        f.write("\\begin{table}[H]\n")
         f.write("\\centering\n")
         f.write("\\begin{tabular}{c" + "|c"*(len(data[0])-1) + "}\n")
         

@@ -31,18 +31,21 @@ savetableastxt(constructdata(data7), "Wiederstand Poti in \\si{\\ohm}", "./BRU/w
 print("Aufgabe 8________________________________________________")
 resistors =getAxisFromCell("B19","A24","./BRU/Mappe1.xls","wheaton")
 poti = getAxisFromCell("C19","C24","./BRU/Mappe1.xls","wheaton")
+names = getAxisFromCell("A19","A24","./BRU/Mappe1.xls","wheaton")
 print(resistors,poti)
 uresistors = []
 upoti = []
 result = []
+data8 = []
 for i in range(len(resistors)):
     uresistors.append(uarray(resistors[i],resistors[i]*0.01))
     upoti.append(uarray(poti[i],analogErr(1)))
     result.append(upoti[i]/(1000-upoti[i])*uresistors[i])
+    data8.append([names[i],round_err(float(nominal_values(upoti[i])), float(std_devs(upoti[i]))),round_err(float(nominal_values(result[i])), float(std_devs(result[i])))])
 
-print(uarrayToString(result))   
-
-#Aufgabe 9  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
+printtableaslatex(data8, "Wiederstand Spule in $\\si{\\ohm}$ und Vergleichswiderstand $10,00(10) \\si{\\ohm}$", ["Name", "Potieinstellung", "errechneter Widerstand"]) 
+savetableastxt(data8, "Wiederstand Spule in \\si{\\ohm} und Vergleichswiderstand 10,00(10) \\si{\\ohm}", "./BRU/wiespu", ["Name", "Potieinstellung", "errechneter Widerstand"])
+#Aufgabe 9  # Ungenauhigkeit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 9________________________________________________")
 resistors =getAxisFromCell("A28","A32","./BRU/Mappe1.xls","wheaton")
 poti = getAxisFromCell("B28","B32","./BRU/Mappe1.xls","wheaton")
@@ -53,16 +56,17 @@ resWiederstand = []
 resI = []
 resP = []
 Spannung = uarray(1,1*0.005+0.008)    
+data9 = []
 for i in range(len(resistors)):
     uresistors.append(uarray(resistors[i],resistors[i]*0.01))
     upoti.append(uarray(poti[i],analogErr(1)))
     resWiederstand.append(upoti[i]/(1000-upoti[i])*uresistors[i])
     resI.append(Spannung/resWiederstand[i])#
     resP.append(resWiederstand[i]*resI[i]*resI[i])
+    data9.append([uresistors[i],upoti[i],resWiederstand[i],resI[i],resP[i]])
 
-print(uarrayToString(resWiederstand))   
-print(uarrayToString(resI))
-print(uarrayToString(resP))
+#printtableaslatex
+
 
 
 #Aufgabe 10  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?

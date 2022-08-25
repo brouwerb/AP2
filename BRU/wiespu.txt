@@ -1,0 +1,13 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c}
+\textbf{Name} & \textbf{Potieinstellung} & \textbf{errechneter Widerstand} \\ 
+\hline
+Spule 1  & 382.00(21) & 6.181(63)\\ 
+Spule 2 & 555.00(21) & 12.47(13)\\ 
+Spule EM & 35.00(21) & 0.3627(43)\\ 
+Spule AM & 31.00(21) & 0.3199(39)\\ 
+Spule AE & 58.00(21) & 0.6157(66)\\ 
+\end{tabular}
+\caption{Wiederstand Spule in \si{\ohm} und Vergleichswiderstand 10,00(10) \si{\ohm}}
+\end{table}
