@@ -120,14 +120,17 @@ SAVE_AS = ""
 COLOR_STYLE =["blue","red","green"]
 
 numResWiederstand = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resWiederstand]]))
-
 numResI = np.rot90(np.array( [nominal_values(j).tolist() for j in [i for i in resI]]))
+erResWiederstand = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resWiederstand]]))
+erResI = np.rot90(np.array( [std_devs(j).tolist() for j in [i for i in resI]]))
 
 print(numResWiederstand)
 print(numResI)
 fig, ax = plt.subplots()
 ax.grid()
 for i in range(len(numResI)):
+    ax.errorbar(numResI[i],numResWiederstand[i],fmt="none",yerr=erResWiederstand[i],xerr=erResI[i],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8,
+        color=COLOR_STYLE[0],zorder=11)
     ax.scatter(numResI[i],numResWiederstand[i],s=10,linewidths=0.5,edgecolors="black",zorder=10,color = COLOR_STYLE[i])
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 
