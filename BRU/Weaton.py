@@ -7,7 +7,7 @@ from AP import *
 sys.path.pop(0)
 from uncertainties.unumpy  import uarray, nominal_values,std_devs
 from uncertainties import ufloat
-
+import matplotlib.pyplot as plt
 
 # Aufgabe 7  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 7________________________________________________")
@@ -39,7 +39,7 @@ for i in range(len(resistors)):
     upoti.append(uarray(poti[i],analogErr(1)))
     result.append(upoti[i]/(1000-upoti[i])*uresistors[i])
 
-print(uarrrayToString(result))   
+print(uarrayToString(result))   
 
 #Aufgabe 9  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 9________________________________________________")
@@ -59,15 +59,16 @@ for i in range(len(resistors)):
     resI.append(Spannung/resWiederstand[i])#
     resP.append(resWiederstand[i]*resI[i]*resI[i])
 
-print(uarrrayToString(resWiederstand))   
-print(uarrrayToString(resI))
-print(uarrrayToString(resP))
+print(uarrayToString(resWiederstand))   
+print(uarrayToString(resI))
+print(uarrayToString(resP))
 
 
 #Aufgabe 10  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 10_____________________________________________")
  
 Spannung = arrToUnumpy([1,2,3,4,5,6],[1*0.005+0.008,2*0.005+0.08,3*0.005+0.08,4*0.005+0.08,5*0.005+0.08,6*0.005+0.08])
+print(Spannung)
 resistors =getAxisFromCell("A36","A39","./BRU/Mappe1.xls","wheaton")
 poti = []
 for i in range(len(Spannung)):
@@ -84,13 +85,40 @@ for j in range(len(Spannung)):
     resWiederstand.append([])
     resI.append([])
     resP.append([])
+    #print(Spannung[j])
     for i in range(len(resistors)):
         uresistors[j].append(uarray(resistors[i],resistors[i]*0.01))
         upoti[j].append(uarray(poti[j][i],analogErr(1)))
         resWiederstand[j].append(upoti[j][i]/(1000-upoti[j][i])*uresistors[j][i])
         resI[j].append(Spannung[j]/resWiederstand[j][i])#
+        #print(Spannung[j]/resWiederstand[j][i])
         resP[j].append(resWiederstand[j][i]*resI[j][i]*resI[j][i])
 
-    print(uarrrayToString(resWiederstand[j]))   
-    print(resI[0][j])
-    print(uarrrayToString(resP[0][j]))
+    print(uarrayToString(resWiederstand[j]))   
+    print(uarrayToString(resI[j]))
+    print(uarrayToString(resP[j]))
+
+X_START =0
+Y_START =12 
+X_END = 4.2 
+Y_END = 45.5 
+TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
+Y_LABEL = r"Druck $p$ in $MPa$"
+X_LABEL = r"Molares Volumen $V_m$ in $\frac{cm^3}{mol}$"
+X_ERROR = 4
+Y_ERROR = 1
+X_MAJOR_TICK = 250
+Y_MAJOR_TICK = 5 
+X_MINOR_TICK = 50
+Y_MINOR_TICK = 1
+SAVE_AS = ""
+
+numResWiederstand = [nominal_values(j).tolist() for j in np.array(resWiederstand).flatten()]
+numResI = [nominal_values(j).tolist() for j in np.array(resI).flatten()]
+
+fig, ax = plt.subplots()
+ax.grid()
+ax.scatter(numResI,numResWiederstand,s=10,linewidths=0.5,edgecolors="black",zorder=10)
+plt.show()
+#fig.savefig(SAVE_AS)
+
