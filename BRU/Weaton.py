@@ -107,7 +107,7 @@ X_MAJOR_TICK = 250
 Y_MAJOR_TICK = 5 
 X_MINOR_TICK = 50
 Y_MINOR_TICK = 1
-SAVE_AS = "./ZUS/Plots/4Plot_of_Hell.pdf"
+SAVE_AS = ""
 
 numResWiederstand = [nominal_values(j).tolist() for j in np.array(resWiederstand).flatten()]
 numResI = [nominal_values(j).tolist() for j in np.array(resI).flatten()]
