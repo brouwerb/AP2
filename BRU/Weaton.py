@@ -44,7 +44,7 @@ for i in range(len(resistors)):
     data8.append([names[i],round_err(float(nominal_values(upoti[i])), float(std_devs(upoti[i]))),round_err(float(nominal_values(result[i])), float(std_devs(result[i])))])
 
 printtableaslatex(data8, "Wiederstand Spule in $\\si{\\ohm}$ und Vergleichswiderstand $10,00(10) \\si{\\ohm}$", ["Name", "Potieinstellung", "errechneter Widerstand"]) 
-savetableastxt(data8, "Wiederstand Spule in \\si{\\ohm} und Vergleichswiderstand 10,00(10) \\si{\\ohm}", "./BRU/wiespu", ["Name", "Potieinstellung", "errechneter Widerstand"])
+savetableastxt(data8, "Widerstand Spule in \\si{\\ohm} und Vergleichswiderstand 10,00(10) \\si{\\ohm}", "./BRU/wiespu", ["Name", "Potieinstellung", "errechneter Widerstand"])
 #Aufgabe 9  # Ungenauhigkeit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 9________________________________________________")
 resistors =getAxisFromCell("A28","A32","./BRU/Mappe1.xls","wheaton")
@@ -76,7 +76,7 @@ Spannung = arrToUnumpy([1,2,3,4,5,6],[1*0.005+0.008,2*0.005+0.08,3*0.005+0.08,4*
 #print(Spannung)
 resistors =getAxisFromCell("A36","A39","./BRU/Mappe1.xls","wheaton")
 poti = []
-for i in range(len(Spannung)):
+for i in range(1, len(Spannung)+1):
     poti.append(getAxis(35,i,38,"./BRU/Mappe1.xls","wheaton"))
 #print(resistors,poti)
 uresistors = [] 
@@ -97,7 +97,7 @@ for j in range(len(Spannung)):
         resWiederstand[j].append(upoti[j][i]/(1000-upoti[j][i])*uresistors[j][i])
         resI[j].append(Spannung[j]/(resWiederstand[j][i]+uresistors[j][i]))#
         #print(Spannung[j]/resWiederstand[j][i])
-        resP[j].append(Spannung[j]*resI[j][i])
+        resP[j].append(resWiederstand[j][i]*np.square(resI[j][i]))
         data9.append([Spannung[j], uresistors[j][i],upoti[j][i],resWiederstand[j][i],resI[j][i],resP[j][i]])
 
 print(constructdata(resWiederstand))   
@@ -144,6 +144,8 @@ ax.legend([r"R = 10$\Omega$",r"R = 30$\Omega$",r"R = 200$\Omega$"])
 ax.set_xlim(X_START,X_END)
 ax.set_ylim(Y_START,Y_END)
 
+fig.savefig("./BRU/amp.pdf")
+
 # ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 # ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 # ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
@@ -164,4 +166,4 @@ plt.yscale("log")
 plt.xscale("log")
 ax2.legend([r"R = 10$\Omega$",r"R = 30$\Omega$",r"R = 200$\Omega$"])
 plt.show()
-#fig.savefig(SAVE_AS)
+fig.savefig("./BRU/pow.pdf")

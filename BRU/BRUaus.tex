@@ -55,7 +55,7 @@
      \end{circuitikz}
     \section{Theorie}
     In diesem Versuch werden mithilfe der in \ref{circuit} gezeigten Brückenschaltung verschiedene Widerstände, Spulen und Kondensatoren untersucht.
-    Wenn kein Strom durch das Ampèremeter fließt, bzw der Graph auf dem Oszilloskop horizontal ist, gilt die Schaltung als abgeglichen und es gilt das Verhähltnis
+    Wenn kein Strom durch das Ampèremeter fließt, bzw der Graph auf dem Oszilloskop horizontal ist, gilt die Schaltung als abgeglichen und es gilt das Verhältnis
     \begin{align}
         \frac{Z_1}{Z_2} = \frac{R_3}{R_4} = \frac{R_p}{1\si{\kilo\ohm} - R_p} \\
         \Rightarrow Z_1 = \frac{R_p}{1\si{\kilo\ohm} - R_p} \cdot Z_2 \,,
@@ -66,19 +66,36 @@
     \begin{align}
         R_1 &= \frac{A}{1\si{\kilo\ohm} - A} \cdot \left(R_S + R_V\right) \\
         L_1 &= \frac{A}{1\si{\kilo\ohm} - A} \cdot \left(L_S\right) \\
-        \text{mit} \ \ Z_2 &= R_2 + j\omega L_2 = R_V + R_S + j\omega L_S
+        \text{mit} \ \ Z_2 &= R_2 + j\omega L_2 = R_V + R_S + j\omega L_S \,,
     \end{align}
+    wobei $R_S$ der bekannte Widerstand und $L_S$ die bekannte Induktivität der Spule sind und $R_V$ der Wert der zweiten (kleinen) Potentiometer ist, welcher in Reihe mit der bekannten Spule geschaltet wurde.
+
+    Wenn ein Kondensator gemessen wird, gilt analog
+    \begin{align}
+        C_1 = \frac{1 \si{\kilo\ohm} - A}{A} \cdot C_2 \,,
+    \end{align}
+    wobei $C_2$ die Kapazität des bekannten Kondensator ist.
     
-    \section{Ergebnisse}
+    \section{Ergebnisse und Diskussion}
     \paragraph{Aufgabe 7}
-    Durch das Potentiometer kann für jeden Widerstand 
+    Durch das Potentiometer kann für jeden der 3 Vorwiderstände der Widerstand des maximal eingestellten Potentiometer bestimmt werden. Die Ergebnisse sind in Tabelle \ref{tab:./BRU/wiepo} aufgeführt. Zu erkennen ist, dass der bei $10 \si{\ohm}$ errechnete Widerstand sehr start abweicht, während bei $30 \si{\ohm}$ und $100 \si{\ohm}$ sehr genau zum angegebenen Wert von $100 \si{\ohm}$ passen Dies könnte daran liegen, dass die Brückenschaltung bei sehr verschiedenen $R_1$ und $R_2$ nicht sehr genau ist.
     \input{wiepo.txt}
 
     \paragraph{Aufgabe 8}
+    Hier wurden die reellen Widerstände der verschiedenen Spulen gemessen. Die Ergebnisse sind in Tabelle \ref{tab:./BRU/wieps} aufgeführt. Auf den Spulen waren leider keine Werte angegeben. Die Werte der großen Spule sind aber in sich relativ konsistent, da die zwei Messungen mit dem Mittelabgriff M ungefähr halb so groß wie der Widerstand der gesamten Spule sind.
 
     \input{wiespu.txt}
 
-    \section{Diskussion}
+    \paragraph{Aufgabe 9 und 10}
+    Die Messwerte dieser Aufgaben können im Anhang \ref{tab:./BRU/eigglueh} gefunden werden. In Graph \ref{amp} wurde die Beziehung zwischen Stromstärke und Widerstand aufgetragen. In Graph \ref{pow} jene zwischen Leistung ung Widerstand. Wie zu erwarten, ist der Widerstand nichtohmsch, sondern steigt bei größerer Stromstärke / Leistung an. Der Widerstand steigt, da die Glühlampe zu leuchten beginnt und Energie durch Licht abgibt.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{}
+        \caption{Beziehung zwischen Stromstärke und Widerstand}
+        \label{amp}
+    \end{figure}
+
 
     \section{Anhang}
     \subsection{Messwerte Aufgabe 9 und 10}
