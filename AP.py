@@ -3,6 +3,7 @@ import xlrd
 import numpy as np
 import string
 from uncertainties import unumpy
+from uncertainties import ufloat
 
 def getData(path):
     content=""
@@ -53,12 +54,22 @@ def getAxisFromCell(Cell1,Cell2,path,sheet,plusCol=0):
 
 def arrToUnumpy(arr,uncertantie):
     narr = []
-    if isinstance(uncertantie,int):
+    if isinstance(uncertantie,int) or isinstance(uncertantie,float) :
         for i in arr:
             narr.append(unumpy.uarray(i,uncertantie))
     else:
         for i in range(len(arr)):
             narr.append(unumpy.uarray(arr[i],uncertantie[i]))
+    return narr
+
+def arrToUnumpyf(arr,uncertantie):
+    narr = []
+    if isinstance(uncertantie,int) or isinstance(uncertantie,float) :
+        for i in arr:
+            narr.append(ufloat(i,uncertantie))
+    else:
+        for i in range(len(arr)):
+            narr.append(ufloat(arr[i],uncertantie[i]))
     return narr
 
 

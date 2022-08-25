@@ -22,6 +22,6 @@
 6.00(11) & 30.00(30) & 256.00(21) & 10.32(11) & 0.1488(32) & 0.2286(87)\\ 
 6.00(11) & 200.0(20) & 10.00(21) & 2.020(47) & 0.02970(63) & 0.001782(77)\\ 
 \end{tabular}
-\caption{Eigenschaften GlÃ¼hlampe}
+\caption{Eigenschaften Glühlampe}
 \label{tab:./BRU/eigglueh}
 \end{table}
