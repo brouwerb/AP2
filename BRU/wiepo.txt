@@ -1,4 +1,4 @@
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \begin{tabular}{c|c|c}
 \textbf{Vergleichswiderstand} & \textbf{Potieinstellung} & \textbf{errechneter Widerstand} \\ 
