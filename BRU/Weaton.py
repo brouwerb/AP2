@@ -6,7 +6,7 @@ sys.path.insert(0, current_dir[:current_dir.rfind(path.sep)])
 from AP import *
 sys.path.pop(0)
 from uncertainties.unumpy  import uarray, nominal_values,std_devs
-
+import matplotlib.pyplot as plt
 
 # Aufgabe 7  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 7________________________________________________")
@@ -93,3 +93,28 @@ for j in range(len(Spannung)):
     print(uarrayToString(resWiederstand[j]))   
     print(uarrayToString(resI[j]))
     print(uarrayToString(resP[j]))
+
+X_START =0
+Y_START =12 
+X_END = 4.2 
+Y_END = 45.5 
+TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
+Y_LABEL = r"Druck $p$ in $MPa$"
+X_LABEL = r"Molares Volumen $V_m$ in $\frac{cm^3}{mol}$"
+X_ERROR = 4
+Y_ERROR = 1
+X_MAJOR_TICK = 250
+Y_MAJOR_TICK = 5 
+X_MINOR_TICK = 50
+Y_MINOR_TICK = 1
+SAVE_AS = "./ZUS/Plots/4Plot_of_Hell.pdf"
+
+numResWiederstand = [nominal_values(j).tolist() for j in np.array(resWiederstand).flatten()]
+numResI = [nominal_values(j).tolist() for j in np.array(resI).flatten()]
+
+fig, ax = plt.subplots()
+ax.grid()
+ax.scatter(numResI,numResWiederstand,s=10,linewidths=0.5,edgecolors="black",zorder=10)
+plt.show()
+#fig.savefig(SAVE_AS)
+
