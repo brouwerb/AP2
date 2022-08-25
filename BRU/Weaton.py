@@ -47,7 +47,7 @@ upoti = []
 resWiederstand = []
 resI = []
 resP = []
-Spannung = uarray(1,0.01)        # noch unsicherheit falsch hatte kein internet
+Spannung = uarray(1,1*0.005+0.008)    
 for i in range(len(resistors)):
     uresistors.append(uarray(resistors[i],resistors[i]*0.01))
     upoti.append(uarray(poti[i],analogErr(1)))
@@ -63,7 +63,7 @@ print(uarrrayToString(resP))
 #Aufgabe 10  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 10_____________________________________________")
  
-Spannung = arrToUnumpy([1,2,3,4,5,6],[0.01,0.1,0.1,0.1,0.1,0.1]) # noch falsch
+Spannung = arrToUnumpy([1,2,3,4,5,6],[1*0.005+0.008,2*0.005+0.08,3*0.005+0.08,4*0.005+0.08,5*0.005+0.08,6*0.005+0.08])
 resistors =getAxisFromCell("A36","A39","./BRU/Mappe1.xls","wheaton")
 poti = []
 for i in range(len(Spannung)):
@@ -85,8 +85,8 @@ for j in range(len(Spannung)):
         upoti[j].append(uarray(poti[j][i],analogErr(1)))
         resWiederstand[j].append(upoti[j][i]/(1000-upoti[j][i])*uresistors[j][i])
         resI[j].append(Spannung[j]/resWiederstand[j][i])#
-        resP[j].append(resWiederstand[i]*resI[i]*resI[i])
+        resP[j].append(resWiederstand[j][i]*resI[j][i]*resI[j][i])
 
-print(uarrrayToString(resWiederstand))   
-print(uarrrayToString(resI))
-print(uarrrayToString(resP))
+    print(uarrrayToString(resWiederstand[j]))   
+    print(resI[0][j])
+    print(uarrrayToString(resP[0][j]))
