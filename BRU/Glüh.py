@@ -32,19 +32,28 @@ aufu1 = []
 for i in auf1:
     aufu1.append(unumpy.uarray(i, [i[0]*0.01, sqrt(1/(2*sqrt(3))**2 + (i[1]*0.01)**2)]))
 
-def printtableaslatex(data, name, header, type):
+def constructdata(udata):
+    data = []
+    for i, I in enumerate(udata):
+        data.append([])
+        for j in I:
+            data[i].append(round_err(float(unumpy.nominal_values(j)), float(unumpy.std_devs(j))))
+    return data
+
+
+def printtableaslatex(data, name, header):
     print("\\begin{table}[h]")
     print("\\centering")
-    print("\\begin{tabular}{|l|l|l|l|l|l|l|l|}")
-    print("\\hline")
+    print("\\begin{tabular}{c" + "|c"*(len(data[0])-1) + "}")
+    #print("\\hline")
     print("\\textbf{"+header[0]+"} & \\textbf{"+header[1]+"} & \\textbf{"+header[2]+"} & \\textbf{"+header[3]+"} & \\textbf{"+header[4]+"} & \\textbf{"+header[5]+"} & \\textbf{"+header[6]+"} \\\\")
     print("\\hline")
     for i in range(len(data)):
-        print(type[i], *data[i], sep=" & ", end="\\\\ \n")
-    print("\\hline")
+        print(*data[i], sep=" & ", end="\\\\ \n")
+    # print("\\hline")
     print("\\end{tabular}")
     print("\\caption{"+name+"}")
     print("\\end{table}")
 
-printtableaslatex(aufu2, "Ausgleichsgerade für den Bruch von $U_2$", ["$U_2$", "$R_2$", "$R_3$", "$R_4$", "$R_5$", "$R_6$", "$R_7$"], ["$U_2$", "$R_2$", "$R_3$", "$R_4$", "$R_5$", "$R_6$", "$R_7$"])
+printtableaslatex(constructdata(aufu2), "Ausgleichsgerade für den Bruch von $U_2$", ["$U_2$", "$R_2$", "$R_3$", "$R_4$", "$R_5$", "$R_6$", "$R_7$"])
 print(aufu1)
