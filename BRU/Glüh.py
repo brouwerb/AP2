@@ -46,14 +46,15 @@ def printtableaslatex(data, name, header):
     print("\\centering")
     print("\\begin{tabular}{c" + "|c"*(len(data[0])-1) + "}")
     #print("\\hline")
-    print("\\textbf{"+header[0]+"} & \\textbf{"+header[1]+"} & \\textbf{"+header[2]+"} & \\textbf{"+header[3]+"} & \\textbf{"+header[4]+"} & \\textbf{"+header[5]+"} & \\textbf{"+header[6]+"} \\\\")
+    print("\\textbf{", end="")
+    print( *header, sep ="} & \\textbf{", end="} \\\\ \n")
     print("\\hline")
     for i in range(len(data)):
-        print(*data[i], sep=" & ", end="\\\\ \n")
+        print(*data[i], sep=" & ", end="\\\\ \n",)
     # print("\\hline")
     print("\\end{tabular}")
     print("\\caption{"+name+"}")
     print("\\end{table}")
 
-printtableaslatex(constructdata(aufu2), "Ausgleichsgerade für den Bruch von $U_2$", ["$U_2$", "$R_2$", "$R_3$", "$R_4$", "$R_5$", "$R_6$", "$R_7$"])
+savetableastxt(constructdata(aufu2), "Ausgleichsgerade für den Bruch von $U_2$", ["$U_2$", "$R_2$", "$R_3$", "$R_4$", "$R_5$", "$R_6$", "$R_7$"])
 print(aufu1)
