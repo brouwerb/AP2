@@ -50,9 +50,24 @@
         to[pR=$1k\si{\ohm}$] (6,4)
         to[short] (2,4);
         \draw (2,2)
-        to[voltmeter] (5.5,2);
+        to[ammeter] (5.5,2);
+        \label{circuit}
      \end{circuitikz}
     \section{Theorie}
+    In diesem Versuch werden mithilfe der in \ref{circuit} gezeigten Brückenschaltung verschiedene Widerstände, Spulen und Kondensatoren untersucht.
+    Wenn kein Strom durch das Ampèremeter fließt, bzw der Graph auf dem Oszilloskop horizontal ist, gilt die Schaltung als abgeglichen und es gilt das Verhähltnis
+    \begin{align}
+        \frac{Z_1}{Z_2} = \frac{R_3}{R_4} = \frac{R_p}{1\si{\kilo\ohm} - R_p} \\
+        \Rightarrow Z_1 = \frac{R_p}{1\si{\kilo\ohm} - R_p} \cdot Z_2 \,,
+    \end{align}
+    wobei $R_p$ der Ablesewert des Potentiometers ist, und $Z_2$ der bekannte (komplexe) Vergleichwiderstand.
+
+    Wenn eine Spule gemessen wird, gilt speziell
+    \begin{align}
+        R_1 &= \frac{A}{1\si{\kilo\ohm} - A} \cdot \left(R_S + R_V\right) \\
+        L_1 &= \frac{A}{1\si{\kilo\ohm} - A} \cdot \left(L_S\right) \\
+        \text{mit} \ \ Z_2 &= R_2 + j\omega L_2 = R_V + R_S + j\omega L_S
+    \end{align}
     
     \section{Ergebnisse}
     \paragraph{Aufgabe 7}
