@@ -215,4 +215,5 @@ def savetableastxt(data, name, file, header):
         # f.write("\\hline\n")
         f.write("\\end{tabular}\n")
         f.write("\\caption{"+name+"}\n")
+        f.write("\\label{tab:"+file+"}\n")
         f.write("\\end{table}\n")

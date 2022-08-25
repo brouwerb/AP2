@@ -8,4 +8,5 @@
 100.0(10) & 506.00(21) & 102.4(11)\\ 
 \end{tabular}
 \caption{Wiederstand Poti in \si{\ohm}}
+\label{tab:./BRU/wiepo}
 \end{table}

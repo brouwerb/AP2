@@ -63,9 +63,9 @@ for i in range(len(resistors)):
     resWiederstand.append(upoti[i]/(1000-upoti[i])*uresistors[i])
     resI.append(Spannung/resWiederstand[i])#
     resP.append(resWiederstand[i]*resI[i]*resI[i])
-    data9.append([uresistors[i],upoti[i],resWiederstand[i],resI[i],resP[i]])
+    
 
-#printtableaslatex
+
 
 
 
@@ -98,10 +98,14 @@ for j in range(len(Spannung)):
         resI[j].append(Spannung[j]/(resWiederstand[j][i]+uresistors[j][i]))#
         #print(Spannung[j]/resWiederstand[j][i])
         resP[j].append(Spannung[j]*resI[j][i])
+        data9.append([Spannung[j], uresistors[j][i],upoti[j][i],resWiederstand[j][i],resI[j][i],resP[j][i]])
 
 print(constructdata(resWiederstand))   
 print(constructdata(resI))
 print(constructdata(resP))
+
+printtableaslatex(constructdata(data9), "Eigenschaften Glühlampe", ["Spannung in \\si{\\volt}", "Vergleichswiderstand in \\si{\\ohm}", "Potieinstellung in \\si{\\ohm}", "Widerstand Glühlampe in \\si{\\ohm}", "Strom in \\si{\\ampere}", "Leistung in \\si{\\watt}"])
+savetableastxt(constructdata(data9), "Eigenschaften Glühlampe", "./BRU/eigglueh", ["$U$ in $\\si{\\volt}$", "$R_2$ in $\\si{\\ohm}$", "$Poti$ in $\\si{\\ohm}$", "$R_G$ in $\\si{\\ohm}$", "$I$ in $\\si{\\ampere}$", "$P$ in $\\si{\\watt}$"])
 
 X_START =0
 Y_START =12 
