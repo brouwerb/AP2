@@ -21,7 +21,7 @@ for i in range(len(resistors)):
     upoti.append(uarray(poti[i],analogErr(1)))
     result.append(upoti[i]/(1000-upoti[i])*uresistors[i])
 
-print(uarrrayToString(result))    
+print(uarrayToString(result))    
 # Aufgabe 8   # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 8________________________________________________")
 resistors =getAxisFromCell("B19","A24","./BRU/Mappe1.xls","wheaton")
@@ -35,7 +35,7 @@ for i in range(len(resistors)):
     upoti.append(uarray(poti[i],analogErr(1)))
     result.append(upoti[i]/(1000-upoti[i])*uresistors[i])
 
-print(uarrrayToString(result))   
+print(uarrayToString(result))   
 
 #Aufgabe 9  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 9________________________________________________")
@@ -55,15 +55,16 @@ for i in range(len(resistors)):
     resI.append(Spannung/resWiederstand[i])#
     resP.append(resWiederstand[i]*resI[i]*resI[i])
 
-print(uarrrayToString(resWiederstand))   
-print(uarrrayToString(resI))
-print(uarrrayToString(resP))
+print(uarrayToString(resWiederstand))   
+print(uarrayToString(resI))
+print(uarrayToString(resP))
 
 
 #Aufgabe 10  # Ungenauhig keit der Stommessung fehlt wie bringe ich die rein?
 print("Aufgabe 10_____________________________________________")
  
 Spannung = arrToUnumpy([1,2,3,4,5,6],[1*0.005+0.008,2*0.005+0.08,3*0.005+0.08,4*0.005+0.08,5*0.005+0.08,6*0.005+0.08])
+print(Spannung)
 resistors =getAxisFromCell("A36","A39","./BRU/Mappe1.xls","wheaton")
 poti = []
 for i in range(len(Spannung)):
@@ -80,13 +81,15 @@ for j in range(len(Spannung)):
     resWiederstand.append([])
     resI.append([])
     resP.append([])
+    #print(Spannung[j])
     for i in range(len(resistors)):
         uresistors[j].append(uarray(resistors[i],resistors[i]*0.01))
         upoti[j].append(uarray(poti[j][i],analogErr(1)))
         resWiederstand[j].append(upoti[j][i]/(1000-upoti[j][i])*uresistors[j][i])
         resI[j].append(Spannung[j]/resWiederstand[j][i])#
+        #print(Spannung[j]/resWiederstand[j][i])
         resP[j].append(resWiederstand[j][i]*resI[j][i]*resI[j][i])
 
-    print(uarrrayToString(resWiederstand[j]))   
-    print(resI[0][j])
-    print(uarrrayToString(resP[0][j]))
+    print(uarrayToString(resWiederstand[j]))   
+    print(uarrayToString(resI[j]))
+    print(uarrayToString(resP[j]))

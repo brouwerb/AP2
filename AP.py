@@ -58,7 +58,7 @@ def arrToUnumpy(arr,uncertantie):
             narr.append(unumpy.uarray(i,uncertantie))
     else:
         for i in range(len(arr)):
-            narr.append(unumpy.uarray(arr[i],uncertantie))
+            narr.append(unumpy.uarray(arr[i],uncertantie[i]))
     return narr
 
 
@@ -81,7 +81,7 @@ def getRow(collumn1,row1,collumn2,path,sheet):
 def analogErr(a):
     return a/(2*np.sqrt(6))
 
-def uarrrayToString(arr):
+def uarrayToString(arr):
     buf = [] 
     for i in range(len(arr)):
         
