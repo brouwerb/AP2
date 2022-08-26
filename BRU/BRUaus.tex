@@ -111,6 +111,12 @@
     \end{align}
 
     \section{Anhang}
+    \subsection{Gaußsche Fehlerfortpflanzung}
+    Die Fehlerfortpflanzung wurde mithilfe der Formel
+    \begin{align}
+        u\left(g \left(x_1, ..., x_n\right)\right) = \sqrt{\sum_{i=1}^n \left( \frac{\partial g }{\partial x_i} \cdot u\left(x_i\right) \right)^2} \label{gauss}
+    \end{align}
+    berechnet.
     \subsection{Messwerte Aufgabe 9 und 10}
     \input{eigglueh.txt}
 
