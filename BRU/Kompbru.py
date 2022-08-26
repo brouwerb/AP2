@@ -1,4 +1,5 @@
 from inspect import getsourcefile
+from opcode import hasjabs
 import os.path as path, sys
 current_dir = path.dirname(path.abspath(getsourcefile(lambda:0)))
 sys.path.insert(0, current_dir[:current_dir.rfind(path.sep)])
@@ -28,6 +29,10 @@ print(nebenPoti)
 for i in range(len(hauptPoti)):   
     resR[i].append(hauptPoti[i][0]/(1000-hauptPoti[i][0])*(spuleRes[0]+nebenPoti[i][0])) 
     resL[i].append(hauptPoti[i][0]/(1000-hauptPoti[i][0])*verglInduktivi)
+    # resR[i].append(1/hauptPoti[i][1]*(1000-hauptPoti[i][1])*(resR[i][0]-nebenPoti[i][1])) 
+    # resL[i].append(1/hauptPoti[i][1]*(1000-hauptPoti[i][1])*resL[i][0])
+    # resR[i].append(1/hauptPoti[i][2]*(1000-hauptPoti[i][2])*(resR[i][0]-nebenPoti[i][2])) 
+    # resL[i].append(1/hauptPoti[i][2]*(1000-hauptPoti[i][2])*resL[i][0])
     resR[i].append(hauptPoti[i][1]/(1000-hauptPoti[i][1])*(resR[i][0]+nebenPoti[i][1])) 
     resL[i].append(hauptPoti[i][1]/(1000-hauptPoti[i][1])*resL[i][0])
     resR[i].append(hauptPoti[i][2]/(1000-hauptPoti[i][2])*(resR[i][0]+nebenPoti[i][2])) 
@@ -48,6 +53,9 @@ testKond  = ufloat(1e-3,1e-3*0.05)
 print("Aufgabe 13________________________________________________")
 hauptPoti= arrToUnumpyf(getAxisFromCell("B20","B22","./BRU/Mappe1.xls","kompwe") ,analogErr(1))  
 nebenPoti= arrToUnumpyf(getAxisFromCell("C20","C22","./BRU/Mappe1.xls","kompwe")   ,analogErr(0.2))
-
-
+resC =[]
+for i in range(len(hauptPoti)):
+    resC.append((1000-hauptPoti[i])/hauptPoti[i]*testKond)
+print(hauptPoti,nebenPoti)
+print(uarrayToString(resC))
 
