@@ -1,0 +1,11 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c}
+\textbf{Kondensator} & \textbf{Wert Poti in \si{\ohm}} & \textbf{Kapazität C in \si{\farad}} \\ 
+\hline
+Kondensator 1 & 677.00(21) & 0.000477(24)\\ 
+Kondensator 2 & 807.00(21) & 0.000239(12)\\ 
+\end{tabular}
+\caption{Kapazität Kondensator}
+\label{tab:./BRU/kond}
+\end{table}
