@@ -12,7 +12,7 @@ from matplotlib.ticker import MultipleLocator
 
 # Aufgabe 11
 verglInduktivi = ufloat(2.7e-3,0.1e-3)
-spuleRes = [ufloat(0.6157,66),ufloat(0.3627,43),ufloat(0.3199,39)]
+spuleRes = [ufloat(0.6157,0.0066),ufloat(0.3627,0.0043),ufloat(0.3199,0.0039)]
 hauptPoti=[[],[]]
 nebenPoti = [[],[]]
 resR = [[],[]]
