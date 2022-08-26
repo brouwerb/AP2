@@ -38,8 +38,14 @@ for i in range(len(hauptPoti)):
     resR[i].append(hauptPoti[i][2]/(1000-hauptPoti[i][2])*(resR[i][0]+nebenPoti[i][2])) 
     resL[i].append(hauptPoti[i][2]/(1000-hauptPoti[i][2])*resL[i][0])
 
+data= []
+data.append(["Spule 1 R in \\si{\\ohm}"] +  uarrayToString(resR[0]))
+data.append(["Spule 1 L in \\si{\\henry}"] +  uarrayToString(resL[0]))
+data.append(["Spule 2 R in \\si{\\ohm}"] +  uarrayToString(resR[1]))
+data.append(["Spule 2 L in \\si{\\henry}"] +  uarrayToString(resL[1]))
+print (data)
 
-
+savetableastxt(data,"Kompexe Widerstände der Spule", "./BRU/komp" , ["Messwert", "Vergleichsspule", "Spule EM", "Spule AM"])
 
 print("Wert d.Spule , Spule ME , Spule AM")
 print("spule 1")
@@ -54,8 +60,13 @@ print("Aufgabe 13________________________________________________")
 hauptPoti= arrToUnumpyf(getAxisFromCell("B20","B22","./BRU/Mappe1.xls","kompwe") ,analogErr(1))  
 nebenPoti= arrToUnumpyf(getAxisFromCell("C20","C22","./BRU/Mappe1.xls","kompwe")   ,analogErr(0.2))
 resC =[]
+print(hauptPoti,nebenPoti)
+data = []
 for i in range(len(hauptPoti)):
     resC.append((1000-hauptPoti[i])/hauptPoti[i]*testKond)
-print(hauptPoti,nebenPoti)
+    data.append(["Kondensator " + str(i+1)] + uarrayToString([hauptPoti[i], resC[i]]))
+
+savetableastxt(data,"Kapazität Kondensator", "./BRU/kond" , ["Kondensator", "Wert Poti in \\si{\\ohm}", "Kapazität C in \\si{\\farad}"])
+
 print(uarrayToString(resC))
 
