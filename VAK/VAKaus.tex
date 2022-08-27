@@ -22,10 +22,10 @@
 \addto\captionsngerman{%
  \renewcommand{\abstractname}{Einleitung}}
 
-\title{Versuch X: }
+\title{Versuch 3: Vakuum}
 \author{Team 2-13: Jascha Fricker, Benedict Brouwer}
 
-begin{document}
+\begin{document}
     \maketitle
 
     \tableofcontents
@@ -38,10 +38,23 @@ begin{document}
     \section{Theorie}
 
     \paragraph{Piranimeter}
-    Da die Wärmeleitung eines Gases abhängig vom Druck dessen ist, und der Strom durch den Wolframdraht abhängig ist von der benötigten Leisung um diesen auf Temperatur zu halten, kann durch die Messung des Stroms für einen konstanten Widerstand Rückschlüsse auf den Druck gemacht werden.
+    Da die Wärmeleitung eines Gases bei kleinen Drücken abhängig vom Druck des Gases ist und der Strom durch den Wolframdraht abhängig ist von der benötigten Leisung um diesen auf Temperatur zu halten, können durch die Messung des Stroms für einen konstanten Widerstand Rückschlüsse auf den Druck gezogen werden.
+
+    \paragraph{Saugvermögen} Bei konstantem Druck kann das Saugvermögen $S$ durch die (negtive) Volumenänderung $\Delta V_L$
+    \begin{align}
+        \underbrace{\frac{d(p_L V_L)}{dt}}_{konst} &= Q_S = Q_V = p_V \cdot S \\
+        \Rightarrow S &= \left\lvert\frac{p_L \cdot \Delta V}{p_V \cdot \Delta t}\right\rvert
+    \end{align}
+    bestimmt werden. Dabei ist $Q_s$ die Saugleisung bei Luftdruck $p_L$ und $Q_V$ die Saugleisung an der Vakuumpumpe mit Druck $p_V$.
+
+    \paragraph{effektives Saugvermögen}
     
 
-    \secton{Ergebnisse}
+
+
+
+
+    \section{Ergebnisse}
 
     \section{Diskussion}
 
