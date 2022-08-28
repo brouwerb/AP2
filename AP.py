@@ -92,6 +92,8 @@ def getRow(collumn1,row1,collumn2,path,sheet):
 def analogErr(a):
     return a/(2*np.sqrt(6))
 
+def digitalErr(a):
+    return a/(2*np.sqrt(3))
 def uarrayToString(arr):
     buf = [] 
     for i in range(len(arr)):
@@ -115,13 +117,17 @@ def arrToString(arr):
             string+=str(I) +"]"
     return string
 
+
 def genDataFromFunktion(amount,von,bis,params,func):
     x=[]
     y=[]
     for i in range(amount+1):
         x.append(von+i*(bis-von)/amount)
     for i in range(amount+1):
-        y.append(func(x[i],params))
+        if params != []:
+            y.append(func(x[i],params))
+        else:
+            y.append(func(x[i]))
 
     return x,y
 
