@@ -51,6 +51,18 @@ def getAxisFromCell(Cell1,Cell2,path,sheet,plusCol=0):
     for i in range(row1,row2):
         data.append(worksheet.cell(i, collumn1).value)    
     return data
+def getAxisEasy(startRow,Collumn,path,sheet,plusCol=0):
+
+    data = []
+    workbook = xlrd.open_workbook(path)
+    worksheet = workbook.sheet_by_name(sheet)
+    i = startRow
+    
+    while worksheet.cell(i, Collumn).value != "":
+        data.append(worksheet.cell(i, Collumn).value)  
+        i+=1  
+    return data
+
 
 def arrToUnumpy(arr,uncertantie):
     narr = []
