@@ -96,7 +96,7 @@ def uarrayToString(arr):
     buf = [] 
     for i in range(len(arr)):
         
-        buf.append(round_err(float('{:f}'.format(unumpy.nominal_values(arr[i]))),float('{:f}'.format(unumpy.std_devs(arr[i])))))
+        buf.append(round_errtex(float('{:f}'.format(unumpy.nominal_values(arr[i]))),float('{:f}'.format(unumpy.std_devs(arr[i])))))
         
         #buf.append("scheiß Zehnerpotenzen")
 
@@ -228,3 +228,28 @@ def savetableastxt(data, name, file, header):
         f.write("\\caption{"+name+"}\n")
         f.write("\\label{tab:"+file+"}\n")
         f.write("\\end{table}\n")
+
+def round_errtex(num, err,  sig=2):
+    posof1digit = floor(log10(abs(err)))
+    magnum = floor(log10(abs(num)))
+    rnum = round(num, sig-int(floor(log10(abs(err))))-1)
+    srnum = str(rnum)
+    if posof1digit < -3:
+        abrerr = err*10**(sig-int(floor(log10(abs(err))))-1)
+        tnum = rnum*10**-magnum
+        return("$" + str(tnum) + '(' + str(ceil(abrerr)) + ')' + " \\cdot 10^{" + str(magnum) + "}" + "$")
+
+        
+    elif posof1digit <= 0:
+        abrerr = err*10**(sig-int(floor(log10(abs(err))))-1)
+        while len(srnum.split('.')[1]) <= -posof1digit:
+            srnum += '0'
+        return(srnum + '(' + str(int(ceil(abrerr))) + ')')
+    
+    else:
+        abrerr = round(err, sig-int(floor(log10(abs(err))))-1)
+        srnum = str(int(rnum))
+    
+
+        return(srnum + '(' + str(ceil(abrerr)) + ')')
+
