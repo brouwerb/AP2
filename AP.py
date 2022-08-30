@@ -111,7 +111,7 @@ def uarrayToString(arr):
     buf = [] 
     for i in range(len(arr)):
         
-        buf.append(round_errtex(float('{:f}'.format(unumpy.nominal_values(arr[i]))),float('{:f}'.format(unumpy.std_devs(arr[i])))))
+        buf.append(round_errtex(float(unumpy.nominal_values(arr[i])),float(unumpy.std_devs(arr[i]))))
         
         #buf.append("scheiß Zehnerpotenzen")
 

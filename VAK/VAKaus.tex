@@ -114,14 +114,26 @@
         \label{fig:effSaug}
     \end{figure}
 
+    \input{seff.txt}
+
     
 
     \subsubsection{Theoretische Leitwerte}
     In der Tabelle \ref{tab:./VAK/tabelle} werden die theoretisch berechneten Leitwerte und effektive Saugleistungen der verschiedenen Konstellationen aus Schlauch und Kapillare dargestellt. Dabei wurde eine nominale Saugleistung von $S = 3,7 \si{\meter\per\hour}$ angenommen.
     \input{tabelle.txt}
+    Die ermessenen Werte ähneln den theoretischen berechneten Leitwerten. Da aber die Messmethode sehr ungenau ist und die Berechnung durch den fit viel Ungenauigkeiten enthält, waren die relativ großen Abweichungen zu erwarten.
 
+    \subsection{Fragen}
+    Bei viskoser Strömung ist die mittlere freie Weglänge viel kürzer ist als der Durchmesser des Rohr. D.h. der Effekt einer Kollision mit der Gefäßwand ist unwesentlich. Bei molekularer Strömunghingegen ist die mittlere freie Weglänge viel größer als der Durchmesser, also sind Kollisionen mit der Wand wichtig, aber jene zwischen den Molekülen unwesentlich.
 
-    \section{Diskussion}
+    Wenn wir die Formel
+    \begin{align}
+        p \cdot V = N \cdot k_b \cdot T
+    \end{align}
+    annehmen und mit $T = 273,15K$ einsetzen, ergibt sich ein Druck von
+    \begin{align}
+        p = \frac{N \cdot k_b \cdot T}{V} = \frac{1 \cdot 1,380649 \cdot 10^{-23} \si{\joule\per\kelvin} \cdot 237,15 \si{\kelvin}}{1 \si{\meter\cubed}} = 
+    \end{align}
 
     \bibliographystyle{plain}
     \bibliography{literature}

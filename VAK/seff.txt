@@ -1,5 +1,12 @@
 \begin{table}[H]
 \centering
 \begin{tabular}{c|c|c}
-\textbf{Name} & \textbf{$S_{eff}$ molekular} & \textbf{$S_{eff}$ viskos} \\ 
+\textbf{Name} & \textbf{$S_{eff}$ viskos} & \textbf{$S_{eff}$ molekular} \\ 
 \hline
+Schlauch & 1.8900000000000003 & 0.07856047698387467\\ 
+3mm + Schlauch & 0.8424590323264752 & 0.07043079599999999\\ 
+2mm + Schlauch & 0.46290381579883844 & 0.05963079599999999\\ 
+\end{tabular}
+\caption{Gemessene Werte}
+\label{tab:./VAK/seff}
+\end{table}

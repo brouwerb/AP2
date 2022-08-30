@@ -21,16 +21,16 @@ def arrExp(x,a):
 time_err = 0.5
 rawTimes = [getAxisEasy(4,i,"./VAK/Vak.xls","nr.3")  for i in range(0,5,2)]
 rawI = [getAxisEasy(4,i,"./VAK/Vak.xls","nr.3")  for i in range(1,6,2)]
-rawP = [[kalibrierungsFunktion(j) for j in i] for i in rawI]
+rawP = [[kalibrierungsFunktion(j)*1e2 for j in i] for i in rawI]
 legende = ["Schlauch",r"Kapillare 3$mm$",r"Kapillare 2$mm$"]
 
 print(rawTimes,rawP)
 print([len(i) for i in rawTimes],[len(i) for i in rawP])
 
-Y_LABEL = r"Druck $p$ in $mbar$"
+Y_LABEL = r"Druck $p$ in $Pa$"
 X_LABEL = r"Zeit $t$ in $s$"
 COLOR_STYLE = ["red","green","blue"]
-SAVE_AS = ".\VAK\Saugver.pdf"
+SAVE_AS = "./VAK/Saugver.pdf"
 fig, ax = plt.subplots()
 ax.grid()
 trenner = [[9,10],[10,14],[14,18]]
@@ -44,16 +44,20 @@ for i in range(len(rawTimes)):
 
 for i in range(len(rawTimes)):   
     vals, errs = optimize.curve_fit(exp,rawTimes[i][:trenner[i][0]],rawP[i][:trenner[i][0]],bounds = bounds[i][0])
-    steigung.append([[vals.tolist()],[]])
+    print(vals)
+    steigung.append([vals.tolist(),[]])
+    rdata = [round_errtex(vals[i], np.sqrt(np.diag(errs))[i]) for i in range(len(vals))]
     buf = genDataFromFunktion(100,0,rawTimes[i][trenner[i][0]],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="--",color = COLOR_STYLE[i])
     vals, errs = optimize.curve_fit(exp,rawTimes[i][trenner[i][1]:],rawP[i][trenner[i][1]:],maxfev= 5000,bounds =bounds[i][1])
-    steigung[i][1]= vals.tolist()
+    steigung[i][1] = vals.tolist()
     buf = genDataFromFunktion(100,rawTimes[i][trenner[i][1]],rawTimes[i][-1],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="dotted",color = COLOR_STYLE[i])
+
+print(steigung)
     
-data = [["Schlauch","3mm + Schlauch","2mm + Schlauch"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
-savetableastxt([*zip(*data)], "Gemessene Werte", "./VAK/seff", ["Name","$S_{eff}$ molekular","$S_{eff}$ viskos"])
+data = [["Schlauch","3mm + Schlauch","2mm + Schlauch"],[str(abs(i[0][0]*3600*3e-3)) for i in steigung],[str(abs(i[1][0]*3600*3e-3)) for i in steigung]]
+savetableastxt([*zip(*data)], "Gemessene Werte", "./VAK/seff", ["Name","$S_{eff}$ viskos","$S_{eff}$ molekular"])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)

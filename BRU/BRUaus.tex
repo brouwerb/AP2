@@ -70,10 +70,10 @@
     \end{align}
     wobei $R_S$ der bekannte Widerstand, $L_S$ die bekannte Induktivität der Spule und $R_V$ der Wert des zweiten (kleinen) Potentiometers ist, welcher in Reihe mit der bekannten Spule geschaltet wurde.
 
-    Wenn ein Kondensator gemessen wird, gilt analog
+    Wenn ein Kondensator gemessen wird, gilt analog mit $R_1 = 0$
     \begin{align}
-        \frac{Z_1}{Z_2} = \frac{R_1 + \frac{1}{i \omega C_1}}{R_2 + \frac{1}{i \omega C_2}} = \frac{R_p}{1\si{\kilo\ohm} - R_p} \\
-        C_1 = \frac{1 \si{\kilo\ohm} - R_P}{R_P} \cdot C_2 \,,
+        \frac{Z_1}{Z_2} = \frac{\frac{1}{i \omega C_1}}{R_2 + \frac{1}{i \omega C_2}} \overset{Im \, = \, 0}{=} \frac{1}{\omega^2 \cdot C_1 C_2} \cdot \frac{1}{R_2^2 + \frac{1}{\omega^2 C_2^2}} = \frac{R_p}{1\si{\kilo\ohm} - R_p} \\
+        \overset{Umstellen \ nach \ C_1}{\Rightarrow} \ \ C_1 = \frac{1 \si{\kilo\ohm} - R_P}{R_P} \cdot \frac{1}{\omega^2 R_2^2 C_2^2 + 1}\cdot C_2 \,,
     \end{align}
     wobei $C_2$ die Kapazität des bekannten Kondensator ist.
     \section{Ergebnisse und Diskussion}
@@ -113,7 +113,7 @@
     \input{komp.txt}
 
     \paragraph{Aufgabe 13}
-    Auch die Kapazitäten der unbekannten Kondensatoren konnten ermittel werden. Diese werden in \ref{tab:./BRU/kond} aufgelistet. Wie bei Aufgabe 11 können hier mangels Literaturwerten keine Aussagen zur Richtigkeit gemacht werden.
+    Auch die Kapazitäten der unbekannten Kondensatoren konnten bei einer Frequenz von $\omega = 1000(10) \si{\kilo\hertz}$ und einem Vergleichkondensator mit $C_2 = 1.00(5) \si{\micro\farad}$ ermittel werden. Diese werden in \ref{tab:./BRU/kond} aufgelistet. Wie bei Aufgabe 11 können hier mangels Literaturwerten keine Aussagen zur Richtigkeit gemacht werden.
     
     \input{kond.txt}
 

@@ -1,10 +1,10 @@
 \begin{table}[H]
 \centering
-\begin{tabular}{c|c|c}
-\textbf{Kondensator} & \textbf{Wert Poti in \si{\ohm}} & \textbf{Kapazität C in \si{\farad}} \\ 
+\begin{tabular}{c|c|c|c}
+\textbf{Kondensator} & \textbf{$R_G$ in $\si{\ohm}$} & \textbf{$R_2$ in $\si{\ohm}$} & \textbf{$C$ in $\si{\farad}$} \\ 
 \hline
-Kondensator 1 & 677.00(21) & 0.000477(24)\\ 
-Kondensator 2 & 807.00(21) & 0.000239(12)\\ 
+Kondensator 1 & 677.00(21) & 19.200(41) & $4.77(24) \cdot 10^{-7}$\\ 
+Kondensator 2 & 807.00(21) & 25.700(41) & $2.39(12) \cdot 10^{-7}$\\ 
 \end{tabular}
 \caption{Kapazität Kondensator}
 \label{tab:./BRU/kond}
