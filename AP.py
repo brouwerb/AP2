@@ -51,6 +51,7 @@ def getAxisFromCell(Cell1,Cell2,path,sheet,plusCol=0):
     for i in range(row1,row2):
         data.append(worksheet.cell(i, collumn1).value)    
     return data
+    
 def getAxisEasy(startRow,Collumn,path,sheet,plusCol=0):
 
     data = []
@@ -254,7 +255,7 @@ def round_errtex(num, err,  sig=2):
     srnum = str(rnum)
     if posof1digit < -3:
         abrerr = err*10**(sig-int(floor(log10(abs(err))))-1)
-        tnum = rnum*10**-magnum
+        tnum = round(num*10**-magnum, sig+1)
         return("$" + str(tnum) + '(' + str(ceil(abrerr)) + ')' + " \\cdot 10^{" + str(magnum) + "}" + "$")
 
         

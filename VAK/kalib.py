@@ -28,8 +28,8 @@ arrfuncs = [arrfunc2,arrfunc2,arrfunc2]
 bounds = [[[-np.inf,-np.inf,-np.inf,-np.inf],[np.inf,np.inf,np.inf,np.inf]],[[-np.inf,-np.inf,-np.inf,0],[np.inf,np.inf,np.inf,0.0001]],
         [[-np.inf,-np.inf,-np.inf,-np.inf],[np.inf,np.inf,np.inf,np.inf]]]
 
-rawmessI = getAxisFromCell("B9","B35","./Vak/Vak.xls","Kalib")  
-rawmessP = getAxisFromCell("A9","A35","./Vak/Vak.xls","Kalib")  
+rawmessI = getAxisFromCell("B9","B35","./VAK/Vak.xls","Kalib")  
+rawmessP = getAxisFromCell("A9","A35","./VAK/Vak.xls","Kalib")  
 errI = [0.1 for i in range(len(rawmessI))]
 errP = [i * 0.2 + 0.002 / (2*np.sqrt(3)) for i in rawmessP]
 
