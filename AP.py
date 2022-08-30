@@ -254,7 +254,7 @@ def round_errtex(num, err,  sig=2):
     srnum = str(rnum)
     if posof1digit < -3:
         abrerr = err*10**(sig-int(floor(log10(abs(err))))-1)
-        tnum = rnum*10**-magnum
+        tnum = round(num*10**-magnum, sig+1)
         return("$" + str(tnum) + '(' + str(ceil(abrerr)) + ')' + " \\cdot 10^{" + str(magnum) + "}" + "$")
 
         

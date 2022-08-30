@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
 
-rawTimes = [getAxisEasy(4,i,"./Vak/Vak.xls","nr.3")  for i in range(0,5,2)]
-rawI = [getAxisEasy(4,i,"./Vak/Vak.xls","nr.3")  for i in range(1,6,2)]
+rawTimes = [getAxisEasy(4,i,"./VAK/Vak.xls","nr.3")  for i in range(0,5,2)]
+rawI = [getAxisEasy(4,i,"./VAK/Vak.xls","nr.3")  for i in range(1,6,2)]
 rawP = [[kalibrierungsFunktion(j) for j in i] for i in rawI]
 legende = ["Schlauch",r"Kapillare 3$mm$",r"Kapillare 2$mm$"]
 

@@ -26,10 +26,20 @@ Lk.append(1/(1/Lk[0]+1/Lk[2]))
 print(Lv, Lk)
 Lvs = uarrayToString(Lv)
 Lks = uarrayToString(Lk)
-Sv = 1/(360/3.5 + 1/np.array(Lv))
+Sv = []
+Sk = []
+for i in Lv:
+    Sv.append(1/(360/3.5 + 1/i))
+for i in Lk:
+    Sk.append(1/(360/3.5 + 1/i))
+
+Svs = uarrayToString(Sv)
+Sks = uarrayToString(Sk)
 
 
-data = [["Schlauch", "Kapillare 2mm", "Kapillare 3mm", "Schlauch + 2mm", "Schlauch + 3mm"], Lvs, Lks]
+data = [["Schlauch", "Kapillare 2mm", "Kapillare 3mm", "Schlauch + 2mm", "Schlauch + 3mm"], Lvs, Lks, Svs, Sks]
+
+savetableastxt([*zip(*data)], "Theortische Werte", "./VAK/tabelle", ["Name", "L visk", "L mol", "S vis", "S mol"])
 
 print(Lvs)
 print(Lks)
