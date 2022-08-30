@@ -81,6 +81,21 @@
     \section{Ergebnisse}
     \subsection{Kallibrierung des Piranimeters}
     Durch die Messwerte des ersten Experiments konnte der Graph mit dem Verhältins zwischen Druck $p$ und Strom $I$ aufgestellt werden. Durch diesen wurde eine abschnittweise definierte Kurve gefittet, um in den nächsten Abschnitten durch den gemessenen Strom Rückschlüsse auf den vorherschenden Druck ziehen zu können.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Kallibrierung.pdf}
+        \caption{Kallibrierung des Piranimeters}
+        \label{fig:piranim}
+    \end{figure}
+    \subsection{Leistung des Piranimeters}
+    Aus dem Wiederstand des Piranimeters und der gemessenen Stromstärke kann mit $P_{pir} = R \cdot I^2$ die Leistung berechnet werden und mit den Daten des Membranmanometers geplottet werden. Dabei lässt sich erkennen, dass die Leistung sich im Bereich von 0 bis 4 \si{\milli\bar} annäherend proportional zum Druck verhält. 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Pp_Graph.pdf}
+        \caption{Leistung des Piranimeters}
+        \label{fig:Pzup}
+    \end{figure}
+
 
 
     \subsection{Saugvermögen}
@@ -89,6 +104,17 @@
     Die Angabe von $3,5 \si{\meter\cubed\per\hour}$ ist wahrscheinlich die minimale Saugleistung bei Normdruck, so erklähren sich die Werte \> $3,5 \si{\meter\cubed\per\hour}$. Dass die Saugleistung bei niedrigerem Druck abfällt, ist dadurch erklärbar, dass die Pumpe und der Aufbau bei niedrigerem Druck mehr Luft durch Lecks fließt und die Pumpe wahrscheinlich nicht mehr so effizient arbeitet.
 
     \subsection{effektives Saugvermögen}
+
+    Durch den Schlauch und die Kapillaren wird das Saugvermögen gemindert. In Graph \ref{fig:effSaug} wird der Druck beim Auspumpvorgang des $3.0(1) l$ Behälters geplottet. Aus den angelegten Geraden kann anschließend die effektive Saugleistung, die in Tabelle X ausgeführt wird, bestimmt werden. Diese unterscheidet zwischen viskoser Strömung, bei der die mittlere freie Weglänge viel kürzer ist als der Durchmesser des Rohr, also der Effekt einer Kollision mit der Gefäßwand unwesentlich ist, und molekularer Strömung, bei der die Weglänge viel größer als der Durchmesser ist, also Kollisionen mit der Wand wichtig, aber jene zwischen den Molekülen unwesentlich sind.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Saugver.pdf}
+        \caption{effektives Saugvermögen}
+        \label{fig:effSaug}
+    \end{figure}
+
+    
 
     \subsubsection{Theoretische Leitwerte}
     In der Tabelle \ref{tab:./VAK/tabelle} werden die theoretisch berechneten Leitwerte und effektive Saugleistungen der verschiedenen Konstellationen aus Schlauch und Kapillare dargestellt. Dabei wurde eine nominale Saugleistung von $S = 3,7 \si{\meter\per\hour}$ angenommen.
