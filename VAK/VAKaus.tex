@@ -43,7 +43,7 @@
     \paragraph{Saugvermögen} Bei konstantem Druck kann das Saugvermögen $S$ durch die (negative) Volumenänderung $\Delta V_L$
     \begin{align}
         \underbrace{\frac{d(p_L V_L)}{dt}}_{konst} &= Q_S = Q_V = p_V \cdot S \\
-        \Rightarrow S &= \left\lvert\frac{p_L \cdot \Delta V}{p_V \cdot \Delta t}\right\rvert
+        \Rightarrow S &= \left\lvert\frac{p_L \cdot \Delta V}{p_V \cdot \Delta t}\right\rvert \label{eq:saugvermoegen}
     \end{align}
     bestimmt werden. Dabei ist $Q_s$ die Saugleisung bei Luftdruck $p_L$ und $Q_V$ die Saugleisung an der Vakuumpumpe mit Druck $p_V$.
 
@@ -81,17 +81,15 @@
     \section{Ergebnisse}
     \subsection{Kallibrierung des Piranimeters}
     Durch die Messwerte des ersten Experiments konnte der Graph mit dem Verhältins zwischen Druck $p$ und Strom $I$ aufgestellt werden. Durch diesen wurde eine abschnittweise definierte Kurve gefittet, um in den nächsten Abschnitten durch den gemessenen Strom Rückschlüsse auf den vorheschenden Druck ziehen zu können.
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.8\textwidth]{VAK/VAKaus.pdf}
-        \caption{Kallibrierung des Piranimeters}
-        \label{fig:piranim}
-    \end{figure}
+
 
     \subsection{Saugvermögen}
+    Durch das Experiment mit der Kanüle und mit Formel \ref{eq:saugvermoegen} konnte das Saugvermögen der Pumpe $S$ bei verschiedenen Drücken $p$ bestimmt werden. Die errechneten Werte sind in der Tabelle \ref{tab:./VAK/saug} aufgeführt.
+    \input{saug.txt}
+    Die Angabe von $3,5 \si{\meter\cubed\per\hour}$ ist wahrscheinlich die minimale Saugleistung bei Normdruck, so erklähren sich die Werte > $3,5 \si{\meter\cubed\per\hour}$.
 
     \subsection{Theoretische Leitwerte}
-    In der Tabelle \ref{tab:./VAK/tabelle} werden die theoretisch berechneten Leitwerte und effektive Saugleistungen der verschiedenen Konstellationen aus Schlauch und Kapillare dargestellt. Dabei wurde eine nominale Saugleistung von $S = 3,7 \si(\meter\per\hour)$ angenommen.
+    In der Tabelle \ref{tab:./VAK/tabelle} werden die theoretisch berechneten Leitwerte und effektive Saugleistungen der verschiedenen Konstellationen aus Schlauch und Kapillare dargestellt. Dabei wurde eine nominale Saugleistung von $S = 3,7 \si{\meter\per\hour}$ angenommen.
     \input{tabelle.txt}
 
 

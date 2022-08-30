@@ -9,8 +9,21 @@ from uncertainties import ufloat
 from kalib import kalibrierungsFunktion
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
-
+from statistics import mean
+sg = []
+p = []
 for col in [2, 6, 9, 12]:
-    p = [kalibrierungsFunktion(j) for j in getAxisEasy(5, col-1, "./VAK/Vak.xls", "nr.4")]
-    t = uarray(getAxisEasy(5, col, "./VAK/Vak.xls", "nr.4"), 0.1)
-    print(p, t)
+    pv = [kalibrierungsFunktion(j)*100 for j in getAxisEasy(5, col-1, "./VAK/Vak.xls", "nr.4")]
+    t = uarray(getAxisEasy(5, col, "./VAK/Vak.xls", "nr.4"), 1).tolist()
+    print(t)
+    pl = 957*100
+    v = ufloat(80e-6, 1e-6)
+    s = [(pl*v)/(pv[i]*t[i])*3600 for i in range(len(pv))]
+    p.append(round(mean(pv), 1))
+    sg.append(round_errtex(gewichteterMittelwert([nominal_values(i) for i in s], [std_devs(i) for i in s]), intExtFehler([nominal_values(i) for i in s], [std_devs(i) for i in s])))
+    
+data = [*zip(*[[str(i) for i in p], sg])]
+
+savetableastxt(data, "Saugvermögen", "./VAK/saug", ["Druck in $\\si{\\pascal}$", "Saugleistung in $\\si{\\meter\\cubed\\per\\hour}$"])
+
+print(data)
