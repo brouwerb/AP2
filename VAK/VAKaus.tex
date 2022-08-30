@@ -55,7 +55,7 @@
 
     Lokal kann der Druck beim auspumpen auch durch die Formel
     \begin{align}
-        p\left(t\right) = p_0 \cdot exp\left(- \frac{S_eff}{V} \cdot t\right)
+        p\left(t\right) = p_0 \cdot exp\left(- \frac{S_{eff}}{V} \cdot t\right)
     \end{align}
     beschrieben werden, wobei $p_0$ geeignet gewählt werden muss.
     Theoretisch kann der Leitwert der Kapillare mit Durchmesser $d$ un Länge $l$ bei viskoser Strömungs (Mittlere feie Weglänge $\lambda \ll d$) durch die Formel
@@ -70,7 +70,7 @@
 
     Für den Leitwert mehrerer hintereinandergeschalteter Strömungshindernisse gilt die Formel
     \begin{align}
-        \frac{1}{L_ges} = \frac{1}{L_1} + \frac{1}{L_2}
+        \frac{1}{L_{ges}} = \frac{1}{L_1} + \frac{1}{L_2}
     \end{align}
 
 
@@ -80,15 +80,17 @@
 
     \section{Ergebnisse}
     \subsection{Kallibrierung des Piranimeters}
-    Durch die Messwerte des ersten Experiments konnte der Graph mit dem Verhältins zwischen Druck $p$ und Strom $I$ aufgestellt werden. Durch diesen wurde eine abschnittweise definierte Kurve gefittet, um in den nächsten Abschnitten durch den gemessenen Strom Rückschlüsse auf den vorheschenden Druck ziehen zu können.
+    Durch die Messwerte des ersten Experiments konnte der Graph mit dem Verhältins zwischen Druck $p$ und Strom $I$ aufgestellt werden. Durch diesen wurde eine abschnittweise definierte Kurve gefittet, um in den nächsten Abschnitten durch den gemessenen Strom Rückschlüsse auf den vorherschenden Druck ziehen zu können.
 
 
     \subsection{Saugvermögen}
     Durch das Experiment mit der Kanüle und mit Formel \ref{eq:saugvermoegen} konnte das Saugvermögen der Pumpe $S$ bei verschiedenen Drücken $p$ bestimmt werden. Die errechneten Werte sind in der Tabelle \ref{tab:./VAK/saug} aufgeführt.
     \input{saug.txt}
-    Die Angabe von $3,5 \si{\meter\cubed\per\hour}$ ist wahrscheinlich die minimale Saugleistung bei Normdruck, so erklähren sich die Werte > $3,5 \si{\meter\cubed\per\hour}$.
+    Die Angabe von $3,5 \si{\meter\cubed\per\hour}$ ist wahrscheinlich die minimale Saugleistung bei Normdruck, so erklähren sich die Werte \> $3,5 \si{\meter\cubed\per\hour}$. Dass die Saugleistung bei niedrigerem Druck abfällt, ist dadurch erklärbar, dass die Pumpe und der Aufbau bei niedrigerem Druck mehr Luft durch Lecks fließt und die Pumpe wahrscheinlich nicht mehr so effizient arbeitet.
 
-    \subsection{Theoretische Leitwerte}
+    \subsection{effektives Saugvermögen}
+
+    \subsubsection{Theoretische Leitwerte}
     In der Tabelle \ref{tab:./VAK/tabelle} werden die theoretisch berechneten Leitwerte und effektive Saugleistungen der verschiedenen Konstellationen aus Schlauch und Kapillare dargestellt. Dabei wurde eine nominale Saugleistung von $S = 3,7 \si{\meter\per\hour}$ angenommen.
     \input{tabelle.txt}
 
