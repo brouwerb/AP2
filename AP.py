@@ -51,6 +51,7 @@ def getAxisFromCell(Cell1,Cell2,path,sheet,plusCol=0):
     for i in range(row1,row2):
         data.append(worksheet.cell(i, collumn1).value)    
     return data
+    
 def getAxisEasy(startRow,Collumn,path,sheet,plusCol=0):
 
     data = []
