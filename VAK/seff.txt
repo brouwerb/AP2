@@ -1,0 +1,5 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c}
+\textbf{Name} & \textbf{$S_{eff}$ molekular} & \textbf{$S_{eff}$ viskos} \\ 
+\hline

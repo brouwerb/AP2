@@ -19,8 +19,8 @@ def arrExp(x,a):
 
 
 time_err = 0.5
-rawTimes = [getAxisEasy(4,i,"./Vak/Vak.xls","nr.3")  for i in range(0,5,2)]
-rawI = [getAxisEasy(4,i,"./Vak/Vak.xls","nr.3")  for i in range(1,6,2)]
+rawTimes = [getAxisEasy(4,i,"./VAK/Vak.xls","nr.3")  for i in range(0,5,2)]
+rawI = [getAxisEasy(4,i,"./VAK/Vak.xls","nr.3")  for i in range(1,6,2)]
 rawP = [[kalibrierungsFunktion(j) for j in i] for i in rawI]
 legende = ["Schlauch",r"Kapillare 3$mm$",r"Kapillare 2$mm$"]
 
@@ -52,8 +52,8 @@ for i in range(len(rawTimes)):
     buf = genDataFromFunktion(100,rawTimes[i][trenner[i][1]],rawTimes[i][-1],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="dotted",color = COLOR_STYLE[i])
     
-data = [["Schlauch","3mm","2mm"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
-savetableastxt([*zip(*data)], "Theortische Werte", "./VAK/tabelle", ["Name","Steigung molekular","Steigung viskos"])
+data = [["Schlauch","3mm + Schlauch","2mm + Schlauch"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
+savetableastxt([*zip(*data)], "Gemessene Werte", "./VAK/seff", ["Name","$S_{eff}$ molekular","$S_{eff}$ viskos"])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
