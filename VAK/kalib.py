@@ -75,6 +75,10 @@ def kalibrierungsFunktion(A):
     return arrfuncs[index](A,vals[index])
 
 if __name__ == "__main__":
+    def linFunc(x,a,b):
+        return a*x+b
+    def arrLinFunc(x,a):
+        return linFunc(x,a[0],a[1])
     print(kalibrierungsFunktion(30))
 
     def calcP(I):
@@ -88,20 +92,25 @@ if __name__ == "__main__":
 
     X_LABEL = r"Druck $p$ in $mbar$"
     Y_LABEL = r"Leistung $p$ in $\mu W$"
-
+    trenner = 10
 
     rawmessI_err= arrToUnumpyf (rawmessI,0.1)
     r_zim = ufloat(42.6,digitalErr(0.1))
     dataP = [i*i*r_zim for i in rawmessI_err]
-    druck = genDataFromFunktion(100,0,45,[],kalibrierungsFunktion)
-    arrP = genDataFromFunktion(100,0,45,[],calcP)
+    druck = genDataFromFunktion(300,0.02,45,[],kalibrierungsFunktion)
+    arrP = genDataFromFunktion(300,0.02,45,[],calcP)
     ax2.plot(druck[1],arrP[1])
 
     ax2.scatter(rawmessP,[nominal_values(i) for i in dataP],s=20,linewidths=0.5,edgecolors="black",zorder=10)
     ax2.errorbar(rawmessP,[nominal_values(i) for i in dataP],fmt="none",xerr=errP,yerr=[std_devs(i) for i in dataP],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8)
+    vals, errs = optimize.curve_fit(linFunc,rawmessP[:trenner],[nominal_values(i) for i in dataP][:trenner])
+    buf = genDataFromFunktion(100,0,rawmessP[trenner],vals,arrLinFunc)
+    ax2.plot(buf[0],buf[1],linestyle="--")
+    
     plt.yscale("log")
     plt.xscale("log")
-
+    ax2.set_ylim(500,1e5)
+    ax2.set_xlim(0.025,300)
     ax2.set_xlabel(X_LABEL)
     ax2.set_ylabel(Y_LABEL)
 
