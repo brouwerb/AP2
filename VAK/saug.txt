@@ -1,0 +1,13 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+\textbf{Druck in $\si{\pascal}$} & \textbf{Saugleistung in $\si{\meter\cubed\per\sec}$} \\ 
+\hline
+82.7 & 2.11(15)\\ 
+254.9 & 3.335(65)\\ 
+154.5 & 2.960(36)\\ 
+322.1 & 4.11(12)\\ 
+\end{tabular}
+\caption{Saugvermögen}
+\label{tab:./VAK/saug}
+\end{table}
