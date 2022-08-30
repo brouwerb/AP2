@@ -30,6 +30,7 @@ print([len(i) for i in rawTimes],[len(i) for i in rawP])
 Y_LABEL = r"Druck $p$ in $mbar$"
 X_LABEL = r"Zeit $t$ in $s$"
 COLOR_STYLE = ["red","green","blue"]
+SAVE_AS = ".\VAK\Saugver.pdf"
 fig, ax = plt.subplots()
 ax.grid()
 trenner = [[9,10],[10,14],[14,18]]
@@ -50,11 +51,14 @@ for i in range(len(rawTimes)):
     steigung[i][1]= vals.tolist()
     buf = genDataFromFunktion(100,rawTimes[i][trenner[i][1]],rawTimes[i][-1],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="dotted",color = COLOR_STYLE[i])
+    
+data = [["Schlauch","3mm","2mm"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
+savetableastxt([*zip(*data)], "Theortische Werte", "./VAK/tabelle", ["Name","Steigung molekular","Steigung viskos"])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 ax.legend(legende)
 print(steigung)
 plt.yscale("log")
+plt.savefig(SAVE_AS)
 plt.show()
-plt.savefig()

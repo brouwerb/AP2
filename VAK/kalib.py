@@ -42,6 +42,7 @@ messP = [rawmessP[:10],rawmessP[10:18],rawmessP[18:]]
 
 Y_LABEL = r"Druck $p$ in $mbar$"
 X_LABEL = r"Stromstärke in $I$ in $A$"
+SAVE_AS = "./VAK/Kallibrierung.pdf"
 
 
 
@@ -79,19 +80,23 @@ if __name__ == "__main__":
         return a*x+b
     def arrLinFunc(x,a):
         return linFunc(x,a[0],a[1])
-    print(kalibrierungsFunktion(30))
+    
 
     def calcP(I):
         return I*I*41.6
 
     plt.yscale("log")
-
+    
+    
+    plt.savefig(SAVE_AS)
+    plt.show()
 
     fig, ax2 = plt.subplots()
     ax2.grid()
 
     X_LABEL = r"Druck $p$ in $mbar$"
     Y_LABEL = r"Leistung $p$ in $\mu W$"
+    SAVE_AS = "./VAK/Pp_Graph.pdf"
     trenner = 10
 
     rawmessI_err= arrToUnumpyf (rawmessI,0.1)
@@ -106,7 +111,8 @@ if __name__ == "__main__":
     vals, errs = optimize.curve_fit(linFunc,rawmessP[:trenner],[nominal_values(i) for i in dataP][:trenner])
     buf = genDataFromFunktion(100,0,rawmessP[trenner],vals,arrLinFunc)
     ax2.plot(buf[0],buf[1],linestyle="--")
-    
+    print(vals)
+    ax2.legend(["Graph aus Kallibrierungsfkt.","Messwerte",r"$ax + b$ mit $a=7433$ $b=913$"])
     plt.yscale("log")
     plt.xscale("log")
     ax2.set_ylim(500,1e5)
@@ -114,4 +120,6 @@ if __name__ == "__main__":
     ax2.set_xlabel(X_LABEL)
     ax2.set_ylabel(Y_LABEL)
 
+  
+    plt.savefig(SAVE_AS)
     plt.show()
