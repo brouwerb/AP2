@@ -24,8 +24,8 @@ dataWithErr = []
 for i in range(len(data)):
     dataWithErr.append([])
     dataWithErr[i].append(arrToUnumpyf(data[i][0],[j*0.0025+digitalErr(0.5) for j in data[i][0]]))
-    dataWithErr[i].append(arrToUnumpyf(data[i][1],[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.01 for j in data[i][0]]))
-    dataWithErr[i].append(arrToUnumpyf(data[i][2],[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.001 for j in data[i][0]]))
+    dataWithErr[i].append(arrToUnumpyf(data[i][1],[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.01 for j in data[i][1]]))
+    dataWithErr[i].append(arrToUnumpyf(data[i][2],[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.001 for j in data[i][2]]))
 
 
 fig, ax = plt.subplots()
