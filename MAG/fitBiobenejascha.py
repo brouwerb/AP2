@@ -20,7 +20,7 @@ Y_LOW_LIM = -0.001
 X_HIGH_LIM = 0.4
 Y_HIGH_LIM = 0.011
 
-SAVE_AS = "./MAG/fit1.pdf"
+SAVE_AS = "./MAG/mur.pdf"
 
 
 
