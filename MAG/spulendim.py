@@ -44,7 +44,7 @@ ax.grid()
 difference = [[i[1][j]-i[2][j]  for j in range(len(i[1]))] for i in dataWithErr]
 x_n , y_n = mirrorDataAroundX(2*scaler,nominal_values(dataWithErr[0][0]),nominal_values(difference[0]))
 #print(x_n,y_n)
-ax.scatter([i*100 for i in x_n],y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o")
+ax.scatter([i*100 for i in x_n],y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o", label="Messwerte")
 #ax.errorbar(x_n,y_n,fmt="none",yerr=std_devs(difference[0]),xerr=std_devs(dataWithErr[0][0]),ecolor='black',elinewidth=0.8,capsize=2,capthick=0.8)
 
 vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:],bounds=[[0,0.01],[1.2,0.2]])
@@ -52,7 +52,7 @@ print(vals)
 
 plot = genDataFromFunktion(1000,-250*scaler,250*scaler,vals,arrtheo_kurve)
 
-ax.plot([100*i for i in plot[0]],plot[1])
+ax.plot([100*i for i in plot[0]],plot[1], label="Theoriekurve")
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
