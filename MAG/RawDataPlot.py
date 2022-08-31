@@ -74,8 +74,8 @@ ax.scatter(data[3][0],data[3][2],s=15,linewidths=1.5,zorder=10,color = COLOR_STY
 ax.scatter(data[3][0],nominal_values(difference[3]),s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[2],marker="o")
 
 
-ax.errorbar(data[3][0],data[3][1],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.01 for j in data[3][0]],xerr=[j*0.0025+digitalErr(0.5) for j in data[3][0]],ecolor = COLOR_STYLE[1],elinewidth=0.8,capsize=2,capthick=0.4)
-ax.errorbar(data[3][0],data[3][2],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.001 for j in data[3][0]],xerr=[j*0.0025+digitalErr(0.5) for j in data[3][0]],ecolor = COLOR_STYLE[0],elinewidth=0.8,capsize=2,capthick=0.4)
+ax.errorbar(data[3][0],data[3][1],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.01 for j in data[3][1]],xerr=[j*0.0025+digitalErr(0.5) for j in data[3][0]],ecolor = COLOR_STYLE[1],elinewidth=0.8,capsize=2,capthick=0.4)
+ax.errorbar(data[3][0],data[3][2],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.001 for j in data[3][2]],xerr=[j*0.0025+digitalErr(0.5) for j in data[3][0]],ecolor = COLOR_STYLE[0],elinewidth=0.8,capsize=2,capthick=0.4)
 ax.errorbar(data[3][0],nominal_values(difference[3]),fmt="none",yerr=std_devs(difference[3]),xerr=[j*0.0025+digitalErr(0.5) for j in data[3][0]],ecolor = COLOR_STYLE[2],elinewidth=0.8,capsize=2,capthick=0.8)
 
 ax.legend(["Messwert","Untergrund","Differenz"])
