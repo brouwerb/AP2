@@ -44,21 +44,24 @@ for i in range(len(rawTimes)):
 
 for i in range(len(rawTimes)):   
     vals, errs = optimize.curve_fit(exp,rawTimes[i][:trenner[i][0]],rawP[i][:trenner[i][0]],bounds = bounds[i][0])
-    steigung.append([[vals.tolist()],[]])
+    steigung.append([vals.tolist(),[]])
     buf = genDataFromFunktion(100,0,rawTimes[i][trenner[i][0]],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="--",color = COLOR_STYLE[i])
     vals, errs = optimize.curve_fit(exp,rawTimes[i][trenner[i][1]:],rawP[i][trenner[i][1]:],maxfev= 5000,bounds =bounds[i][1])
     steigung[i][1]= vals.tolist()
     buf = genDataFromFunktion(100,rawTimes[i][trenner[i][1]],rawTimes[i][-1],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="dotted",color = COLOR_STYLE[i])
-    
+
+print(steigung)
+Volumen = ufloat(3,0.1)
+steigung = [[steigung[i][j][0]*Volumen*-1,np.log(steigung[i][j][1])] for i in range(len(steigung)) for j in range(len(steigung[i]))] 
 data = [["Schlauch","3mm","2mm"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
 savetableastxt([*zip(*data)], "Theortische Werte", "./VAK/tabelle", ["Name","Steigung molekular","Steigung viskos"])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 ax.legend(legende)
-print(steigung)
+
 plt.yscale("log")
 plt.savefig(SAVE_AS)
 plt.show()
