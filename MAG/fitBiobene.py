@@ -46,7 +46,7 @@ x_n , y_n = mirrorDataAroundX(2*scaler,nominal_values(dataWithErr[0][0]),nominal
 ax.scatter(x_n,y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o")
 #ax.errorbar(x_n,y_n,fmt="none",yerr=std_devs(difference[0]),xerr=std_devs(dataWithErr[0][0]),ecolor='black',elinewidth=0.8,capsize=2,capthick=0.8)
 
-vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:],bounds=[[0,0.01],[1.2,0.2]], method="dogbox")
+vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:],bounds=[[0,0.01],[1.2,0.2]])
 print(vals)
 
 plot = genDataFromFunktion(1000,-250*scaler,250*scaler,vals,arrtheo_kurve)

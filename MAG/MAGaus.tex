@@ -63,20 +63,24 @@
     Im Plot ? wurde die Magnetfeldstärke abzüglich der Hintergrundmagnetisierung aufgetragen und gespiegelt. Anschließend wurde die Funktion \ref{eq:BiotSavart} auf die Messwerte außerhalb der Spule gefittet und auch aufgetragen. Mit einem abgelesenen $B_{max}$ und den gefitteten parametern wurden die Spulenränder berechnet. Diese werden als vertikale Balken in dem Graphen dargestellt. Die Ergebnisse des Fits und die errechneten Werte sind in Tabelle \ref{tab:fit} aufgelistet.
     \begin{table}[h]
         \centering
-        \begin{tabular}{|l|l|}
+        \begin{tabular}{c | c | c}
+            \textbf{Parameter} & \textbf{Wert mit 1A} & \textbf{Wert mit 1,5A} \\
             \hline
-            \textbf{Parameter} & \textbf{Wert} \\
-            \hline
-            $B_{max}$ & $xx \si{\milli\tesla}$ \\
-            $R_{eff}$ & $xx \si{\milli\metre}$ \\
-            $I_{eff}$ & $xx \si{\ampere}$ \\
-            $x_{min}$ & $xx \si{\milli\meter}$ \\
-            $x_{max}$ & $xx \si{\milli\meter}$ \\
-            \hline
+            $B_{max}$ & $8,26 \si{\milli\tesla}$ & $12,3 \si{\milli\tesla}$ \\
+            $R_{eff}$ & $35,6 \si{\milli\metre}$ & $35,8 \si{\milli\metre}$ \\
+            $I_{eff}$ & $0,74 \si{\ampere}$ & $1,10 \si{\ampere}$ \\
+            $x_{min}$ & $25,9 \si{\milli\meter}$ & $25,8 \si{\milli\meter}$ \\
+            $x_{max}$ & $-25,9 \si{\milli\meter}$ & $-25,9 \si{\milli\meter}$ \\
         \end{tabular}
         \caption{Ergebnisse Aufgabe 5.2.2}
         \label{tab:fit}
     \end{table}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{fit1.pdf}
+        \caption{Fit der longitudinalen Konfiguration}
+        \label{fig:longfit}
+    \end{figure}
 
     \subsection{Bestimmung von $\mu_r$}
     Mit den in \ref{tab:fit} aufgelisteten Ergebnissen, kann die Funktion \ref{eq:BiotSavart} mit einem freien Parameter $\mu_r$ auf die Messwerte der longitudinalen Konfiguration gefittet werden. So kann $\mu_r$ bestimmt werden.
