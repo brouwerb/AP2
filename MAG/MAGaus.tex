@@ -1,0 +1,101 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} %Matheschriften
+\usepackage{amssymb} %Mathesymbole
+%\usepackage{mathptmx} % Einstellung für Schriften und Sonderzeichen in mathematischen Umgebungen
+                        % ändert SChriftfont
+\usepackage{wasysym} % Stellt diverse Sonderzeichen bereit
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[section]{placeins}
+% allows for temporary adjustment of side margins
+\usepackage{changepage}
+\usepackage{rotating}
+
+
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{%
+ \renewcommand{\abstractname}{Einleitung}}
+
+\title{Versuch 4: Magnetismus}
+\author{Team 2-13: Jascha Fricker, Benedict Brouwer}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Einleitung}
+
+    In diesem Versuch werden die Eigenschaften des Magnetfelds einer Spule mittels einer Hall-Sonde untersucht. Dabei wird der Einfluss verschiedener Ströme und eines Eisenkerns gemessen.
+
+    \section{Theorie}
+
+    Nach dem Biot-Savart-Gesetz kann das Magnetfeld $(x)$ auf der Symmetrieachse einer dünnen Ringspule mit Radius $R$ durch die Formel
+    \begin{align}
+        B(x) = \frac{\mu_0 \mu_r N}{2} \cdot \frac{R^2 I}{\left(x^2 + R^2\right)^{\frac{3}{2}}} \label{eq:BiotSavart}
+    \end{align}
+    beschreiben werden. Dabei durchfließt die Spule eine Stromstärke $I$ mit einer Windungszahl $N$. Das Material in der Spule hat eine Permeabilität $\mu_r$ (bei Luft $\mu_r = 1$).
+    
+    Durch Umstellung der Gleichung nach $x$ können bei gegebenem $B_max$ die Spulenränder
+    \begin{align}
+        x_{min, \ max} = \pm \sqrt{\left(\frac{\mu_0 \mu_r N}{2} \cdot \frac{R^2 I}{B_{max}}\right)^\frac{2}{3} - R^2} \label{eq:bmax}
+    \end{align}
+    bestimmt werden. 
+
+    \section{Ergebnisse}
+    \subsection{longitudinale Konfiguration}
+    Die rohen Messwerte der 4x3 verschiedenen Messreihen der longitudinalen Konfiguration wurden im Graph \ref{fig:longmess} geplottet.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{raw1.pdf}
+        \caption{Messwerte der longitudinalen Konfiguration}
+        \label{fig:longmess}
+    \end{figure}
+
+    Im Plot ? wurde die Magnetfeldstärke abzüglich der Hintergrundmagnetisierung aufgetragen und gespiegelt. Anschließend wurde die Funktion \ref{eq:BiotSavart} auf die Messwerte außerhalb der Spule gefittet und auch aufgetragen. Mit einem abgelesenen $B_{max}$ und den gefitteten parametern wurden die Spulenränder berechnet. Diese werden als vertikale Balken in dem Graphen dargestellt. Die Ergebnisse des Fits und die errechneten Werte sind in Tabelle \ref{tab:fit} aufgelistet.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Parameter} & \textbf{Wert} \\
+            \hline
+            $B_{max}$ & $xx \si{\milli\tesla}$ \\
+            $R_{eff}$ & $xx \si{\milli\metre}$ \\
+            $I_{eff}$ & $xx \si{\ampere}$ \\
+            $x_{min}$ & $xx \si{\milli\meter}$ \\
+            $x_{max}$ & $xx \si{\milli\meter}$ \\
+            \hline
+        \end{tabular}
+        \caption{Ergebnisse Aufgabe 5.2.2}
+        \label{tab:fit}
+    \end{table}
+
+    \subsection{Bestimmung von $\mu_r$}
+    Mit den in \ref{tab:fit} aufgelisteten Ergebnissen, kann die Funktion \ref{eq:BiotSavart} mit einem freien Parameter $\mu_r$ auf die Messwerte der longitudinalen Konfiguration gefittet werden. So kann $\mu_r$ bestimmt werden.
+
+
+    \subsection{transversale Konfiguration}
+    Die gemessenen Daten der transversalen Konfiguration wurden im Graph \ref{fig:transmess} geplottet.
+    Genauso wie bei der longitudinalen Konfiguration fällt das Magnetfeld mit größerem Abstand ab, beide fallen sogar ungefähr gleich schnell ab, nur ist erstaunlicherweise der Startwert der transversalen Messung mit $10 \si{\milli\tesla}$ direkt an der Seite der Spule größer als der Wert der longitudinalen Messung direkt in der Spule, der etwa $8 \si{\milli\tesla}$ beträgt.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{raw2.pdf}
+        \caption{Messwerte transversale Konfiguration}
+        \label{fig:transmess}
+    \end{figure}
+
+
+    \section{Diskussion}
+
+    \bibliographystyle{plain}
+    \bibliography{literature}
+
+\end{document}

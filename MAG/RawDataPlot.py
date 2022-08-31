@@ -1,3 +1,4 @@
+from cProfile import label
 from dataclasses import dataclass
 from inspect import getsourcefile
 import os.path as path, sys
@@ -30,6 +31,17 @@ for i in range(len(data)):
 fig, ax = plt.subplots()
 ax.grid()
 
+from matplotlib.patches import Patch
+from matplotlib.lines import Line2D
+
+legend_elements = [ Line2D([0], [0], marker = "+", color='black', label='Messwert', linestyle="None"),
+                    Line2D([0], [0], marker='x', color='black', label='Untergrund', linestyle="None"),
+                    Line2D([0], [0], marker='o', color='black', label='Differenz', linestyle="None"),
+                    Patch(facecolor='red', label='1A ohne Eisen'),
+                    Patch(facecolor='orange', label='1A mit Eisen'),
+                    Patch(facecolor='green', label='1,5A ohne Eisen'),
+                    Patch(facecolor='blue', label='1,5A mit Eisen')] 
+
 
 difference = [[i[1][j]-i[2][j]  for j in range(len(i[1]))] for i in dataWithErr]
 
@@ -45,7 +57,7 @@ for i in range(len(data)-1):
     ax.errorbar(data[i][0],data[i][2],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.001 for j in data[i][0]],xerr=[j*0.0025+digitalErr(0.5) for j in data[i][0]],ecolor = 'black',elinewidth=0.4,capsize=2,capthick=0.4)
     ax.errorbar(data[i][0],nominal_values(difference[i]),fmt="none",yerr=std_devs(difference[i]),xerr=[j*0.0025+digitalErr(0.5) for j in data[i][0]],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8)
 
-ax.legend(["Messwert","Untergrund","Differenz"])
+ax.legend(handles=legend_elements,loc='upper right')
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 plt.savefig(SAVE_AS)
