@@ -54,11 +54,11 @@ for i in range(len(rawTimes)):
     buf = genDataFromFunktion(100,rawTimes[i][trenner[i][1]],rawTimes[i][-1],vals,arrExp)
     ax.plot(buf[0],buf[1],linestyle="dotted",color = COLOR_STYLE[i])
 
-print(steigung)
-Volumen = ufloat(3,0.1)
-steigung = [[steigung[i][j][0]*Volumen*-1,np.log(steigung[i][j][1])] for i in range(len(steigung)) for j in range(len(steigung[i]))] 
-data = [["Schlauch","3mm","2mm"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
-savetableastxt([*zip(*data)], "Theortische Werte", "./VAK/tabelle", ["Name","Steigung molekular","Steigung viskos"])
+# print(steigung)
+# Volumen = ufloat(3,0.1)
+# steigung = [[ i[0]*Volumen*-1,np.log(i[1])] for i in steigung for j in i] 
+# data = [["Schlauch","3mm","2mm"],[i[0][0] for i in steigung],[i[0][0] for i in steigung]]
+# savetableastxt([*zip(*data)], "Theortische Werte", "./VAK/Steigungnen", ["Name","Steigung molekular","Steigung viskos"])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
