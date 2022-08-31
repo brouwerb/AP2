@@ -1,4 +1,5 @@
 from math import *
+from tkinter.tix import X_REGION
 import xlrd
 import numpy as np
 import string
@@ -167,6 +168,34 @@ def getDataVonBis(path,von,bis):
                 buffer2.append(float(N))
             content.append(buffer2)
     return content
+
+
+def mirrorDataAroundX(x_val,x,y,verschiebungX =0):
+    x = [i-x_val for i in x]
+    x_n = []
+    y_n = []
+    for i in range(len(x)):
+        if x[i]>0:
+            x_n.append(x[i])
+            x_n.append(-x[i])
+            y_n.append(y[i])
+            y_n.append(y[i])
+    x_n = [i + verschiebungX for i in x_n]
+    return x_n , y_n
+        
+def cutArrayByValue(arr, value , arr2 =[]):
+    arr1_n =[]
+    arr2_n =[]
+    for i in range(len(arr)):
+        print(arr[i])
+        if arr[i]<=value:
+            arr1_n.append(arr[i])
+            if arr2 != []:
+                arr2_n.append(arr2[i])
+    return arr1_n,arr2_n
+
+
+
 
 def wichtungsFaktor(err):
     return 1/err**2
