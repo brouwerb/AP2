@@ -1,5 +1,14 @@
 \begin{table}[H]
 \centering
-\begin{tabular}{c|c|c}
-\textbf{Name} & \textbf{Steigung molekular} & \textbf{Steigung viskos} \\ 
+\begin{tabular}{c|c|c|c|c}
+\textbf{Name} & \textbf{L visk} & \textbf{L mol} & \textbf{S vis} & \textbf{S mol} \\ 
 \hline
+Schlauch & 0.470(76) & $3.38(41) \cdot 10^{-3}$ & 3.4928(12) & 2.717(74)\\ 
+Kapillare 2mm & $1.14(23) \cdot 10^{-4}$ & $1.0(20) \cdot 10^{-5}$ & 0.366(66) & 0.0363(55)\\ 
+Kapillare 3mm & $5.75(78) \cdot 10^{-4}$ & $3.4(40) \cdot 10^{-5}$ & 1.30(12) & 0.120(12)\\ 
+Schlauch + 2mm & $1.14(23) \cdot 10^{-4}$ & $1.0(20) \cdot 10^{-5}$ & 0.366(66) & 0.0362(55)\\ 
+Schlauch + 3mm & $5.74(77) \cdot 10^{-4}$ & $3.4(30) \cdot 10^{-5}$ & 1.30(12) & 0.118(12)\\ 
+\end{tabular}
+\caption{Theortische Werte}
+\label{tab:./VAK/tabelle}
+\end{table}

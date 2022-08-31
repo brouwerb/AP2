@@ -4,9 +4,9 @@
 \textbf{Messwert} & \textbf{Vergleichsspule} & \textbf{Spule EM} & \textbf{Spule AM} \\ 
 \hline
 Spule 1 R in \si{\ohm} & 3.069(29) & 0.881(11) & 0.6949(83)\\ 
-Spule 1 L in \si{\henry} & 0.001876(70) & 0.000406(15) & 0.000305(11)\\ 
+Spule 1 L in \si{\henry} & $1.88(70) \cdot 10^{-3}$ & $4.06(16) \cdot 10^{-4}$ & $3.05(12) \cdot 10^{-4}$\\ 
 Spule 2 R in \si{\ohm} & 16.482(49) & 7.119(24) & 5.085(18)\\ 
-Spule 2 L in \si{\henry} & 0.00304(12) & 0.001053(39) & 0.000795(29)\\ 
+Spule 2 L in \si{\henry} & $3.04(12) \cdot 10^{-3}$ & $1.05(40) \cdot 10^{-3}$ & $7.95(30) \cdot 10^{-4}$\\ 
 \end{tabular}
 \caption{Kompexe Widerstände der Spule}
 \label{tab:./BRU/komp}

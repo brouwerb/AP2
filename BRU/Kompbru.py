@@ -55,18 +55,22 @@ print(uarrayToString( resR[1]),uarrayToString(resL[1]))
 
 
 # Aufgabe 13
-testKond  = ufloat(1e-3,1e-3*0.05)
+testKond  = ufloat(1e-6,1e-6*0.05)
 print("Aufgabe 13________________________________________________")
 hauptPoti= arrToUnumpyf(getAxisFromCell("B20","B22","./BRU/Mappe1.xls","kompwe") ,analogErr(1))  
 nebenPoti= arrToUnumpyf(getAxisFromCell("C20","C22","./BRU/Mappe1.xls","kompwe")   ,analogErr(0.2))
+w = ufloat(1000, 20/(2*sqrt(3)))
+print(round_err(float(nominal_values(w)),float(std_devs(w))))
 resC =[]
 print(hauptPoti,nebenPoti)
 data = []
 for i in range(len(hauptPoti)):
-    resC.append((1000-hauptPoti[i])/hauptPoti[i]*testKond)
-    data.append(["Kondensator " + str(i+1)] + uarrayToString([hauptPoti[i], resC[i]]))
+    resC.append((1000-hauptPoti[i])/hauptPoti[i]*testKond/(w**2*nebenPoti[i]**2*testKond**2+1))
+    print(resC)
+    print(round_errtex(float(nominal_values(resC[i])),float(std_devs(resC[i]))))
+    data.append(["Kondensator " + str(i+1)] + uarrayToString([hauptPoti[i], nebenPoti[i], resC[i]]))
 
-savetableastxt(data,"Kapazität Kondensator", "./BRU/kond" , ["Kondensator", "Wert Poti in \\si{\\ohm}", "Kapazität C in \\si{\\farad}"])
+savetableastxt(data,"Kapazität Kondensator", "./BRU/kond" , ["Kondensator", "$R_G$ in $\\si{\\ohm}$","$R_2$ in $\\si{\\ohm}$", "$C$ in $\\si{\\farad}$"])
 
 print(uarrayToString(resC))
 

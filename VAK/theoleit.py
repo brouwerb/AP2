@@ -29,9 +29,9 @@ Lks = uarrayToString(Lk)
 Sv = []
 Sk = []
 for i in Lv:
-    Sv.append(1/(360/3.5 + 1/i))
+    Sv.append(1/(3600/3.5 + 1/i)*3600)
 for i in Lk:
-    Sk.append(1/(360/3.5 + 1/i))
+    Sk.append(1/(3600/3.5 + 1/i)*3600)
 
 Svs = uarrayToString(Sv)
 Sks = uarrayToString(Sk)
