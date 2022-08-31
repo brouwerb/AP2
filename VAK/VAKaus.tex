@@ -50,7 +50,7 @@
     \paragraph{effektives Saugvermögen}
     Durch verschieden Strömungshindernisse kann das das volle Saugvermögen der Pumpe meist nicht ausgereitzt werden. Daraus folg ein kleineres effektiveres Saugvermögen
     \begin{align}
-        \frac{1}{S_eff} = \frac{1}{S} + \frac{1}{L_1} + \frac{1}{L_2} + \dots \\
+        \frac{1}{S_eff} = \frac{1}{S} + \frac{1}{L_1} + \frac{1}{L_2} + \dots \label{seff}\\
     \end{align}
 
     Lokal kann der Druck beim auspumpen auch durch die Formel
@@ -60,7 +60,7 @@
     beschrieben werden, wobei $p_0$ geeignet gewählt werden muss.
     Theoretisch kann der Leitwert der Kapillare mit Durchmesser $d$ und Länge $l$ bei viskoser Strömungs (mittlere freie Weglänge $\lambda \ll d$) durch die Formel
     \begin{align}
-        L = \frac{\pi d^4}{128 \cdot \eta \cdot l} \cdot \frac{}{}
+        L = \frac{\pi d^4}{128 \cdot \eta \cdot l} \cdot \frac{}{} \label{leitvisk}
     \end{align}
     und bei molekularer Strömung ($\lambda \gg d$) mit der Formel
     \begin{align}
@@ -126,20 +126,27 @@
     Die ermessenen Werte ähneln den theoretischen berechneten Leitwerten. Da aber die Messmethode sehr ungenau ist und die Berechnung durch den fit viel Ungenauigkeiten enthält, waren die relativ großen Abweichungen zu erwarten.
 
     \subsection{Fragen}
+    \paragraph{Frage 1}
     Bei viskoser Strömung ist die mittlere freie Weglänge viel kürzer ist als der Durchmesser des Rohr. D.h. der Effekt einer Kollision mit der Gefäßwand ist unwesentlich. Bei molekularer Strömunghingegen ist die mittlere freie Weglänge viel größer als der Durchmesser, also sind Kollisionen mit der Wand wichtig, aber jene zwischen den Molekülen unwesentlich.
 
-    Bei Betrachtung von \ref*{fig:effSaug} fällt auf, dass je kleiner der Kapillarendurchmesser, desto flacher und kürzer der molekulare Bereich.
-    Daher lässt sich annehmen, dass nach 10 Minuten bei einer Kapillare von 1mm Durchmesser der Enddruck kaum noch varriiert und der molekulare Bereich nicht mehr erreich wird.
+    
+    \paragraph{Frage 2}
+    Wir nehmen an, dass durch den kleinen Durchmesser so wenig Luft fließt, dass fur die ganze Zeit von $t = 600s$ ein viskoser Fluss angenommen werden kann. Es folgt mit Formel \ref{leitvisk} und \ref{seff}:
+    \begin{align}
+        L_{1mm} = \frac{\pi \cdot 1 \si{\milli\meter}^4}{128 \cdot 1,82 \cdot 10^{-5} \si{\kilogram\per\milli\second} \cdot 9,5 \si{\centi\metre} \cdot 957 \si{\hecto\pascal}} = 1,358 \cdot 10^{-6} \si{\meter\cubed\per\second} \\
+        S_{eff} = \frac{1}{\frac{1}{9,72 \cdot 10^{-4} \si{\meter\cubed\per\second}} + \frac{1}{1,358 \cdot 10^{-6} \si{\meter\cubed\per\second}}} = 1,357 \cdot 10^{-6} \si{\meter\cubed\per\second} \\
+        p(600 \si{\second}) = 957 \si{\hecto\pascal} \cdot exp\left(-\frac{1,357 \cdot 10^{-6} \si{\meter\cubed\per\second}}{3 \si{\liter}} \cdot 600 \si{\second}\right) = 730 \si{\hecto\pascal}
+    \end{align}
+    Da bei $730 \si{\hecto\pascal}$ noch viskose Strömung vorliegt, ist unsere Annahme begründet.
 
-
-
-    Wenn wir die Formel
+    \paragraph{Frage 3}
+    Wenn wir annehmen, dass die Formel
     \begin{align}
         p \cdot V = N \cdot k_b \cdot T
     \end{align}
-    annehmen und mit $T = 273,15K$ einsetzen, ergibt sich ein Druck von
+    gilt und $T = 273,15K$ einsetzen, ergibt sich ein Druck von
     \begin{align}
-        p = \frac{N \cdot k_b \cdot T}{V} = \frac{1 \cdot 1,380649 \cdot 10^{-23} \si{\joule\per\kelvin} \cdot 237,15 \si{\kelvin}}{1 \si{\meter\cubed}} = 
+        p = \frac{N \cdot k_b \cdot T}{V} = \frac{1 \cdot 1,380649 \cdot 10^{-23} \si{\joule\per\kelvin} \cdot 237,15 \si{\kelvin}}{1 \si{\meter\cubed}} = 3,274 \cdot 10^{-21} \si{\pascal} \,.
     \end{align}
 
     \bibliographystyle{plain}
