@@ -49,7 +49,7 @@
         x_{min, \ max} = \pm \sqrt{\left(\frac{\mu_0 \mu_r N}{2} \cdot \frac{R^2 I}{B_{max}}\right)^\frac{2}{3} - R^2} \label{eq:bmax}
     \end{align}
     bestimmt werden.
-    
+
     Wenn ein Material in das Spuleninnere gegeben wird, kann das Magnetfeld innerhalb der Spule $B_M$ durch das Magnetfeld $B_0$ ohne Material und die magnetische Permeabilität $\mu_r$ berechnet werden
     \begin{align}
         B_M = \mu_r \cdot B_0 \,. \label{eq:B_M}
@@ -59,6 +59,7 @@
         M = \chi_m \cdot H = (\mu_r - 1) \cdot \frac{B_0}{\mu_0} \,. \label{eq:magnet}
     \end{align}
     berechnet werden.
+
 
     \section{Ergebnisse und Diskussion}
     \subsection{longitudinale Konfiguration}
@@ -72,7 +73,7 @@
 
     Im Plot \ref{fig:longfit1a} wurde die Magnetfeldstärke abzüglich der Hintergrundmagnetisierung aufgetragen und gespiegelt. Anschließend wurde die Funktion \ref{eq:BiotSavart} auf die Messwerte außerhalb der Spule gefittet und auch aufgetragen. Mit einem abgelesenen $B_{max}$ und den gefitteten parametern wurden die Spulenränder berechnet. Diese werden als vertikale Balken in dem Graphen dargestellt. Die Ergebnisse des Fits und die errechneten Werte sind in Tabelle \ref{tab:fit} aufgelistet. Die gleiche Auswertung der Messreihe mit 1,5A Stromstärke ist im Graph \ref{fig:longfit15a} dargestellt.
     
-    Bei beiden Messreihen ist es erstaunlich, wie stark $I_{eff}$ von der eingestellten Stromstärke abweicht. Die Abweichung ist aber bei beiden Messreihen in sich konsistent. Auch der gefittete Radius $R_eff$ ist bei beiden Messreihen konsistent. Nur die Länge der Spule ist bei unterschiedlich. Dies kann aber auch daran liegen, dass die Abweichungen vom Biot-Savart-Gesetz mit der Stromstärke skalieren, und so der homogene Bereich des Magnetfeldes größer wird.
+    Bei beiden Messreihen ist es erstaunlich, wie stark $I_{eff}$ von der eingestellten Stromstärke abweicht. Die Abweichung ist aber bei beiden Messreihen in sich konsistent. Auch der gefittete Radius $R_{eff}$ ist bei beiden Messreihen konsistent. Nur die Länge der Spule ist bei unterschiedlich. Dies kann aber auch daran liegen, dass die Abweichungen vom Biot-Savart-Gesetz mit der Stromstärke skalieren, und so der homogene Bereich des Magnetfeldes größer wird.
     \begin{table}[h]
         \centering
         \begin{tabular}{c | c | c}
@@ -105,15 +106,10 @@
     \subsection{Bestimmung von $\mu_r$}
     Mit den in \ref{tab:fit} aufgelisteten Ergebnissen, kann die Funktion \ref{eq:BiotSavart} mit einem freien Parameter $\mu_r$ auf die Messwerte der longitudinalen Konfiguration gefittet werden \ref{fig:murfit}. So kann $\mu_r = 2.64$ bestimmt werden.
     Daraus folgt, dass es sich um einen stark paramagnetischen Stoff handelt, der vermutlich ein Legierung aus einem ferromagnetischen Stoff wie Eisen und einem paramagnetischen Stoff wie z.B. Magnesium ist.
-    Nun kann die Magnetisierung der Spule mit Metallkern mittels \ref{eq:magnet} und die maximale magnetische Feldstärke der Spule mittels \ref{eq:B_M} berechnet werden.
-   \begin{align}
-        B_{M} = 21.80 \si{\milli\tesla} \\
-        M = 10779 \si{\ampere\per\metre}
-    \end{align}
     \begin{figure}
         \centering
         \includegraphics[width=0.8\textwidth]{mur.pdf}
-        \caption{Fit der Permeabilitätsmessung}
+        \caption{Fit der longitudinalen Konfiguration}
         \label{fig:murfit}
     \end{figure}
 
@@ -126,9 +122,6 @@
         \caption{Messwerte transversale Konfiguration}
         \label{fig:transmess}
     \end{figure}
-
-
-
 
 
     \section{Diskussion}
