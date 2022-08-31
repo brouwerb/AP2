@@ -44,7 +44,7 @@ ax.grid()
 difference = [[i[1][j]-i[2][j]  for j in range(len(i[1]))] for i in dataWithErr]
 x_n , y_n = mirrorDataAroundX(2*scaler,nominal_values(dataWithErr[0][0]),nominal_values(difference[0]))
 #print(x_n,y_n)
-ax.scatter(x_n,y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o")
+ax.scatter([i*100 for i in x_n],y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o")
 #ax.errorbar(x_n,y_n,fmt="none",yerr=std_devs(difference[0]),xerr=std_devs(dataWithErr[0][0]),ecolor='black',elinewidth=0.8,capsize=2,capthick=0.8)
 
 vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:],bounds=[[0,0.01],[1.2,0.2]])
@@ -52,12 +52,11 @@ print(vals)
 
 plot = genDataFromFunktion(1000,-250*scaler,250*scaler,vals,arrtheo_kurve)
 
-ax.plot(plot[0],plot[1])
+ax.plot([100*i for i in plot[0]],plot[1])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
-plt.savefig(SAVE_AS)
-plt.show()
+
 
 Bmax = max(nominal_values(difference[0]))
 I, R = vals
@@ -66,4 +65,11 @@ N = 1200
 print(Bmax)
 x = np.sqrt(abs(np.power(mu0*N*R**2*I/(2*Bmax),2/3)-R**2))
 print(x)
+
+plt.axvline(x=x*100, color='green', ls='--', label='xmax')
+plt.axvline(x=-x*100, color='green', ls='--', label='xmin')
+plt.legend(bbox_to_anchor=(1.0, 1), loc='best')
+
+plt.savefig(SAVE_AS)
+plt.show()
 
