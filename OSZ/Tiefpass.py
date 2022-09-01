@@ -37,11 +37,11 @@ ax.grid()
 
 vals, errs = optimize.curve_fit(Durchlass,frequenz,g_a)
 print(vals)
-plot = genDataFromFunktion(100,1000,100000,vals,Durchlass)
+plot = genDataFromFunktion(10000,100,100000,vals,arrDurchlass)
 
 
 ax.scatter(frequenz,g_a,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[2],marker="o")
-ax.plot(plot[1],plot[2])
+ax.plot(plot[0],plot[1])
 plt.xscale("log")
 plt.savefig(SAVE_AS)
 plt.show()

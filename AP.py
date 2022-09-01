@@ -135,28 +135,19 @@ def arrToString(arr):
 def genDataFromFunktion(amount,von,bis,params,func):
     x=[]
     y=[]
+    
     for i in range(amount+1):
         x.append(von+i*(bis-von)/amount)
     for i in range(amount+1):
-        if params != []:
+        if params != [1]:
+            
             y.append(func(x[i],params))
         else:
             y.append(func(x[i]))
 
     return x,y
 
-def genDataFromFunktionN(amount,von,bis,params,func):
-    x=[]
-    y=[]
-    for i in range(amount+1):
-        x.append(von+i*(bis-von)/amount)
-    for i in range(amount+1):
-        if params != []:
-            y.append(func(x[i],*params))
-        else:
-            y.append(func(x[i]))
 
-    return x,y
 
 def getPlotable(rData):
     data=[[],[]]
