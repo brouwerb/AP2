@@ -47,7 +47,7 @@ ax.scatter(x_n,y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="
 #ax.errorbar(x_n,y_n,fmt="none",yerr=std_devs(difference[0]),xerr=std_devs(dataWithErr[0][0]),ecolor='black',elinewidth=0.8,capsize=2,capthick=0.8)
 
 vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:],bounds=[[0,0.01],[1.2,0.2]])
-print(vals)
+
 
 plot = genDataFromFunktion(1000,-250*scaler,250*scaler,vals,arrtheo_kurve)
 
@@ -57,4 +57,13 @@ ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 plt.savefig(SAVE_AS)
 plt.show()
+
+I, R = uarray(vals, np.sqrt(np.diag(errs)))
+mu0 = 1.256e-6
+Bmax = max(difference[0])
+N = 1200
+
+x2 = np.abs(np.power(mu0*N*R**2*I/(2*Bmax),2/3)-R**2)
+print(x2)
+print(uarrayToString([Bmax,]))
 
