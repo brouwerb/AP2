@@ -1,0 +1,86 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} %Matheschriften
+\usepackage{amssymb} %Mathesymbole
+%\usepackage{mathptmx} % Einstellung für Schriften und Sonderzeichen in mathematischen Umgebungen
+                        % ändert SChriftfont
+\usepackage{wasysym} % Stellt diverse Sonderzeichen bereit
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[section]{placeins}
+% allows for temporary adjustment of side margins
+\usepackage{changepage}
+\usepackage{rotating}
+
+
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{%
+ \renewcommand{\abstractname}{Einleitung}}
+
+\title{Versuch 5: Oszilloskop}
+\author{Team 2-13: Jascha Fricker, Benedict Brouwer}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Einleitung}
+    In diesem Versuch wurden verschiedene RC und LC-Schaltungen mit einem Oszilloskop gemessen.
+
+    \section{Theorie}
+
+    \subsection{Tieftpass}
+    Eine Tiefpass besteht aus einem Kondensator mit Kapazität $C$ und einem Widerstand mit Wert $R$. Die Ausgangsspannung wird beim Tiefpass am Kondensator (beim Hochpass am Widerstand) abgegriffen.
+    Beim Tiefpass lässt sich aus $R$, $C$ und der Frequenz $f$ die Durchgangskurve, also der Quoteint der Ausgangsspannung $U_{\text{Atp}}$ und der Eingangsspannung $U_{\text{E}}$ 
+    \begin{align}
+        g_{\text{tp}} &= \frac{U_{\text{Atp}}}{U_{\text{E}}} = \frac{1}{\sqrt{1 + \left( \omega R C \right)}} \\
+    \end{align}
+    berechnen. Auch die Phasenverschiebung
+    \begin{align}
+        \phi_{\text{tp}} &= \arctan{\frac{1}{\omega R C}} \\
+    \end{align}
+    lässt sich theoretisch berechnen.
+    Die Grenzfrequenz, bei der die Phasenverschiebung 0 ist, ist somit
+    \begin{equation}
+        f_{\text{g}} = \frac{1}{2 \pi R C} \,.
+    \end{equation}
+
+    \subsection{Schwingkreis}
+    Auch bei einem Serienschwingkreis (Serienschaltuung von Spule und Kondensator) kann die Durchgangskurve
+    \begin{equation}
+        g_{\text{Ssc}} = \frac{U_{\text{Atp}}}{U_{\text{E}}} = \frac{R}{\sqrt{R^2 + \left( \omega R - \frac{1}{\omega C} \right)^2}} \\
+    \end{equation}
+    mit dem Ausgangswiderstand $R$, die Phasenverschiebung
+    \begin{equation}
+        \tan{\phi_{\text{Ssc}}} = \frac{1}{R}\left( \omega L - \frac{1}{\omega C} \right) \\
+    \end{equation}
+    und die Eigenfreqenz
+    \begin{equation}
+        f_{\text{Ssc}} = \frac{1}{2 \pi} \sqrt{\frac{1}{L C} - \left(\frac{R}{2L}\right)^2} \,.
+    \end{equation}
+    berechnen.
+
+    Bei einem Parallelschwinkreis lässt sich die Eingenschwingung
+    \begin{equation}
+        f_{\text{Psc}} \approx \frac{1}{2 \pi} \sqrt{\frac{1}{R L} - \left(\frac{R^4 C}{2L^3}\right)} \,.
+    \end{equation}
+    nur ungefähr berechnen.
+    
+
+
+    \section{Ergebnisse}
+
+    \section{Diskussion}
+
+    \bibliographystyle{plain}
+    \bibliography{literature}
+
+\end{document}
