@@ -107,3 +107,25 @@ ax.set_ylabel(Y_LABEL)
 
 plt.savefig(SAVE_AS)
 plt.show()
+
+
+SAVE_AS = "./MAG/logarithmischerVergleich.pdf"
+
+fig, ax = plt.subplots()
+ax.grid()
+
+ax.scatter(data[3][0],nominal_values(difference[3]),s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[2],marker="o")
+ax.errorbar(data[3][0],nominal_values(difference[3]),fmt="none",yerr=std_devs(difference[3]),xerr=[j*0.0025+digitalErr(0.5) for j in data[3][0]],ecolor = COLOR_STYLE[2],elinewidth=0.8,capsize=2,capthick=0.8)
+ax.scatter(data[0][0],nominal_values(difference[0]),s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o")
+ax.errorbar(data[0][0],nominal_values(difference[0]),fmt="none",yerr=std_devs(difference[0]),xerr=[j*0.0025+digitalErr(0.5) for j in data[0][0]],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8)
+plt.xscale("log")
+plt.yscale("log")
+plt.legend(["transversal 1 A", "longditudinal 1 A"])
+
+ax.set_xlabel(X_LABEL)
+ax.set_ylabel(Y_LABEL)
+ax.set_xlim(4,433)
+ax.set_ylim(0.01,15)
+
+plt.savefig(SAVE_AS)
+plt.show()
