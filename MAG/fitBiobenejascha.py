@@ -52,7 +52,7 @@ difference = [[i[1][j]-i[2][j]  for j in range(len(i[1]))] for i in dataWithErr]
 x_n , y_n = mirrorDataAroundX(2*scaler,nominal_values(dataWithErr[3][0]),nominal_values(difference[3]))
 
 #print(x_n,y_n)
-ax.scatter(x_n,y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o")
+ax.scatter(x_n,y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o", label="Messwerte")
 #ax.errorbar(x_n,y_n,fmt="none",yerr=std_devs(difference[0]),xerr=std_devs(dataWithErr[0][0]),ecolor='black',elinewidth=0.8,capsize=2,capthick=0.8)
 
 vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:], method="dogbox")
@@ -61,7 +61,9 @@ print(errs)
 vals=[vals[0]]
 plot = genDataFromFunktion(1000,-400*scaler,400*scaler,vals,arrtheo_kurve)
 
-ax.plot(plot[0],plot[1])
+ax.plot(plot[0],plot[1], label="Theoriekurve")
+
+ax.legend(loc="best")
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
@@ -69,6 +71,12 @@ ax.set_xlim(X_LOW_LIM,X_HIGH_LIM)
 ax.set_ylim(Y_LOW_LIM,Y_HIGH_LIM)
 plt.savefig(SAVE_AS)
 plt.show()
+
+B0 = ufloat(0.00826, 0.00041)
+mu0 = 1.256e-6
+mur = ufloat(vals[0], np.sqrt(errs[0][0]))
+print(mur)
+print(uarrayToString([mur*B0, (mur - 1)*B0/mu0]))
 
 
 
