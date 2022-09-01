@@ -72,3 +72,12 @@ plt.legend(bbox_to_anchor=(1.0, 1), loc='best')
 
 plt.savefig(SAVE_AS)
 plt.show()
+
+I, R = uarray(vals, np.sqrt(np.diag(errs)))
+mu0 = 1.256e-6
+Bmax = max(difference[1])
+N = 1200
+
+x2 = np.abs(np.power(mu0*N*R**2*I/(2*Bmax),2/3)-R**2)
+print(x2)
+print(uarrayToString([Bmax, I, R]))

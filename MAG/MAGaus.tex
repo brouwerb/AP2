@@ -60,17 +60,17 @@
     \end{align}
     berechnet werden.
     \section{Versuchsaufbau und Druchführung}
-    Zur Untersuchnug der magnetischen Eigenschaften einer Spule wurde auf einem linear verschiebbaren Schlitten eine Hallsonden mit jeweils unterschiedlicher Ausrichtung montiert.
-    Mit dieser wurde mit variierendem Abstand zur Spule die magnetische Flussdichte gemessen. Es wurde das B-Feld in longditudinaler Richtung bei 1 \si{\ampere}, 1.5 \si{ampere} und bei 1 \si{\ampere} mit Metallkern gemessen.
-    Des Weieren wurde das B-Feld in Transversalerrichtung zur Symmetrieachse bei 1 \si{\ampere} gemessen.
+    Zur Untersuchnug der magnetischen Eigenschaften einer Spule wurde auf einem linear verschiebbaren Schlitten zwei verschiedene Hallsonden mit jeweils unterschiedlicher Ausrichtung montiert.
+    Mit diesen wurde mit variierendem Abstand zur Spule die magnetische Flussdichte gemessen. Es wurde das B-Feld in longditudinaler Richtung bei 1 \si{\ampere}, 1.5 \si{ampere} und bei 1 \si{\ampere} mit Metallkern gemessen.
+    Des Weiteren wurde das B-Feld in Transversalrichtung bei 1 \si{\ampere} gemessen.
     \section{Ergebnisse und Diskussion}
     \subsection{longitudinale Konfiguration}
-    Die rohen Messwerte der 4x3 verschiedenen Messreihen der longitudinalen Konfiguration wurden im Graph \ref{fig:longmess} geplottet.
+    Die rohen Messwerte der verschiedenen Messreihen der longitudinalen Konfiguration wurden im Graph \ref{fig:longmessohneKern} (ohne Metallkern) und \ref{fig:longmessmitKern} (mit Metallkern) geplottet.
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.9\textwidth]{ohneKernRaw.pdf}
         \caption{Messwerte der longitudinalen Konfiguration ohne Metallkern}
-        \label{fig:longmessmitKern}
+        \label{fig:longmessohneKern}
     \end{figure}
 
     \begin{figure}[h]
@@ -81,21 +81,21 @@
     \end{figure}
 
 
-    Im Plot \ref{fig:longfit1a}[longditudinale Konfiguration 1\si{\ampere}] wurde die magnetische Flussdichte abzüglich der Hintergrundmagnetisierung aufgetragen und gespiegelt. Anschließend wurde die Funktion \ref{eq:BiotSavart} auf die Messwerte außerhalb der Spule gefittet und auch aufgetragen. Mit einem abgelesenen $B_{max}$ und den gefitteten parametern wurden die Spulenränder berechnet \ref{eq:bmax}. Diese werden als vertikale Balken in dem Graphen dargestellt. 
+    Im Plot \ref{fig:longfit1a} (longditudinale Konfiguration $1 \si{\ampere}$) wurde die magnetische Flussdichte abzüglich der Hintergrundmagnetisierung aufgetragen und gespiegelt. Anschließend wurde die Funktion (\ref{eq:BiotSavart}) auf die Messwerte außerhalb der Spule gefittet und auch aufgetragen. Mit einem abgelesenen $B_{max}$,  den gefitteten Parametern und der Funktion (\ref{eq:bmax}) wurden die Spulenränder berechnet. Diese werden als vertikale Balken in dem Graphen dargestellt. 
     Die Ergebnisse des Fits und die errechneten Werte sind in Tabelle \ref{tab:fit} aufgelistet. Für den Fit wurden I und R als Fitparameter verwendet, da diese von den gemessene Werten bei der Versuchsdurchführung abweichen. Dies liegt an der Erwärumung der Spule und da die Spule nicht, wie in der Theorie angenommen, rund ist.
     Die gleiche Auswertung der Messreihe mit 1,5A Stromstärke ist im Graph \ref{fig:longfit15a} dargestellt.
     
-    Bei beiden Messreihen ist es erstaunlich, wie stark $I$_{eff} von der eingestellten Stromstärke abweicht. Die Abweichung ist aber bei beiden Messreihen in sich konsistent. Auch der gefittete Radius $R$_{eff} ist bei beiden Messreihen konsistent. Nur die Länge der Spule ist bei unterschiedlich. Dies kann aber auch daran liegen, dass die Abweichungen vom Biot-Savart-Gesetz mit der Stromstärke skalieren, und so der homogene Bereich des Magnetfeldes größer wird.
+    Bei beiden Messreihen ist es erstaunlich, wie stark $I_{\text{eff}}$ von der eingestellten Stromstärke abweicht. Die Abweichung ist aber bei beiden Messreihen in sich konsistent. Auch der gefittete Radius $R_{\text{eff}}$ ist bei beiden Messreihen konsistent. Nur die Länge der Spule ist bei unterschiedlich. Dies kann aber auch daran liegen, dass die Abweichungen vom Biot-Savart-Gesetz mit der Stromstärke skalieren, und so der homogene Bereich des Magnetfeldes größer wird.
     \begin{table}[h]
         \centering
         \begin{tabular}{c | c | c}
             \textbf{Parameter} & \textbf{Wert mit 1A} & \textbf{Wert mit 1,5A} \\
             \hline
-            $B_{max}$ & $8,26 \si{\milli\tesla}$ & $12,3 \si{\milli\tesla}$ \\
-            $R_{eff}$ & $35,6 \si{\milli\metre}$ & $35,8 \si{\milli\metre}$ \\
-            $I_{eff}$ & $0,74 \si{\ampere}$ & $1,10 \si{\ampere}$ \\
-            $x_{min}$ & $25,9 \si{\milli\meter}$ & $35,8 \si{\milli\meter}$ \\
-            $x_{max}$ & $-25,9 \si{\milli\meter}$ & $-35,8 \si{\milli\meter}$ \\
+            $B_{max}$ & $8,26(41) \si{\milli\tesla}$ & $12,4(55) \si{\milli\tesla}$ \\
+            $R_{eff}$ & $35,6(10) \si{\milli\metre}$ & $35,8(11) \si{\milli\metre}$ \\
+            $I_{eff}$ & $0,739(16) \si{\ampere}$ & $1,098(25) \si{\ampere}$ \\
+            $x_{min}$ & $25,9(54) \si{\milli\meter}$ & $25,8(55) \si{\milli\meter}$ \\
+            $x_{max}$ & $-25,9(54) \si{\milli\meter}$ & $-25,8(55) \si{\milli\meter}$ \\
         \end{tabular}
         \caption{Ergebnisse Aufgabe 5.2.2}
         \label{tab:fit}
@@ -116,17 +116,20 @@
     \end{figure}
 
     \subsection{Bestimmung von $\mu_r$}
-    Mit den in Tabelle \ref{tab:fit} aufgelisteten Ergebnissen, kann die Funktion \ref{eq:BiotSavart} mit einem freien Parameter $\mu_r$ auf die Messwerte der longitudinalen Konfiguration gefittet werden \ref{fig:murfit}[Siehe Abb.]. So kann $\mu_r = 2.6469(63)$ bestimmt werden.
+    Mit den in Tabelle \ref{tab:fit} aufgelisteten Ergebnissen, kann die Funktion \ref{eq:BiotSavart} mit einem freien Parameter $\mu_r$ auf die Messwerte der longitudinalen Konfiguration gefittet werden (Siehe Abb. \ref{fig:murfit}). So kann 
+    \begin{align}
+        \mu_r = 2.6469(63)
+    \end{align} bestimmt werden.
     
     Dies ist eine relative Permeabilität die man eigentlich paramagnetischen Stoffen zuordnen würde. Allerdings lässt die vergleichsweise geringe magnetische Flussdichte vermuten, dass es sich um einen ferromagnetischen Stoff handelt, der seine charakteristischen Weißschen Bezirke nicht voll umfänglich ausbilden konnte.
     Was dazu führt, dass die tasächlich gemessene relative Permeabilität weit von dem entfernt ist, was für ferromagnetische Stoffe üblich ist.
     %Daraus folgt, dass es sich um einen stark paramagnetischen Stoff handelt, der vermutlich ein Legierung aus einem ferromagnetischen Stoff wie Eisen und einem paramagnetischen Stoff wie z.B. Magnesium ist.
     
     
-    Nun kann die Magnetisierung der Spule mit Metallkern mittels Gleichung \ref{eq:magnet} und die maximale magnetische Flussdichte der Spule mittels Gleichung \ref{eq:B_M} berechnet werden.
+    Nun kann die Magnetisierung der Spule mit Metallkern mittels Gleichung (\ref{eq:magnet}) und die maximale magnetische Flussdichte der Spule mittels Gleichung (\ref{eq:B_M}) berechnet werden.
    \begin{align}
-        B_{M} = 21.80(12) \si{\milli\tesla} \\
-        M = 10.779(42) \si{\kilo\ampere\per\metre}
+        B_{M} = 21,8(13) \si{\milli\tesla} \\
+        M = 10,77(75) \si{\kilo\ampere\per\metre}
     \end{align}
     \begin{figure}
         \centering
