@@ -139,11 +139,11 @@ def genDataFromFunktion(amount,von,bis,params,func):
     for i in range(amount+1):
         x.append(von+i*(bis-von)/amount)
     for i in range(amount+1):
-        if params != [1]:
+        
             
-            y.append(func(x[i],params))
-        else:
-            y.append(func(x[i]))
+        y.append(func(x[i],params))
+        
+        #y.append(func(x[i]))
 
     return x,y
 
