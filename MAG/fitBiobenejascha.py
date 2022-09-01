@@ -13,8 +13,8 @@ from scipy import optimize
 
 
 COLOR_STYLE = ["red","green","blue","orange"]
-Y_LABEL = r"B-Feld $B$ in $mT$"
-X_LABEL = r"Abstand $s$ in $mm$"
+Y_LABEL = r"B-Feld $B$ in T"
+X_LABEL = r"Abstand $s$ in m"
 X_LOW_LIM = -0.4
 Y_LOW_LIM = -0.001
 X_HIGH_LIM = 0.4
@@ -57,6 +57,7 @@ ax.scatter(x_n,y_n,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="
 
 vals, errs = optimize.curve_fit(theo_kurve,x_n[12:],y_n[12:], method="dogbox")
 print(vals)
+print(errs)
 vals=[vals[0]]
 plot = genDataFromFunktion(1000,-400*scaler,400*scaler,vals,arrtheo_kurve)
 
