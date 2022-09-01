@@ -14,9 +14,9 @@ from scipy import optimize
 
 
 COLOR_STYLE = ["red","green","blue","orange"]
-Y_LABEL = r"B-Feld $B$ in $mT$"
-X_LABEL = r"Abstand $s$ in $mm$"
-SAVE_AS = "./MAG/raw1.pdf"
+Y_LABEL = r"B-Feld $B$ in mT"
+X_LABEL = r"Abstand $s$ in mm"
+SAVE_AS = "./MAG/ohneKernRaw.pdf"
 
 
 data = [[getAxisEasy(6,4+(j*3+i),"./MAG/Mag.xls","MAG") for i in range(3)] for j in range(5)]
@@ -47,7 +47,7 @@ difference = [[i[1][j]-i[2][j]  for j in range(len(i[1]))] for i in dataWithErr]
 
 print(difference)
 
-for i in range(len(data)-1):
+for i in range(0,len(data)-3):
     ax.scatter(data[i][0],data[i][1],s=15,linewidths=1.5,zorder=10,color = COLOR_STYLE[i],marker="+")
     ax.scatter(data[i][0],data[i][2],s=15,linewidths=1.5,zorder=10,color = COLOR_STYLE[i],marker = "x")
     ax.scatter(data[i][0],nominal_values(difference[i]),s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[i],marker="o")
@@ -62,6 +62,29 @@ ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
 plt.savefig(SAVE_AS)
 plt.show()
+
+fig, ax = plt.subplots()
+ax.grid()
+SAVE_AS = "./MAG/mitKernRaw.pdf"
+
+for i in range(2,len(data)-1):
+    ax.scatter(data[i][0],data[i][1],s=15,linewidths=1.5,zorder=10,color = COLOR_STYLE[i],marker="+")
+    ax.scatter(data[i][0],data[i][2],s=15,linewidths=1.5,zorder=10,color = COLOR_STYLE[i],marker = "x")
+    ax.scatter(data[i][0],nominal_values(difference[i]),s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[i],marker="o")
+
+
+    ax.errorbar(data[i][0],data[i][1],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.01 for j in data[i][0]],xerr=[j*0.0025+digitalErr(0.5) for j in data[i][0]],ecolor = 'black',elinewidth=0.4,capsize=2,capthick=0.4)
+    ax.errorbar(data[i][0],data[i][2],fmt="none",yerr=[np.sqrt((j*0.002)**2+(j*0.003)**2)+0.001 for j in data[i][0]],xerr=[j*0.0025+digitalErr(0.5) for j in data[i][0]],ecolor = 'black',elinewidth=0.4,capsize=2,capthick=0.4)
+    ax.errorbar(data[i][0],nominal_values(difference[i]),fmt="none",yerr=std_devs(difference[i]),xerr=[j*0.0025+digitalErr(0.5) for j in data[i][0]],ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8)
+
+ax.legend(handles=legend_elements,loc='upper right')
+ax.set_xlabel(X_LABEL)
+ax.set_ylabel(Y_LABEL)
+plt.savefig(SAVE_AS)
+plt.show()
+
+
+
 
 
 SAVE_AS = "./MAG/raw2.pdf"

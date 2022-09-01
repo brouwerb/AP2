@@ -13,8 +13,8 @@ from scipy import optimize
 
 
 COLOR_STYLE = ["red","green","blue","orange"]
-Y_LABEL = r"B-Feld $B$ in $mT$"
-X_LABEL = r"Abstand $s$ in $cm$"
+Y_LABEL = r"B-Feld $B$ in T"
+X_LABEL = r"Abstand $s$ in cm"
 SAVE_AS = "./MAG/fit15a.pdf"
 
 
