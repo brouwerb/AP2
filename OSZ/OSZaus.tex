@@ -8,7 +8,7 @@
 \usepackage{wasysym} % Stellt diverse Sonderzeichen bereit
 \usepackage{siunitx}
 \usepackage{float}
-\usepackage{microtype}
+% \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{xcolor}
@@ -112,7 +112,6 @@
     \begin{align}
         f_{grenz,Durch} = 5.4(14) \cdot 10^{3} \\
         f_{grenz,Phase} = 5.0(16) \cdot 10^{3}
-
     \end{align}
 
     \begin{figure}[h]
@@ -137,32 +136,34 @@
     
 
 
-    \begin{image}[h]
+    \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\textwidth]{Tiefpass_Integrierend_rec.png}
-        \caption{Tiefpassfilter mit 100 \si{\kilo\hertz} Rechtecksignal}
+        \caption{Tiefpassfilter mit $100 \si{\kilo\hertz}$ Rechtecksignal}
         \label{im:Tirec}
-    \end{image}
-    \begin{image}[h]
+    \end{figure}
+    
+    \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\textwidth]{Tiefpass_Integrierend_tri.png}
-        \caption{Tiefpassfilter mit 100 \si{\kilo\hertz} Dreieckssignal}
+        \caption{Tiefpassfilter mit 100 $\si{\kilo\hertz}$ Dreieckssignal}
         \label{im:Titri}
-    \end{image}
-    \begin{image}[h]
+    \end{figure}
+    \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\textwidth]{Hochpass_differenzierend_rec.png}
-        \caption{Hochpass mit 1 \si{\kilo\hertz} Rechtecksignal}
+        \caption{Hochpass mit 1 $\si{\kilo\hertz}$ Rechtecksignal}
         \label{im:Horec}
-    \end{image}
-    \begin{image}[h]
+    \end{figure}
+    \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\textwidth]{Hochpass_differenzierend_tri.png}
-        \caption{Hochpass mit 1 \si{\kilo\hertz} Dreieckssignal}
+        \caption{Hochpass mit 1 $\si{\kilo\hertz}$ Dreieckssignal}
         \label{im:Hotri}
-    \end{image}
+    \end{figure}
 
     \subsection{Serienschwingkreis}
+    Mit einem Serienschwingkreis als Filter kann man alle bis auf einen Frequenzbereich herausfiltern
 
     
 
