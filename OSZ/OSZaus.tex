@@ -37,21 +37,35 @@
 
     \section{Theorie}
 
-    \subsection{Tieftpass}
+    \subsection{Tiefpass}
     Eine Tiefpass besteht aus einem Kondensator mit Kapazität $C$ und einem Widerstand mit Wert $R$. Die Ausgangsspannung wird beim Tiefpass am Kondensator (beim Hochpass am Widerstand) abgegriffen.
     Beim Tiefpass lässt sich aus $R$, $C$ und der Frequenz $f$ die Durchgangskurve, also der Quoteint der Ausgangsspannung $U_{\text{Atp}}$ und der Eingangsspannung $U_{\text{E}}$ 
     \begin{align}
-        g_{\text{tp}} &= \frac{U_{\text{Atp}}}{U_{\text{E}}} = \frac{1}{\sqrt{1 + \left( \omega R C \right)}} \\
+        g_{\text{tp}} &= \frac{U_{\text{Atp}}}{U_{\text{E}}} = \frac{1}{\sqrt{1 + \left( \omega R C \right)}} \\ \label{eq:TiefDurch}
     \end{align}
     berechnen. Auch die Phasenverschiebung
     \begin{align}
-        \phi_{\text{tp}} &= \arctan{\frac{1}{\omega R C}} \\
+        \phi_{\text{tp}} &= \arctan{\frac{1}{\omega R C}} \\ \label{eq:TiefPha}
     \end{align}
     lässt sich theoretisch berechnen.
     Die Grenzfrequenz, bei der die Phasenverschiebung 0 ist, ist somit
     \begin{equation}
-        f_{\text{g}} = \frac{1}{2 \pi R C} \,.
+        f_{\text{g}} = \frac{1}{2 \pi R C} \,. \label{eq:Grenzfrequenz}
     \end{equation}
+    Für das Verhältnis von Eingangsspannung un Ausgangsspannung gilt bei hohen Frequenzen ($f >> f_{\text{g}}$)
+    \begin{equation}
+        U_{\text{A,TP}}= \frac{1}{RC} \cdot \int U_{\text{E}} \,dt \label{eq:tpint}
+    \end{equation}
+    Woraus sich die integrierende Wirkung eines Teifpassfilters ableiten lässt
+
+    \subsection{Hochpass}
+    Bei niedrigen Frequenzen ($f << f_{\text{g}}$) gilt für das Verhältnis von Eingangsspannung und Ausgangsspannung des Hochpassfilters 
+    \begin{equation}
+        U_{\text{A,HP}}= RC \cdot \frac{dU_{\text{E}}}{dt} \label{eq:hpdiff}
+    \end{equation}
+    was die differenzierende Wirkung eine Hochpassfilters erklärt.
+
+
 
     \subsection{Schwingkreis}
     Auch bei einem Serienschwingkreis (Serienschaltuung von Spule und Kondensator) kann die Durchgangskurve
@@ -68,17 +82,99 @@
     \end{equation}
     berechnen.
 
-    Bei einem Parallelschwinkreis lässt sich die Eingenschwingung
+    Bei einem Parallelschwinkreis lässt sich die Eigenschwingung
     \begin{equation}
         f_{\text{Psc}} \approx \frac{1}{2 \pi} \sqrt{\frac{1}{R L} - \left(\frac{R^4 C}{2L^3}\right)} \,.
     \end{equation}
     nur ungefähr berechnen.
+
     
 
 
+
+
+    \section{Durchführung}
+    Zunächst wurde der Tastkopf mit dem dafür vorgesehenen Oszilloskopsignal kallibriert. Da der Tastkopf eine Teilerverhältnis von 10 hat muss also die
+    eingestellte Kapazität in etwa 9 mal größer sein als die Kapazität des Kabels und die des Oszilloskops. 
+    Anschließend wurde mit einem $6.2(1.2) \si{\nano\farad}$ Kondensator und einem $4.70(47) \si{\kilo\ohm}$ Wiederstand ein Tiefpassfilter aufgebaut. 
+    Durch Vergleich von Eingangs und Ausgangsspannung konnte mit diesem Aufbau die Durchlasskurve und Phasenverschiebung gemessen werden.
+    Als weiterer Versuch wurde ein Serienschwingkreis mit einem $100.0(1.0) \si{\ohm}$ Wiederstand, einr $2.200(55) \si{\milli\henry}$ Spule und einem $6.2(1.2) \si{\nano\farad}$ Kondensator aufgebaut, mit dem zunächst die Resonanzfrequenz durch einen Frequenzsweep bestimmt wurde.
+    Anschliesend wurde abermals die Durchlasskurve und die Dämpfungskonstante bestimmt.
+    Zu guter Letzt wurde der Serienschwingkreis in einen Parallelschwingkreis umgebaut mit dem durch Vergleich der Resonanzfrequenzen (abermals mittels eines Frequenzsweeps) die Kapazität eines $10 \si{\metre}$ Koaxkabels bestimmt wurde.
+
     \section{Ergebnisse}
+    \subsection{Tiefpass}
+    In Figur \ref{fig:Tiedurchlass} wurde die gemessene Durchlasskurve mit der Theoriekurve \ref{eq:TiefDurch} geplottet. 
+    Dabei fällt auf, dass der Fitparameter $RC = 2.95(74) 10^{-5} \si{\ohm\cdot\farad}$ im Konfidenzintervall der angegebenen Größen der Bauteile liegt ($RC_{Bau} = 2.9(0.6)\cdot 10^{-5}$).
+    Auch die Messwerte der Phasenverschiebung des Tiefpassfilters \ref{fig:Tiepha}[siehe Figur] lassen sich mit einem im Konfidenzinterval liegenden Fitparamenter ($RC = 3.2(11) \cdot 10^{-5} \si{\ohm\cdot\farad}$) mit der Theoriekurve \ref{eq:TiefPha} fitten.
+    Dabei gibt es in den Messdaten zwei Ausreißer mit einer Phasenverschiebung von über $90$° was theoretisch bei einem Tiefpassfilter nicht vorkommen kann.
+    Daraus folgt mit Formel \ref{eq:Grenzfrequenz} für die Grenzfrequenzen
+    \begin{align}
+        f_{grenz,Durch} = 5.4(14) \cdot 10^{3} \\
+        f_{grenz,Phase} = 5.0(16) \cdot 10^{3}
+
+    \end{align}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Tiefdurch.pdf}
+        \caption{Durchlasskurve des Tiefpassfilters}
+        \label{fig:Tiedurchlass}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Tief_Pha.pdf}
+        \caption{Phasenverschiebung des Tiefpassfilters bei unterschiedlichen Frequenzen}
+        \label{fig:Tiepha}
+    \end{figure}
+    
+    \subsection{Differenzierende und integrierende Wirkung}
+
+    Beim varriieren der Frequenzen bei einem Hoch bzw. Tiefpassfilter fällt nicht nur eine Amplitudenveränderung sondern auch eine Änderug der Signalform an sich auf. Bei Tiefpassfiltern wird das Eingangssignal (blau) bei hohen frequenzen Integriert zum Ausgangssignal (gelb) beeinflusst wie in Bild \ref{im:Tirec} und \ref{im:Titri} zu sehen ist.
+    Dies lässt sich mit Formel \ref{eq:tpint} erklären.
+    Bei Hochpassfiltern wird das Eingangssignal (blau) zum Ausgangssignal (gelb) bei niedrigen Frequenzen differenziert (mit Formel \ref{eq:hpdiff}) siehe Bild \ref{im:Horec} und \ref{im:Titri}.
+    
+
+
+    \begin{image}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Tiefpass_Integrierend_rec.png}
+        \caption{Tiefpassfilter mit 100 \si{\kilo\hertz} Rechtecksignal}
+        \label{im:Tirec}
+    \end{image}
+    \begin{image}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Tiefpass_Integrierend_tri.png}
+        \caption{Tiefpassfilter mit 100 \si{\kilo\hertz} Dreieckssignal}
+        \label{im:Titri}
+    \end{image}
+    \begin{image}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Hochpass_differenzierend_rec.png}
+        \caption{Hochpass mit 1 \si{\kilo\hertz} Rechtecksignal}
+        \label{im:Horec}
+    \end{image}
+    \begin{image}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Hochpass_differenzierend_tri.png}
+        \caption{Hochpass mit 1 \si{\kilo\hertz} Dreieckssignal}
+        \label{im:Hotri}
+    \end{image}
+
+    \subsection{Serienschwingkreis}
+
+    
 
     \section{Diskussion}
+
+    \section{Anhang}
+    \subsection{Gaußsche Fehlerfortpflanzung}
+    Die Fehlerfortpflanzung wurde mithilfe der Formel
+    \begin{align}
+        u\left(g \left(x_1, ..., x_n\right)\right) = \sqrt{\sum_{i=1}^n \left( \frac{\partial g }{\partial x_i} \cdot u\left(x_i\right) \right)^2} \label{gauss}
+    \end{align}
+    berechnet.
 
     \bibliographystyle{plain}
     \bibliography{literature}

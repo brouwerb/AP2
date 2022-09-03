@@ -4,7 +4,7 @@ import xlrd
 import numpy as np
 import string
 from uncertainties import unumpy
-from uncertainties import ufloat
+from uncertainties import ufloat,nominal_value,std_dev
 
 def getData(path):
     content=""
@@ -304,4 +304,10 @@ def round_errtex(num, err,  sig=2):
     
 
         return(srnum + '(' + str(ceil(abrerr)) + ')')
+
+def round_errtexU(num):
+    return round_errtex(nominal_value(num),std_dev(num))
+
+def genIntBounds(a,inter):
+    return [[i-inter for i in a],[i + inter for i in a ]]
 
