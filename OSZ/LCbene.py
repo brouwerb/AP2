@@ -85,10 +85,10 @@ fph = ufloat(RC_ph[1], RC_phe[1])
 Bd = ufloat(RC_u[0]/(2*np.pi), errs[0]/(2*np.pi))
 Bph = ufloat(RC_ph[0]/(2*np.pi), RC_phe[0]/(2*np.pi))
 
-data = [["Eigenfrequenz $f_0$ in $\\si{\\kilo\\hertz}$", str(np.sqrt(1/(6.2e-9*2.2e-3))/(2*np.pi)), round_errtex(RC_u[2]/1000, errs[2]/1000),round_errtex(RC_ph[1]/1000, RC_phe[1]/1000)], ["Bandbreite $B_f$ in $\\si{\\ohm\\per\\henry}",str(100/2.2e-3), round_errtex(RC_u[0]/(2*np.pi), errs[0]/(2*np.pi)), round_errtex(RC_ph[0]/(2*np.pi), RC_phe[0]/(2*np.pi))], ["Güte", str(np.sqrt(2.2e-3/6.2e-9)/100), round_errtexU(fd/Bd), round_errtexU(fph/Bph)]]
+data = [["Eigenfrequenz $f_0$ in $\\si{\\kilo\\hertz}$", str(round(np.sqrt(1/(6.2e-9*2.2e-3))/(2*np.pi))), round_errtex(RC_u[2]/1000, errs[2]/1000),round_errtex(RC_ph[1]/1000, RC_phe[1]/1000)], ["Bandbreite $B_f$ in $\\si{\\ohm\\per\\henry}$",str(round(100/2.2e-3)), round_errtex(RC_u[0]/(2*np.pi), errs[0]/(2*np.pi)), round_errtex(RC_ph[0]/(2*np.pi), RC_phe[0]/(2*np.pi))], ["Güte", str(round(np.sqrt(2.2e-3/6.2e-9)/100)), round_errtexU(fd/Bd), round_errtexU(fph/Bph)]]
 print(data)
 
-savetableastxt(data, "Schwingkreis Werte", "./OSZ/schw", ["Werte", "Theoretisch", "Durchlasskurve", "Phasenverschiebung"])
+savetableastxt(data, "Schwingkreis Werte", "./OSZ/schw", ["Werte", "Theo", "Durchlass", "Phase"])
 
 # print("daraus folgt für die Grenz frequenzen:")
 # print(1/RC_u[0]/2/np.pi)
