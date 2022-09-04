@@ -84,9 +84,16 @@
 
     Bei einem Parallelschwinkreis lässt sich die Eigenschwingung
     \begin{equation}
-        f_{\text{Psc}} \approx \frac{1}{2 \pi} \sqrt{\frac{1}{R L} - \left(\frac{R^4 C}{2L^3}\right)} \,.
+        f_{\text{Psc}} \approx \frac{1}{2 \pi} \sqrt{\frac{1}{R L} - \left(\frac{R^4 C}{2L^3}\right)} \label{eq:koax} \,.
     \end{equation}
     nur ungefähr berechnen.
+
+    Be nicht idealen Schwingkreisen wird die Schwingung gedämpft. Die Schwingung kann durch die Funktion
+    \begin{align}
+        Q(t) = Q_0 \cdot \cos \left(\omega_E t\right) \cdot \exp \left(-\delta t \right) \label{eq:Q}
+        \text{mit Dämpfungskonstante} \delta = \frac{R}{2L} \,
+    \end{align}
+    beschrieben werden.
 
     
 
@@ -102,7 +109,7 @@
     Anschliesend wurde abermals die Durchlasskurve und die Dämpfungskonstante bestimmt.
     Zu guter Letzt wurde der Serienschwingkreis in einen Parallelschwingkreis umgebaut mit dem durch Vergleich der Resonanzfrequenzen (abermals mittels eines Frequenzsweeps) die Kapazität eines $10 \si{\metre}$ Koaxkabels bestimmt wurde.
 
-    \section{Ergebnisse}
+    \section{Ergebnisse und Diskussion}
     \subsection{Tiefpass}
     In Figur \ref{fig:Tiedurchlass} wurde die gemessene Durchlasskurve mit der Theoriekurve \ref{eq:TiefDurch} geplottet. 
     Dabei fällt auf, dass der Fitparameter $RC = 2.95(74) 10^{-5} \si{\ohm\cdot\farad}$ im Konfidenzintervall der angegebenen Größen der Bauteile liegt ($RC_{Bau} = 2.9(0.6)\cdot 10^{-5}$).
@@ -163,7 +170,7 @@
     \end{figure}
 
     \subsection{Serienschwingkreis}
-    Mit einem Serienschwingkreis als Filter kann man alle Frequenzen bis auf einen Frequenzbereich herausfiltern. Die Genauigkeit dieses Filters wird durch die Güte $G$ bestimmt. Durch die Messdaten und einen Fit der Theoriekurve wurde, sowohl bei der Durchlasskurve (Siehe \ref{fig:schwdur}) als auch bei der Phasenverschiebung (Siehe Bild: \ref{fig:schwphas}), die Resonanzfrequenz, die Bandbreite und Güte bestimmt. Diese sind in der Tabelle \ref{tab:./OSZ/schw} aufgeführt.
+    Mit einem Serienschwingkreis als Filter kann man alle Frequenzen bis auf einen Frequenzbereich herausfiltern. Die Genauigkeit dieses Filters wird durch die Güte $G$ bestimmt. Durch die Messdaten und einen Fit der Theoriekurve wurde, sowohl bei der Durchlasskurve (Siehe Bild: \ref{fig:schwdur}) als auch bei der Phasenverschiebung (Siehe Bild: \ref{fig:schwphas}), die Resonanzfrequenz, die Bandbreite und Güte bestimmt. Diese sind in der Tabelle \ref{tab:./OSZ/schw} aufgeführt.
     
     \input{schw.txt}
 
@@ -176,17 +183,49 @@
 
     \begin{figure}
         \centering
-        \includegraphics[width=0.8\textwidth]{schwdurch.pdf}
+        \includegraphics[width=0.8\textwidth]{schwphase.pdf}
         \caption{Messung Phasenverschiebung}
         \label{fig:schwphas}
     \end{figure}
 
+    \paragraph{Bestimmung der Dämpfungskonstante}
+    Durch eine Messung der gedämpften Schwingung nach einmaliger Anregung (sehr langsame Rechtecksschwingung), Messwerte und Fit siehe Graph \ref{fig:expfit} konnte die Dämpfungskonstante
+    \begin{align}
+        \delta = \frac{R}{2L} = 28 630(800) \si{\per\second} \\
+        \text{Literaturwert:} 22727 \si{\per\second}
+    \end{align}
+    bestimmt werden. Zwar liegt der Literaturwert nicht im Konfidenzintervall, aber für die ungenaue Messweise mit nur einer Messreihe ist der Wert sehr nah am Literaturwert.
 
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{expfit2.pdf}
+        \caption{Messung Dämpfungskonstante}
+        \label{fig:expfit}
+    \end{figure}
 
+    \subsection{Koaxialkabel}
+    Bei deisem Experiment wurden zwei Messwerte gemessen: Die Schwingfrequenz der Parallelschwingkreises ohne Koaxialkabel $f_0 = 42,8 \si{\kilo\hertz}$ und die mit Koaxialkabel $f_K = 42,0 \si{\kilo\hertz}$.
+    Mit der Näherung $f_{max} \approx f_0$ kann durch Gleichung \ref{eq:koax} die Kapazität des Koaxialkabels bestimmt werden.
+    \begin{align}
+        C_0 &= \frac{1}{L \cdot \left(2 pi \cdot f_0 \right)^2} = 6,28  \si{\nano\farad} \\
+        C_0 + C_K &= \frac{1}{L \cdot \left(2 pi \cdot f_K \right)^2} = 6,53 \si{\nano\farad} \\
+        \Rightarrow C_K &= (6,53 - 6,28) \si{\nano\farad} = 250 \si{\pico\farad}
+    \end{align}
+    Nach einer Internetrecherche konnte für ein übliches Koaxialkabel ein typischer Wert von ca $100 \si{\pico\farad\per\metre}$ gefunden werden. Damit hätte unser Kabel eine Kapazität von etwa $1 \si{\nano\farad}$. Unser Wert leigt weit daneben, aber die Messweise mit nur zwei werten ist sehr ungenau. Vorallem die Messung der Schwingfrequenz mit dem Osyzilloskp hat große Ungenaugkeit.
 
-    
+    \subsection{Fragen}
+    Hochpass, Tiefpass und Schwingkreis sind alles Filter für elektische Signale, die anhand der Frequenz des Signals das Signal mehr oder weniger Dämpfen. Ein Hochpass lässt ab einer bestimmten Grenzfrequenz alle Signale mit größerer Frequenz durch, ein Tiefpass hingegen alle Signale mit kleinerer Frequenz. Mit einem Schwingkreis kann man ein bestimmten Bereich von Frequenzen aussuchen, und andere anderen hinausfiltern. Das Gegenteil vom Schwingkreis wäre ein Notch-Filter, bei dem alle Frequenzen bis auf einen bestimmten Frequenzbereich durchgelassen werden.
 
-    \section{Diskussion}
+    Sowohl ein Feder-Masse-System mit Reibung $\mu$ und Fedekonstante $k$ als auch ein gedämpfter Schwingkreis haben die gleiche lineare Differentialgleichung
+    \begin{align}
+        \text{Feder:} \quad \frac{d^2x}{dt^2} + \frac{\mu}{m} \frac{dx}{dt} + \frac{k}{m} x = 0 \\
+        \text{Schwingkreis:} \quad \frac{d^2Q}{dt^2} + \frac{R}{L} \frac{dQ}{dt} + \frac{1}{LC} Q = 0 \,.
+    \end{align}
+    So sind auch die Lösungen dieser Gleichungen(eine gedämpften Schwingung) gleich und es können Analogien gebildet werden
+    \begin{align}
+        \mu = \frac{R}{2L} \quad \text{und} \quad k = \frac{1}{LC} \,.
+    \end{align}
+
 
     \section{Anhang}
     \subsection{Gaußsche Fehlerfortpflanzung}

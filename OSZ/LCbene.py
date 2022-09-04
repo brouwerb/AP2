@@ -12,6 +12,7 @@ from matplotlib.ticker import MultipleLocator
 from scipy import optimize
 from lmfit import minimize,Parameters
 from matplotlib.widgets import Slider
+plt.rcParams['text.usetex'] = True
 
 
 COLOR_STYLE = ["red","green","blue","orange"]
@@ -53,11 +54,13 @@ ax.scatter(frequenz,g_a,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],mar
 print(RC_u)
 
 xs,ys=genDataFromFunktion(1000,10000,100000,RC_u,arrDurchlass)
-[line] =ax.plot(xs,ys,color = COLOR_STYLE[1], label = f"Fit mit Rm/L = {round_errtex(RC_u[1], errs[1])}, R/L = {round_errtex(RC_u[0], errs[0])}, $\omega_0 = {round_errtex(RC_u[2]/1000, errs[2]/1000)} kHz$")
+[line] =ax.plot(xs,ys,color = COLOR_STYLE[1], label = f"Fit mit Rm/L = {round_errtex(RC_u[1], errs[1])}, R/L = {round_errtex(RC_u[0], errs[0])}, $ \\omega_0 $ = {round_errtex(RC_u[2]/1000, errs[2]/1000)} kHz")
 
 
 
 ax.legend()
+plt.xlabel("Frequenz $f$ in $Hz$")
+plt.ylabel("Durchlass $g_a$")
 plt.xscale("log")
 plt.savefig("./OSZ/schwdurch.pdf")
 plt.show()
@@ -73,7 +76,7 @@ RC_phe = np.sqrt(np.diag(pherr))
 plot = genDataFromFunktion(10000,min(frequenz),max(frequenz),RC_ph,arrPhase)
 
 ax.scatter(frequenz,Pha,s=15,linewidths=0.5,zorder=10,marker="o", label = "Messwerte", color = COLOR_STYLE[0])
-ax.plot(plot[0], [np.arctan(i)*180/np.pi for i in plot[1]], label = f"Fit mit \\omega_0 = {round_errtex(RC_ph[1], RC_phe[1])}", color = COLOR_STYLE[0])
+ax.plot(plot[0], [np.arctan(i)*180/np.pi for i in plot[1]], label = f"Fit mit $ \\omega_0 $ = {round_errtex(RC_ph[1], RC_phe[1])}", color = COLOR_STYLE[0])
 
 print("Eigenfrequenz Durch", round_errtex(RC_u[2]/1000, errs[2]/1000), "kHz")
 print("Eigenfrequenz Phase", round_errtex(RC_ph[1]/1000, RC_phe[1]/1000), "kHz")
@@ -85,7 +88,7 @@ fph = ufloat(RC_ph[1], RC_phe[1])
 Bd = ufloat(RC_u[0]/(2*np.pi), errs[0]/(2*np.pi))
 Bph = ufloat(RC_ph[0]/(2*np.pi), RC_phe[0]/(2*np.pi))
 
-data = [["Eigenfrequenz $f_0$ in $\\si{\\kilo\\hertz}$", str(round(np.sqrt(1/(6.2e-9*2.2e-3))/(2*np.pi))), round_errtex(RC_u[2]/1000, errs[2]/1000),round_errtex(RC_ph[1]/1000, RC_phe[1]/1000)], ["Bandbreite $B_f$ in $\\si{\\ohm\\per\\henry}$",str(round(100/2.2e-3)), round_errtex(RC_u[0]/(2*np.pi), errs[0]/(2*np.pi)), round_errtex(RC_ph[0]/(2*np.pi), RC_phe[0]/(2*np.pi))], ["Güte", str(round(np.sqrt(2.2e-3/6.2e-9)/100)), round_errtexU(fd/Bd), round_errtexU(fph/Bph)]]
+data = [["Eigenfrequenz $f_0$ in $\\si{\\kilo\\hertz}$", str(round(np.sqrt(1/(6.2e-9*2.2e-3))/(2*np.pi))), round_errtex(RC_u[2]/1000, errs[2]/1000),round_errtex(RC_ph[1]/1000, RC_phe[1]/1000)], ["Bandbreite $B_f$ in $\\si{\\per\\second}$",str(round(100/2.2e-3)), round_errtex(RC_u[0]/(2*np.pi), errs[0]/(2*np.pi)), round_errtex(RC_ph[0]/(2*np.pi), RC_phe[0]/(2*np.pi))], ["Güte", str(round(np.sqrt(2.2e-3/6.2e-9)/100)), round_errtexU(fd/Bd), round_errtexU(fph/Bph)]]
 print(data)
 
 savetableastxt(data, "Schwingkreis Werte", "./OSZ/schw", ["Werte", "Theo", "Durchlass", "Phase"])
@@ -93,6 +96,8 @@ savetableastxt(data, "Schwingkreis Werte", "./OSZ/schw", ["Werte", "Theo", "Durc
 # print("daraus folgt für die Grenz frequenzen:")
 # print(1/RC_u[0]/2/np.pi)
 # print(1/RC_ph[0]/2/np.pi)
+plt.xlabel("Frequenz $f$ in $Hz$")
+plt.ylabel("Phasenverschiebung $\\varphi$ in $^\\circ$")
 ax.legend()
 plt.xscale("log")
 plt.savefig("./OSZ/schwphase.pdf")
