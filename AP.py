@@ -63,6 +63,11 @@ def getAxisEasy(startRow,Collumn,path,sheet,plusCol=0):
     while worksheet.cell(i, Collumn).value != "":
         data.append(worksheet.cell(i, Collumn).value)  
         i+=1  
+        try:
+            worksheet.cell(i, Collumn).value
+        except:
+            break
+
     return data
 
 
