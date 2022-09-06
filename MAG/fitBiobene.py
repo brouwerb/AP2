@@ -59,6 +59,7 @@ plt.savefig(SAVE_AS)
 plt.show()
 
 I, R = uarray(vals, np.sqrt(np.diag(errs)))
+print(I)
 mu0 = 1.256e-6
 Bmax = max(difference[0])
 N = 1200
