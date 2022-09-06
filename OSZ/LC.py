@@ -10,6 +10,7 @@ from uncertainties import ufloat
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 from scipy import optimize
+from lmfit import minimize,Parameters
 
 
 COLOR_STYLE = ["red","green","blue","orange"]
@@ -18,43 +19,42 @@ X_LABEL = r"Abstand $s$ in $mm$"
 SAVE_AS = "./OSZ/Tief.pdf"
 
 
-U_e = 4.96
-frequenz = getAxisEasy(8,0,"./OSZ/OSZ.xls","osz")
-U_a = getAxisEasy(8,1,"./OSZ/OSZ.xls","osz")
-Pha = getAxisEasy(8,2,"./OSZ/OSZ.xls","osz")
+U_e = 5.04
+frequenz = getAxisEasy(18,6,"./OSZ/OSZ.xls","osz")
+U_a = getAxisEasy(18,7,"./OSZ/OSZ.xls","osz")
+Pha = getAxisEasy(18,8,"./OSZ/OSZ.xls","osz")
 g_a = [i / U_e for i in U_a]
 print(frequenz,U_a,Pha)
 
-def Durchlass(f,par):
-    return 1/np.sqrt(1+ (2 * np.pi * f * par)**2)
+def Durchlass(f,R,L,C):
+    return R/np.sqrt(R**2+ (2 * np.pi * f * L- 1/(2 * np.pi * f *C ))**2)
 def arrDurchlass(f,par):
-    return Durchlass(f,par[0])
+    return Durchlass(f,par[0],par[1],par[2])
 
-def Phase (f,par):
-    return np.arctan(2 * np.pi * f * par) /np.pi *180
+def Phase (f,R,L,C):
+    return np.arctan(1/R * (2 * np.pi * f * L-1/(2 * np.pi * f *C ))) /np.pi *180
 def arrPhase ( f,par):
-    return Phase(f,par[0])
+    return Phase(f,par[0],par[1],par[2])
 
 
 fig, ax = plt.subplots()
 ax.grid()
 
 plt.xscale("log")
-RC_u, errs = optimize.curve_fit(Durchlass,frequenz,g_a, bounds = [[0], [np.inf]])
+RC_u, errs = optimize.curve_fit(Durchlass,frequenz,g_a,p0=[100,2.3e-3,6.2e-9],epsfcn=1e-7)
+print(minimize(Durchlass,Parameters(),"leastsq",args=(frequenz,g_a),epsfcn=1e-7))
 print(RC_u)
-RC = round_errtex(RC_u[0],errs[0])
-plot = genDataFromFunktion(10000,100,100000,RC_u,arrDurchlass)
-ax.scatter(frequenz,g_a,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[2], marker="o", label = "Messwerte")
-ax.plot(plot[0],plot[1], color = COLOR_STYLE[0], label = f"Fit mit RC = {RC} Ohm Farad")
-ax.legend()
+RC_u= [100,2.3e-3,6.2e-9]
+plot = genDataFromFunktion(10000,30000,55000,RC_u,arrDurchlass)
+ax.scatter(frequenz,g_a,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[2],marker="o")
+ax.plot(plot[0],plot[1])
 
-plt.savefig("./OSZ/Tiefdurch.pdf")
-plt.show()
 
 fig, ax = plt.subplots()
 ax.grid()
-RC_ph, errs = optimize.curve_fit(Durchlass,frequenz,Pha,p0=6.2e-9*4.7e3,bounds=[[6.2e-9*4.7e3],[0.00009]])
+RC_ph, errs = optimize.curve_fit(Durchlass,frequenz,Pha,p0=[100,2.3e-3,6.2e-9] ,epsfcn=1e-7)#,p0=6.2e-9*4.7e3,bounds=[[6.2e-9*4.7e3],[0.00009]])
 print(RC_ph)
+#RC_ph= [100,2.3e-3,6.2e-9]
 plot = genDataFromFunktion(10000,100,100000,RC_ph,arrPhase)
 
 ax.scatter(frequenz,Pha,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[2],marker="o")
