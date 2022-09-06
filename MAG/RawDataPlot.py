@@ -19,6 +19,9 @@ X_LABEL = r"Abstand $s$ in mm"
 SAVE_AS = "./MAG/ohneKernRaw.pdf"
 
 
+print(ufloat(6.22e-9,1.2e-9)*ufloat(4.7e3,47))
+
+
 data = [[getAxisEasy(6,4+(j*3+i),"./MAG/Mag.xls","MAG") for i in range(3)] for j in range(5)]
 dataWithErr = []
 for i in range(len(data)):

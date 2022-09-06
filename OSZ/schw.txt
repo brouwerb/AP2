@@ -1,0 +1,12 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c|c}
+\textbf{Werte} & \textbf{Theo} & \textbf{Durchlass} & \textbf{Phase} \\ 
+\hline
+Eigenfrequenz $f_0$ in $\si{\kilo\hertz}$ & 43094 & 42.028(44) & 42.23(18)\\ 
+Bandbreite $B_f$ in $\si{\per\second}$ & 45455 & 9739(97) & 8550(230)\\ 
+Güte & 6 & 4.315(44) & 4.94(14)\\ 
+\end{tabular}
+\caption{Schwingkreis Werte}
+\label{tab:./OSZ/schw}
+\end{table}
