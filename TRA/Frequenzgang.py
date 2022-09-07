@@ -41,7 +41,7 @@ ax.scatter(freq,A,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o
 
 Amax = np.max(np.array(A))
 print(Amax , 1/np.sqrt(2) * Amax)
-
+# Lösung 9.3
 ax.axvspan(7,87600,color="orange",alpha= 0.3)
 
 ax.annotate(rf"$A_{{max}}$ = {round(Amax,2)}",[freq[6],A[6]],xytext=[376,7.5],arrowprops=dict(arrowstyle="->",linewidth=1))
