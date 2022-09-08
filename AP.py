@@ -309,6 +309,10 @@ def round_errtex(num, err,  sig=2):
     
 
         return(srnum + '(' + str(ceil(abrerr)) + ')')
+def exponentialNum(num,sig=2):
+    magnum = floor(log10(abs(num)))
+    tnum = round(num*10**-magnum, sig)
+    return("$" + str(tnum) + " \\cdot 10^{" + str(magnum) + "}" + "$")
 
 def round_errtexU(num):
     return round_errtex(nominal_value(num),std_dev(num))
