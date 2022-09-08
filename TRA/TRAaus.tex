@@ -18,9 +18,9 @@
 \usepackage{rotating}
 
 
-\usepackage[ngerman]{babel}
-\addto\captionsngerman{%
- \renewcommand{\abstractname}{Einleitung}}
+% \usepackage[ngerman]{babel}
+% \addto\captionsngerman{%
+%  \renewcommand{\abstractname}{Einleitung}}
 
 \title{Versuch 4: Transistor}
 \author{Team 2-13: Jascha Fricker, Benedict Brouwer}
@@ -32,12 +32,12 @@
 
     \newpage
 \section{Introduction}
-In this experiment we examined the properties of a bipolar transistor in combination with an emitter circuit. Therby we measured the characteristic curve 
-of the transistor and tested different konfigurations of the emittercircuit.
+In this experiment we examine the properties of a bipolar transistor as a class A amplifier. To observe the proporties we measured the characteristic curve 
+of the transistor and tested different configurations of the emitter circuit.
 \section{Theorie}
 
-\subsection{small signal model}
-For small deviations around the workingpoint one can use the small signal modell leading to the following equation.
+\subsection{Small Signal Model}
+For small deviations around the operating point one can use the small signal modell leading to the following equation.
 \begin{align}
 \left(\begin{array}{l}
     d I_{\mathrm{B}} \\
@@ -68,31 +68,31 @@ In addition to that $I_{\mathrm{B}}$ can be calculated the following proportiona
 
 
 
-\section{execution}
+\section{Execution}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{bilder/Emitter circuit.png}
     \caption{emittercircuit:\\
     $R_1$ = 47 \si{\kilo\ohm}, $R_{22}$ = 100 \si{\ohm},$R_E$ = 10 \si{\kilo\ohm}, $C_e$ = 47 \si{\micro\farad},$C_a$ = 470 \si{\micro\farad}, $U_{CC}$ = 9 \si{\volt} 
-    $R_{12}$: potentiometer for the workingpoint, $R_C$: potentiometer 0 - 10 \si{\kilo\ohm}, $u_e$: inputvoltage, $u_a$: outputvoltage
+    $R_{12}$: potentiometer for the operating point, $R_C$: potentiometer 0 - 10 \si{\kilo\ohm}, $u_e$: inputvoltage, $u_a$: outputvoltage
     }
     \label{im:Emcir}
 \end{figure}
 
-\subsection{workingpoint}
-A bipolar transistor has a specific basevoltage range (the so called workingpoint) in wich it behaves approxmately linear. This workingpoint
-is tuned by setting the resistance at the potentiometer $R_{12}$ \ref{im:Emcir}[see circuit diagram] to a point whereby the outputamplitude $u_a$ is maximal and the signal is not distorted.
-To tune the workingpoint, the loadresistor $R_L$ was removed and a sinusoidal frequency of 5.5 \si{\kilo\hertz} was applied. 
+\subsection{Operating Point}
+A bipolar transistor has a specific basevoltage range (the so called operating point) in which it behaves approximately linear. This operating point
+is tuned by setting the resistance at the potentiometer $R_{12}$ \ref{im:Emcir}[see circuit diagram] to a point whereby the output amplitude $u_a$ is maximal and the signal is not distorted.
+To tune the operating point, the load resistor $R_L$ was removed and a sinusoidal frequency of 5.5 \si{\kilo\hertz} was applied. 
 $U_{\text{BE}}$, $U_{\text{CE}}$, $I_{\text{C}}$ where measured with varying $R_{\text{C}}$ for further evaluation.
-\subsection{Amplification of the emittercircuit}
-To further examine the emittercircuit \ref{im:Emcir}[see circuit diagram] the amplidude quotionet $u_a / u_e$ was measured for varying $R_{\text{C}}$ in different circuit configurations:\\
+\subsection{Amplification of the Emittercircuit}
+To further examine the emitter circuit \ref{im:Emcir}[see circuit diagram] the amplitude ratio $u_a / u_e$ was measured for varying $R_{\text{C}}$ in different circuit configurations:\\
 1. with capacitor $C{\text{E}}$ but without resistor $R_{\text{L}}$
 2. without capacitor $C{\text{E}}$ and without resistor $R_{\text{L}}$
 3. with capacitor $C{\text{E}}$ and resistor $R_{\text{L}}$
-\subsection{Frequency response}
-In this experiment the input frequency was varied from 6 \si{\hertz} - 250 \si{\kilo\hertz} to measure the phaseshift and the amplidude quotionet $u_a / u_e$. 
-Therby circuit \ref{im:Emcir} with an collectorresistor of $R_{\text{C}}$ was used. In addition to that the oszilloscope was changed to x-y mode to observe lissajous curves.
-\subsection{characteristic curve}
+\subsection{Frequency Response}
+In this experiment the input frequency was varied from 6 \si{\hertz} - 250 \si{\kilo\hertz} to measure the phaseshift and the amplidude ratio $u_a / u_e$. 
+Here circuit \ref{im:Emcir} with an collector resistor of $R_{\text{C}}$ was used. In addition to that the oszilloscope was changed to x-y mode to observe lissajous curves.
+\subsection{Characteristic Curve}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{bilder/characteristicCurve.png}
@@ -103,13 +103,20 @@ Therby circuit \ref{im:Emcir} with an collectorresistor of $R_{\text{C}}$ was us
 
 To measure the characteristic curve of the transistor the circuit was change as shown in the circuit diagram \ref{im:Charcurcir}. 
 First the entry curve $I_{\text{B}}=f(U_{\text{BE}})|_{U_{\text{CE}}}$ was taken by changing $U_{\text{BE}}$ from 0 to 670 \si{\milli\volt} and measuring $I_{\text{B}}$,
-$U_{\text{BE}}$ and $U_{\text{CE}}$ with multimeters according to the scematic \ref{im:Charcurcir}. Therby $U_{\text{CE}}$ was dialed in to match the results from experiment 1 \ref{tab:workingpoint_measurement} with $R_{\text{C}}$ = 5 \si{\kilo\ohm}.
+$U_{\text{BE}}$ and $U_{\text{CE}}$ with multimeters according to the schematic \ref{im:Charcurcir}. Therby $U_{\text{CE}}$ was dialed in to match the results from experiment 1 \ref{tab:operating point_measurement} with $R_{\text{C}}$ = 5 \si{\kilo\ohm}.
 Afterwards the output characteristic curve $I_{\text{C}} = f(U_{\text{CE}})|_{U_{\text{BE}}}$ was recorded with a varying $U_{\text{CE}}$ from 1 - 10 \si{\volt} by measuring $I_{\text{C}}$, $U_{\text{BE}}$ and $U_{\text{CE}}$. This curve was measured in both directions to observe the effect of heat on the transistor.
 
-\section{Evaluation and results}
-\subsection{preliminary considerations}
-\subsection{characteristic curve (Assignment 7)}
-As shown in table \ref{tab:workingpoint_measurement} some basevalues where recorded wich were needed in following experiments. They seem to be in a reasonable range.
+\section{Evaluation and Results}
+\subsection{Preliminary Considerations}
+
+\subsubsection{Measuring of the characteristic Values}
+The characteristic Values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the Multimeter leadiging to wrong measurements, if it ssumes
+- multimeter test voltage backdrives through power suppy, resistance has to be taken into account.
+- multimeter measures outside of linear section
+
+
+\subsection{Characteristic Curve (Assignment 7)}
+As shown in table \ref{tab:operating point_measurement} some basevalues were recorded which were needed in following experiments. They seem to be in a reasonable range.
 
 \begin{table}[H]
     \centering
@@ -120,13 +127,13 @@ As shown in table \ref{tab:workingpoint_measurement} some basevalues where recor
         5 & 0,57 & 5,53 & 0,58 & 0.025\\ 
         10 & 0,57 & 3,22 & 0,58 & 0.025\\ 
     \end{tabular}
-    \label{tab:workingpoint_measurement}
-    \caption{Basevalues}
+    \label{tab:operating point_measurement}
+    \caption{Base values}
 \end{table}
 
-The characteristic input curve is plottet in figure \ref{fig:Eincur}. With the slope from the tangent one can calculate the baseresistance $r_{\text{BE}}$ = 3.92 \si{\kilo\ohm} with equation \ref{eq:rbe}. 
-The operating temperature $T$ = 272,2 \si{\kelvin} can be obtained by using the fitparameters from the exponetial fit and equation \ref{eq:Ib_T}. Althoug the operating temperature has the correct magnitude it schould be at least 30 \si{\kelvin} higher.
-With this operating temperature and equation \ref{eq:steep} the steepness $S$ can be calculated as shown in figure \ref{tab:workingpoint_measurement}.
+The characteristic input curve is plottet in figure \ref{fig:Eincur}. With the slope of the tangent one can calculate the base resistance $r_{\text{BE}}$ = 3.92 \si{\kilo\ohm} with equation \ref{eq:rbe}. 
+The operating temperature $T$ = 272,2 \si{\kelvin} can be obtained by using the fitparameters from the exponetial fit and equation \ref{eq:Ib_T}. Although the operating temperature has the correct magnitude it should be at least 30 \si{\kelvin} higher.
+With this operating temperature and equation \ref{eq:steep} the steepness $S$ can be calculated as shown in figure \ref{tab:operating point_measurement}.
 
 \begin{figure}[h]
     \centering
