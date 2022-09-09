@@ -41,7 +41,7 @@ print("slope = ", slope)
 
 ax.plot(plot[0],plot[1],label = "exponential fit")
 ax.plot(tangente[0],tangente[1],color = "green", label = rf"tangent with slope = {round(slope,3)} $\frac{{mA}}{{V}}$ ")
-ax.annotate("working point",[570,arrexp1(570,vals)],xytext=[400,120],arrowprops=dict(arrowstyle="->",linewidth=1))
+ax.annotate("operating point",[570,arrexp1(570,vals)],xytext=[400,120],arrowprops=dict(arrowstyle="->",linewidth=1))
 ax.legend()
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
@@ -79,7 +79,7 @@ for i in range(len(Ic)):
     plot = genDataFromFunktion(100,0,1000,vals,arrexp2)
     ax.plot(plot[0],plot[1],color = COLOR_STYLE[i] ,linewidth = 1, label = "fit")
 buf = "\n"
-ax.annotate(rf"tangent around working point {buf} slope = {exponentialNum(slope)} $\frac{{mA}}{{V}}$",[570,arrexp2(570,vals)],xytext=[360,320],arrowprops=dict(arrowstyle="->",linewidth=1))
+ax.annotate(rf"tangent around operating point {buf} slope = {exponentialNum(slope)} $\frac{{mA}}{{V}}$",[570,arrexp2(570,vals)],xytext=[360,320],arrowprops=dict(arrowstyle="->",linewidth=1))
 ax.legend()
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
