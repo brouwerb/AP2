@@ -68,7 +68,7 @@ In addition to that $I_{\mathrm{B}}$ can be calculated the following proportiona
     \label{eq:Ib_T}
 \end{align}
 
-\subsection{emittercircuit}
+\subsection{Emitter Circuit}
 An emitter circuit converts an input sigal to an amplified output signal. The amplification of the output signal compared to the input signal can is given by
 
 
@@ -95,16 +95,16 @@ if the amplification is in the range of basevoltage drift.
 
 \subsection{Operating Point}
 A bipolar transistor has a specific basevoltage range (the so called operating point) in which it behaves approximately linear. This operating point
-is tuned by setting the resistance at the potentiometer $R_{12}$ \ref{im:Emcir}[see circuit diagram] to a point whereby the output amplitude $u_a$ is maximal and the signal is not distorted.
+is tuned by setting the resistance at the potentiometer $R_{12}$ (see circuit diagram \ref{im:Emcir}) to a point whereby the output amplitude $u_a$ is maximal and the signal is not distorted.
 To tune the operating point, the load resistor $R_L$ was removed and a sinusoidal frequency of 5.5 \si{\kilo\hertz} was applied. 
 $U_{\text{BE}}$, $U_{\text{CE}}$, $I_{\text{C}}$ where measured with varying $R_{\text{C}}$ for further evaluation.
 \subsection{Amplification of the Emittercircuit}
-To further examine the emitter circuit \ref{im:Emcir}[see circuit diagram] the amplitude ratio $u_a / u_e$ was measured for varying $R_{\text{C}}$ in different circuit configurations:\\
+To further examine the emitter circuit(see circuit diagram  \ref{im:Emcir}) the amplitude ratio $u_a / u_e$ was measured for varying $R_{\text{C}}$ in different circuit configurations:\\
 1. with capacitor $C{\text{E}}$ but without resistor $R_{\text{L}}$
 2. without capacitor $C{\text{E}}$ and without resistor $R_{\text{L}}$
 3. with capacitor $C{\text{E}}$ and resistor $R_{\text{L}}$
 \subsection{Frequency Response}
-In this experiment the input frequency was varied from 6 \si{\hertz} - 250 \si{\kilo\hertz} to measure the phaseshift and the amplidude ratio $u_a / u_e$. 
+In this experiment the input frequency was varied from 6 \si{\hertz} - 250 \si{\kilo\hertz} to measure the phase shift and the amplidude ratio $u_a / u_e$. 
 Here circuit \ref{im:Emcir} with an collector resistor of $R_{\text{C}}$ was used. In addition to that the oszilloscope was changed to x-y mode to observe lissajous curves.
 \subsection{Characteristic Curve}
 \begin{figure}[h]
@@ -124,25 +124,27 @@ Afterwards the output characteristic curve $I_{\text{C}} = f(U_{\text{CE}})|_{U_
 \subsection{Preliminary Considerations}
 
 \subsubsection{Measuring of the characteristic Values}
-The characteristic Values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the Multimeter leadiging to wrong measurements, if it assumes free floating ends. This also meand, that the resistance of the power supply and the resistor has to be taken into account, as is is essantialy a second path for energy to flow parallel. Lastly the test Voltage, which the multimeter uses to probe the resistance could be greater than the maximum of the small signal model, so that the multimeter measures outside the linear section.
+The characteristic values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the Multimeter leadiging to wrong measurements, if it assumes free floating ends. This also meant that the resistance of the power supply and the resistor has to be taken into account, as is essentialy a second path for energy to flow parallel. Lastly the test voltage, which the multimeter uses to probe the resistance could be greater than the maximum of the small signal model, so that the multimeter measures outside the linear section.
 
 \subsubsection{Transformation of y to h parameters}
-The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ can also be written in h parameter form as
+The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ in the small signal model can also be written in h parameter form as
 \begin{align}
     \begin{pmatrix}
-        u_1 \\
-        i_1
+        u_{BE} \\
+        i_c
     \end{pmatrix}
     = 
     \begin{pmatrix}
-        r_{BE} & -S_r r_{BE} \\
-        S r_{BE} & \frac{\frac{1}{r_{BE} \cdot r_{CE}} - S_r \cdot S}{r_{BE}}
+        r_{BE} & 0 \\
+        S \cdot r_{BE} & \frac{1}{r_{CE}}
     \end{pmatrix}
     \begin{pmatrix}
-        i_1 \\
-        u_2
-    \end{pmatrix}
+        i_b \\
+        u_{CE}
+    \end{pmatrix} \,.
 \end{align}
+
+
 
 
 \subsection{Characteristic Curve (Assignment 7)}
