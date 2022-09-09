@@ -53,8 +53,12 @@ For small deviations around the operating point one can use the small signal mod
 
 whereby $r_{\text{BE}}$, $r_{\text{CE}}$ and the steepness $S$ can be calculated with
 \begin{align}
-    \frac{1}{r_{\text{BE}}} = \frac{\partial I_{\text{B}}}{\partial U_{\text{BE}}} |_{U_{\text{CE}}} \label{eq:rbe} \\ 
-    \frac{1}{r_{\text{CE}}} = \frac{\partial I_{\text{C}}}{\partial U_{\text{CE}}} |_{U_{\text{BE}}} \label{eq:rce} \\ 
+    \frac{1}{r_{\text{BE}}} = \frac{\partial I_{\text{B}}}{\partial U_{\text{BE}}} |_{U_{\text{CE}}} \label{eq:rbe} 
+\end{align}
+\begin{align}
+    \frac{1}{r_{\text{CE}}} = \frac{\partial I_{\text{C}}}{\partial U_{\text{CE}}} |_{U_{\text{BE}}} \label{eq:rce} 
+\end{align}
+\begin{align}
     S=\left .\frac{\partial I_{\mathrm{C}}}{\partial U_{\mathrm{BE}}}\right |_{U_{\mathrm{CE}}}=\frac{q I_{\mathrm{C}}}{k_{\mathrm{B}} T} \label{eq:steep}
 \end{align}
 
@@ -64,10 +68,20 @@ In addition to that $I_{\mathrm{B}}$ can be calculated the following proportiona
     \label{eq:Ib_T}
 \end{align}
 
+\subsection{emittercircuit}
+An emitter circuit converts an input sigal to an amplified output signal. The amplification of the output signal compared to the input signal can is given by
 
 
-
-
+\begin{align}
+    A=\frac{d U_{\mathrm{a}}}{d U_{\mathrm{e}}}=-S \cdot\left(R_{\mathrm{C}}\left\|r_{\mathrm{CE}}\right\| R_{\mathrm{L}}\right)
+    \label{eq:ampEasy}
+\end{align}
+and 
+\begin{align}
+A \approx-\frac{R_{\mathrm{C}} \| R_{\mathrm{L}}}{R_{\mathrm{E}}}
+\label{eq:ampDrift}
+\end{align}
+if the amplification is in the range of basevoltage drift.
 \section{Execution}
 \begin{figure}[h]
     \centering
@@ -131,7 +145,7 @@ As shown in table \ref{tab:operating point_measurement} some basevalues were rec
     \caption{Base values}
 \end{table}
 
-The characteristic input curve is plottet in figure \ref{fig:Eincur}. With the slope of the tangent one can calculate the base resistance $r_{\text{BE}}$ = 3.92 \si{\kilo\ohm} with equation \ref{eq:rbe}. 
+The characteristic input curve is plotted in figure \ref{fig:Eincur}. With the slope of the tangent one can calculate the base resistance $r_{\text{BE}}$ = 3.92 \si{\kilo\ohm} with equation \ref{eq:rbe}. 
 The operating temperature $T$ = 272,2 \si{\kelvin} can be obtained by using the fitparameters from the exponetial fit and equation \ref{eq:Ib_T}. Although the operating temperature has the correct magnitude it should be at least 30 \si{\kelvin} higher.
 With this operating temperature and equation \ref{eq:steep} the steepness $S$ can be calculated as shown in figure \ref{tab:operating point_measurement}.
 
@@ -148,9 +162,53 @@ With this operating temperature and equation \ref{eq:steep} the steepness $S$ ca
     \caption{Characteristic curve from the output}
     \label{fig:Outcur}
 \end{figure}
-The characteristic output curve is plottet in figure \ref{fig:Outcur}.
+The characteristic output curve is plotted in figure \ref{fig:Outcur}. By utilizing equation \ref{eq:rce} one can calculate the collector - emitter resistance $r_{\text{CE}}$ = 532 \si{\kilo\ohm} with the slope of the tangent.
+The high resistance was anticipated because no current should flow from collector to emitter in the closed transistor state.
+\subsection{Amplification (Assignment 8)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/RC1.pdf}
+    \caption{Amplification curve of the emittercircuit with capacitor $C_{\text{E}}$ and without load resistor $R_{\text{L}}$}
+    \label{fig:RC1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/RC3.pdf}
+    \caption{Amplification curve of the emittercircuit with capacitor $C_{\text{E}}$ and load resistor $R_{\text{L}}$}
+    \label{fig:RC3}
+\end{figure}
+The voltage amplification with and without load resistor is shown in figure \ref{fig:RC1} and \ref{fig:RC3}. To calculate the amplification, equation \ref{eq:ampEasy} was used due to the non conductive properties of $C_{\text{E}}$ in low frequency ranges.
+While figure \ref{fig:RC1} and \ref{fig:RC2} display a linear behavior, figure \ref{fig:RC3} shows saturating properties.
 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/RC2.pdf}
+    \caption{Amplification curve of the emittercircuit without capacitor $C_{\text{E}}$ and load resistor $R_{\text{L}}$}
+    \label{fig:RC2}
+\end{figure}
+% fehlt noch was
+While figure \ref{fig:RC1} and \ref{fig:RC2} display a linear behavior, figure \ref{fig:RC3} shows saturating properties.
+
+\subsection{Frequency Response (Assignment 10)}
+Another important characteristic of a transistor is the frequency response. Therefore the amplitude and phase response is plotted in figure \ref{fig:Ampresp} and \ref{fig:Pharesp}.
+Therby the amplidude response behaves like a high pass filter from 0 - $10^3$ \si{\hertz} and like a low pass filter from $10^3$ - $10^6$ \si{\hertz}. 
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Amplitudengang.pdf}
+    \caption{Amplitude response for different frequencies}
+    \label{fig:Ampresp}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Phasengang.pdf}
+    \caption{Phase response for different frequencies}
+    \label{fig:Pharesp}
+\end{figure}
 
 
 \bibliographystyle{plain}

@@ -43,9 +43,9 @@ Amax = np.max(np.array(A))
 print(Amax , 1/np.sqrt(2) * Amax)
 # Lösung 9.3
 ax.axvspan(7,87600,color="orange",alpha= 0.3)
-
+buf = "\n"
 ax.annotate(rf"$A_{{max}}$ = {round(Amax,2)}",[freq[6],A[6]],xytext=[376,7.5],arrowprops=dict(arrowstyle="->",linewidth=1))
-
+ax.annotate(rf"$\frac{{1}}{{\sqrt{{2}}}} \cdot A_{{max}}$ range {buf} 7 Hz - 87,6 kHz",[376,4.5],xytext=[300,4.5])
 
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)
