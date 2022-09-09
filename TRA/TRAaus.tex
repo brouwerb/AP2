@@ -110,9 +110,25 @@ Afterwards the output characteristic curve $I_{\text{C}} = f(U_{\text{CE}})|_{U_
 \subsection{Preliminary Considerations}
 
 \subsubsection{Measuring of the characteristic Values}
-The characteristic Values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the Multimeter leadiging to wrong measurements, if it ssumes
-- multimeter test voltage backdrives through power suppy, resistance has to be taken into account.
-- multimeter measures outside of linear section
+The characteristic Values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the Multimeter leadiging to wrong measurements, if it assumes free floating ends. This also meand, that the resistance of the power supply and the resistor has to be taken into account, as is is essantialy a second path for energy to flow parallel. Lastly the test Voltage, which the multimeter uses to probe the resistance could be greater than the maximum of the small signal model, so that the multimeter measures outside the linear section.
+
+\subsubsection{Transformation of y to h parameters}
+The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ can also be written in h parameter form as
+\begin{align}
+    \begin{pmatrix}
+        u_1 \\
+        i_1
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        r_{BE} & -S_r r_{BE} \\
+        S r_{BE} & \frac{\frac{1}{r_{BE} \cdot r_{CE}} - S_r \cdot S}{r_{BE}}
+    \end{pmatrix}
+    \begin{pmatrix}
+        i_1 \\
+        u_2
+    \end{pmatrix}
+\end{align}
 
 
 \subsection{Characteristic Curve (Assignment 7)}
