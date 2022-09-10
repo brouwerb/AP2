@@ -49,6 +49,7 @@ For small deviations around the operating point one can use the small signal mod
     d U_{\mathrm{BE}} \\
     d U_{\mathrm{CE}}
     \end{array}\right)
+    \label{eq:ssm}
 \end{align}
 
 whereby $r_{\text{BE}}$, $r_{\text{CE}}$ and the steepness $S$ can be calculated with
@@ -124,10 +125,10 @@ Afterwards the output characteristic curve $I_{\text{C}} = f(U_{\text{CE}})|_{U_
 \subsection{Preliminary Considerations}
 
 \subsubsection{Measuring of the characteristic Values}
-The characteristic values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the Multimeter leadiging to wrong measurements, if it assumes free floating ends. This also meant that the resistance of the power supply and the resistor has to be taken into account, as is essentialy a second path for energy to flow parallel. Lastly the test voltage, which the multimeter uses to probe the resistance could be greater than the maximum of the small signal model, so that the multimeter measures outside the linear section.
+The characteristic values of a transistor are different for each operating point. Therefore the measurements have to be done with the Voltages already applied. While measuring, there is already a Voltage aplied. This could messs with the multimeter leadiging to wrong measurements, if it assumes free floating ends. This also meant that the resistance of the power supply and the resistor has to be taken into account, as is essentialy a second path for energy to flow parallel. Lastly the test voltage, which the multimeter uses to probe the resistance could be greater than the maximum of the small signal model, so that the multimeter measures outside the linear section.
 
 \subsubsection{Transformation of y to h parameters}
-The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ in the small signal model can also be written in h parameter form as
+The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ in the small signal model \ref{eq:ssm} can also be written in h parameter form as
 \begin{align}
     \begin{pmatrix}
         u_{BE} \\
@@ -142,6 +143,10 @@ The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ in the small signal model can al
         i_b \\
         u_{CE}
     \end{pmatrix} \,.
+\end{align}
+Wih the formulas on the worksheet \cite[(27), (28)]{TRA}, the small signal amplification
+\begin{align}
+    t
 \end{align}
 
 
@@ -210,9 +215,10 @@ By removing the emitter capacitor $C_{\text{E}}$ the emittercircuit cannot work 
 While figure \ref{fig:RC1} and \ref{fig:RC2} display a linear behavior, figure \ref{fig:RC3} shows saturating properties.
 The measured values match the calculated curves pretty closely without any outliers.
 
-\subsection{Frequency Response (Assignment 10)}
+\subsection{Frequency Response (Assignment 9)}
 Another important characteristic of a transistor is the frequency response. Therefore the amplitude and phase response is plotted in figure \ref{fig:Ampresp} and \ref{fig:Pharesp}.
-Therby the amplidude response behaves like a high pass filter from 0 - $10^3$ \si{\hertz} and like a low pass filter from $10^3$ - $10^6$ \si{\hertz}. 
+Therby the amplidude response behaves like a high pass filter from 0 - $10^3$ \si{\hertz} and like a low pass filter from $10^3$ - $10^6$ \si{\hertz}.
+The section of frequencies, where $\left\lvert A \right\rvert \geq \frac{1}{\sqrt{2}}  \cdot \left\lvert A_{max} \right\lvert$ is also shown in figure \ref{fig:Ampresp}
 
 
 \begin{figure}[h]
@@ -229,6 +235,23 @@ Therby the amplidude response behaves like a high pass filter from 0 - $10^3$ \s
     \label{fig:Pharesp}
 \end{figure}
 
+\subsection{Transfer Funktion}
+The transfer function $H$ of the schematic in \cite[figure 5]{TRA}, two complex resistors in serial, can be calculate with Kirchhoff's laws
+\begin{align}
+    H\left(Z_1, Z_2\right) = \frac{U_A}{U_E} = \frac{Z_2}{Z_1 + Z_2} \,.
+\end{align}
+It is assumed that $I_A = 0$.
+If $Z_1 = \frac{1}{i \omega C}$ is a capacitor and $Z_2 = R$ is a resistor, the function can be simplified to
+\begin{align}
+    H\left( \omega \right) = \frac{R}{R + \frac{1}{i \omega C}}\,.
+\end{align}
+This is a high pass filter, because if $\omega$ gets bigger, the denominator gets smaller and $H$ gets bigger. So high frequencies get attenuated less than low frequencies
+
+If $Z_1 = $ is a resistor and $Z_2  = \frac{1}{i \omega C}$ is a capacitor, the function can be simplified to
+\begin{align}
+    H\left(\omega\right) = \frac{\frac{1}{i \omega C}}{R + \frac{1}{i \omega C}} = \frac{1}{1 + i \omega C R} \,.
+\end{align}
+This circuit is a low pass filter, because if $\omega$ gets bigger, $H$ gets smaller. Low frequencies can pass with less loss than high frequencies.
 
 \bibliographystyle{plain}
 \bibliography{literature}
