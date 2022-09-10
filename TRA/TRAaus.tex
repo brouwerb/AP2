@@ -64,7 +64,7 @@ whereby $r_{\text{BE}}$, $r_{\text{CE}}$ and the steepness $S$ can be calculated
     S=\left .\frac{\partial I_{\mathrm{C}}}{\partial U_{\mathrm{BE}}}\right |_{U_{\mathrm{CE}}}=\frac{q I_{\mathrm{C}}}{k_{\mathrm{B}} T} \label{eq:steep}
 \end{align}
 
-In addition to that $I_{\mathrm{B}}$ can be calculated the following proportionality 
+In addition to that $I_{\mathrm{B}}$ can be obtained by the following proportionality 
 \begin{align}
     I_{\mathrm{B}} \propto \exp \left(\frac{q U_{\mathrm{BE}}}{k_{\mathrm{B}} T}\right)
     \label{eq:Ib_T}
@@ -72,7 +72,7 @@ In addition to that $I_{\mathrm{B}}$ can be calculated the following proportiona
 
 \FloatBarrier
 \subsection{Emitter Circuit}
-An emitter circuit converts an input sigal to an amplified output signal. The amplification of the output signal compared to the input signal can is given by
+An emitter circuit converts an input signal to an amplified output signal. The amplification of the output signal compared to the input signal is given by
 
 
 \begin{align}
@@ -105,8 +105,8 @@ $U_{\text{BE}}$, $U_{\text{CE}}$, $I_{\text{C}}$ where measured with varying $R_
 \FloatBarrier
 \subsection{Amplification of the Emittercircuit}
 To further examine the emitter circuit(see circuit diagram  \ref{im:Emcir}) the amplitude ratio $u_a / u_e$ was measured for varying $R_{\text{C}}$ in different circuit configurations:\\
-1. with capacitor $C{\text{E}}$ but without resistor $R_{\text{L}}$
-2. without capacitor $C{\text{E}}$ and without resistor $R_{\text{L}}$
+1. with capacitor $C{\text{E}}$ but without resistor $R_{\text{L}}$ \\
+2. without capacitor $C{\text{E}}$ and without resistor $R_{\text{L}}$ \\
 3. with capacitor $C{\text{E}}$ and resistor $R_{\text{L}}$
 \FloatBarrier
 \subsection{Frequency Response}
@@ -122,7 +122,7 @@ Here circuit \ref{im:Emcir} with an collector resistor of $R_{\text{C}}$ was use
     \label{im:Charcurcir}
 \end{figure}
 
-To measure the characteristic curve of the transistor the circuit was change as shown in the circuit diagram \ref{im:Charcurcir}. 
+To measure the characteristic curve of the transistor, the circuit was change as shown in the circuit diagram \ref{im:Charcurcir}. 
 First the entry curve $I_{\text{B}}=f(U_{\text{BE}})|_{U_{\text{CE}}}$ was taken by changing $U_{\text{BE}}$ from 0 to 670 \si{\milli\volt} and measuring $I_{\text{B}}$,
 $U_{\text{BE}}$ and $U_{\text{CE}}$ with multimeters according to the schematic \ref{im:Charcurcir}. Therby $U_{\text{CE}}$ was dialed in to match the results from experiment 1 \ref{tab:operating point_measurement} with $R_{\text{C}}$ = 5 \si{\kilo\ohm}.
 Afterwards the output characteristic curve $I_{\text{C}} = f(U_{\text{CE}})|_{U_{\text{BE}}}$ was recorded with a varying $U_{\text{CE}}$ from 1 - 10 \si{\volt} by measuring $I_{\text{C}}$, $U_{\text{BE}}$ and $U_{\text{CE}}$. This curve was measured in both directions to observe the effect of heat on the transistor.
@@ -152,12 +152,12 @@ The dependency of $i_1$, $i_2$, $u_1$ and $u_2$ in the small signal model \ref{e
     \end{pmatrix} \,.
     \label{eq:mat}
 \end{align}
-Wih the formulas on the worksheet the small signal amplification $\beta$ can be calculated
+With the formulas on the worksheet the small signal amplification $\beta$ can be calculated
 \begin{align}
     u_{BE} &= i_b r_{BE} \text{see \ref{eq:mat}}\\
-    u_{re} &= \left( 1 + \beta \right) i_b R_E \text{see \cite[figure 8 and formula (24)]{TRA}}\\
-    u_e &= i_b r_{BE} + \left( 1 + \beta \right) i_b R_e = i_b r_{BE} + u_{re} \text{see \cite[formula (28)]{TRA}} \\
-    S\left( u_e - u_{re} \right) &= \beta i_b = S \left( i_b r_{BE} + u_{re} - u_{re} \right) = S i_b r_{BE} \text{see \cite[formula (27)]{TRA}} \\
+    u_{re} &= \left( 1 + \beta \right) i_b R_E \quad  \text{see \cite[figure 8 and formula (24)]{TRA}}\\
+    u_e &= i_b r_{BE} + \left( 1 + \beta \right) i_b R_e = i_b r_{BE} + u_{re} \quad \text{see \cite[formula (28)]{TRA}} \\
+    S\left( u_e - u_{re} \right) &= \beta i_b = S \left( i_b r_{BE} + u_{re} - u_{re} \right) = S i_b r_{BE} \quad \text{see \cite[formula (27)]{TRA}} \\
     \Rightarrow \quad \beta &= S r_{BE} \,.
 \end{align}
 
@@ -216,9 +216,6 @@ The high resistance was anticipated because no current should flow from collecto
     \label{fig:RC3}
 \end{figure}
 The voltage amplification with and without load resistor is shown in figure \ref{fig:RC1} and \ref{fig:RC3}. To calculate the amplification, equation \ref{eq:ampEasy} was used due to the non conductive properties of $C_{\text{E}}$ in low frequency ranges.
-While figure \ref{fig:RC1} and \ref{fig:RC2} display a linear behavior, figure \ref{fig:RC3} shows saturating properties.
-
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/RC2.pdf}
@@ -263,7 +260,7 @@ If $Z_1 = \frac{1}{i \omega C}$ is a capacitor and $Z_2 = R$ is a resistor, the 
 \end{align}
 This is a high pass filter, because if $\omega$ gets bigger, the denominator gets smaller and $H$ gets bigger. So high frequencies are attenuated less than low frequencies
 
-If $Z_1 = $ is a resistor and $Z_2  = \frac{1}{i \omega C}$ is a capacitor, the function can be simplified to
+If $Z_1 = R$ is a resistor and $Z_2  = \frac{1}{i \omega C}$ is a capacitor, the function can be simplified to
 \begin{align}
     H\left(\omega\right) = \frac{\frac{1}{i \omega C}}{R + \frac{1}{i \omega C}} = \frac{1}{1 + i \omega C R} \,.
 \end{align}
