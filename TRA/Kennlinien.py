@@ -67,19 +67,23 @@ def exp2 (Uce,a,b):
 def arrexp2 (Uce,a):
     return exp2(Uce,a[0],a[1])
 
+slopea = []    
+
 for i in range(len(Ic)):
     vals,errs = optimize.curve_fit(exp2,Uce,Ic[i],p0 = (600,0.01))
     print(vals)
-    slope = vals[0]*vals[1]*np.exp(-1*vals[1]*570)
-    tangente = genDataFromFunktion(100,450,670,[slope,570,arrexp2(570,vals)],arrTangente)
-    print("slope = ", slope)
+    slopea.append(vals[0]*vals[1]*np.exp(-1*vals[1]*570))
+    tangente = genDataFromFunktion(100,450,670,[slopea[i],570,arrexp2(570,vals)],arrTangente)
+    print("slope = ", slopea)
     ax.plot(tangente[0],tangente[1],color = "black",zorder = 11)
     ax.scatter(Uce,Ic[i],s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[i],marker="o", label=labels[i])
 
     plot = genDataFromFunktion(100,0,1000,vals,arrexp2)
     ax.plot(plot[0],plot[1],color = COLOR_STYLE[i] ,linewidth = 1, label = "fit")
+
+slope  = np.mean(slopea)
 buf = "\n"
-ax.annotate(rf"tangent around operating point {buf} slope = {exponentialNum(slope)} $\frac{{mA}}{{V}}$",[570,arrexp2(570,vals)],xytext=[360,320],arrowprops=dict(arrowstyle="->",linewidth=1))
+ax.annotate(rf"tangent around operating point, {buf} average slope = {exponentialNum(slope)} $\frac{{mA}}{{V}}$",[570,arrexp2(570,vals)],xytext=[360,320],arrowprops=dict(arrowstyle="->",linewidth=1))
 ax.legend()
 ax.set_xlabel(X_LABEL)
 ax.set_ylabel(Y_LABEL)

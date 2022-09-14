@@ -23,8 +23,8 @@ print(Rc)
 print(data)
 
 COLOR_STYLE = ["red","green","blue","orange"]
-Y_LABEL = r"Amplitude $U_{aus}/U_{ein}$"
-X_LABEL = r"Collectorresistance $R_C$ in ohm"
+Y_LABEL = r"Gain $U_{aus}/U_{ein}$"
+X_LABEL = r"Collector resistance $R_C$ in ohm"
 
 def linfunc (Rc,S,rce):
     return -S * 1/(1/Rc+1/rce)
@@ -46,14 +46,15 @@ for i,I in enumerate(data):
     fig, ax = plt.subplots()
     ax.grid()
     A = [I[1][j]/I[0][j] for j in range(len(I[0]))]
-    ax.scatter(Rc,A,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o", label="Messwerte")
+    ax.scatter(Rc,A,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o", label="Measured Values")
     vals, errs = optimize.curve_fit(funcs[i],Rc,A,maxfev = 5000,p0=p0[i])
     print(vals)
     plot = genDataFromFunktion(100,0.1,10000,vals,arrfuncs[i])
-    ax.plot(plot[0],plot[1],color= "blue")
+    ax.plot(plot[0],plot[1],color= "blue", label="Fit")
     ax.set_xlabel(X_LABEL)
     ax.set_ylabel(Y_LABEL)
     ax.set_xlim(0,10500)
+    plt.legend()
     plt.savefig(SAVE_AS)
 plt.show()
 

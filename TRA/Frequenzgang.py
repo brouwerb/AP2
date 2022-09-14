@@ -29,7 +29,7 @@ for i in range (len(freq)):
 #print(Pha)
 
 COLOR_STYLE = ["red","green","blue","orange"]
-Y_LABEL = r"Amplitude $A(f)$"
+Y_LABEL = r"Gain $U_{aus}/U_{ein} = A(f)$"
 X_LABEL = r"Frequenz $f$ in Hz"
 SAVE_AS = "./TRA/plots/Amplitudengang.pdf"
 
