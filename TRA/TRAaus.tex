@@ -81,7 +81,7 @@ An emitter circuit converts an input signal to an amplified output signal. The a
 \end{align}
 and 
 \begin{align}
-A \approx-\frac{R_{\mathrm{C}} \| R_{\mathrm{L}}}{R_{\mathrm{E}}}
+A \approx-\frac{R_{\mathrm{C}} }{R_{\mathrm{E}}}
 \label{eq:ampDrift}
 \end{align}
 if the amplification is in the range of basevoltage drift.
@@ -206,21 +206,21 @@ The high resistance was anticipated because no current should flow from collecto
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/RC1.pdf}
-    \caption{Amplification curve of the emitter circuit with capacitor $C_{\text{E}}$ and without load resistor $R_{\text{L}}$}
+    \caption{Amplification curve of the emitter circuit with capacitor $C_{\text{E}}$ and without load resistor $R_{\text{L}}$. Theoretical values: $S$ = 0.025 \si{1 \per \ohm}, $r_{\text{CE}}$ = 532 \si{\kilo\ohm}}
     \label{fig:RC1}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/RC3.pdf}
-    \caption{Amplification curve of the emitter circuit with capacitor $C_{\text{E}}$ and load resistor $R_{\text{L}}$}
+    \caption{Amplification curve of the emitter circuit with capacitor $C_{\text{E}}$ and load resistor $R_{\text{L}}$. Theoretical values: $S$ = 0.025 \si{1 \per \ohm}, $r_{\text{CE}}$ = 9815 \si{\ohm}}
     \label{fig:RC3}
 \end{figure}
 The voltage amplification with and without load resistor is shown in figure \ref{fig:RC1} and \ref{fig:RC3}. To calculate the amplification, equation \ref{eq:ampEasy} was used due to the non conductive properties of $C_{\text{E}}$ in low frequency ranges.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/RC2.pdf}
-    \caption{Amplification curve of the emitter circuit without capacitor $C_{\text{E}}$ and load resistor $R_{\text{L}}.$}
+    \caption{Amplification curve of the emitter circuit without capacitor $C_{\text{E}}$ and load resistor $R_{\text{L}}.$. Theoretical value $R_{\text{E}}$ = 1 \si{\kilo\ohm}}
     \label{fig:RC2}
 \end{figure}
 By removing the emitter capacitor $C_{\text{E}}$ one can observe a many times lower amplification, as the energy cannot bypass the Resistor $R_{\text{E}}$ through the capacitor . Therefore we used equation \ref{eq:ampDrift} to fit the measured values as shown in figure \ref{fig:RC2}.
