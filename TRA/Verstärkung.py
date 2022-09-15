@@ -30,17 +30,17 @@ def linfunc (Rc,S,rce):
     return -S * 1/(1/Rc+1/rce)
 def arrlinfunc (Rc,a):
     return linfunc(Rc,a[0],a[1])
-def compfunc (Rc,Re,Rl):
-    return - 1/(1/Rc+1/Rl)/Re
+def compfunc (Rc,Re):
+    return - 1/(1/Rc)/Re
 def arrcompfunc (Rc,a):
-    return compfunc(Rc,a[0],a[1])
+    return compfunc(Rc,a[0])
 
 funcs = [linfunc,compfunc,linfunc]
 arrfuncs = [arrlinfunc,arrcompfunc,arrlinfunc]
-p0 = [[-0.022,1000],[-1044.63379101 , 479642.63383653],[-0.022,1000]]
+p0 = [[-0.022,1000],[-1044.63379101],[-0.022,1000]]
 
 
-Theo = [[-0.025,532e3],[ -1000 , 10000],[-0.025,9815]]
+Theo = [[-0.025,532e3],[ -1000],[-0.025,9815]]
 for i,I in enumerate(data):
     SAVE_AS = f"./TRA/plots/RC{i+1}.pdf"
     fig, ax = plt.subplots()
@@ -60,5 +60,5 @@ for i,I in enumerate(data):
 plt.show()
 
 
-
+print(Theo)
 

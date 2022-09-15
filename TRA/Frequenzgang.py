@@ -64,7 +64,7 @@ ax2.scatter(freq,Pha,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker
 ax2.set_xlabel(X_LABEL)
 ax2.set_ylabel(Y_LABEL)
 
-plt.xscale("log")
+#plt.xscale("log")
 
 plt.savefig(SAVE_AS)
 
