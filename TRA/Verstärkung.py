@@ -40,7 +40,7 @@ arrfuncs = [arrlinfunc,arrcompfunc,arrlinfunc]
 p0 = [[-0.022,1000],[-1044.63379101 , 479642.63383653],[-0.022,1000]]
 
 
-
+Theo = [[-0.025,532e3],[ -1000 , 10000],[-0.025,9815]]
 for i,I in enumerate(data):
     SAVE_AS = f"./TRA/plots/RC{i+1}.pdf"
     fig, ax = plt.subplots()
@@ -48,9 +48,10 @@ for i,I in enumerate(data):
     A = [I[1][j]/I[0][j] for j in range(len(I[0]))]
     ax.scatter(Rc,A,s=15,linewidths=0.5,zorder=10,color = COLOR_STYLE[0],marker="o", label="Measured Values")
     vals, errs = optimize.curve_fit(funcs[i],Rc,A,maxfev = 5000,p0=p0[i])
+
     print(vals)
-    plot = genDataFromFunktion(100,0.1,10000,vals,arrfuncs[i])
-    ax.plot(plot[0],plot[1],color= "blue", label="Fit")
+    plot = genDataFromFunktion(100,0.1,10000,Theo[i],arrfuncs[i])
+    ax.plot(plot[0],plot[1],color= "blue", label="theoretical curve")
     ax.set_xlabel(X_LABEL)
     ax.set_ylabel(Y_LABEL)
     ax.set_xlim(0,10500)
