@@ -231,7 +231,11 @@ The measured values match the theoretical curves pretty closely, but the do dive
 \subsection{Frequency Response (Assignment 9)}
 Another important characteristic of a transistor is the frequency response. Therefore the amplitude and phase response is plotted in figure \ref{fig:Ampresp} and \ref{fig:Pharesp}.
 Therby the amplidude response behaves like a high pass filter from 0 - $10^3$ \si{\hertz} and like a low pass filter from $10^3$ - $10^6$ \si{\hertz}.
-The section of frequencies, where $\left\lvert A \right\rvert \geq \frac{1}{\sqrt{2}}  \cdot \left\lvert A_{max} \right\lvert$ is also shown in figure \ref{fig:Ampresp}
+The section of frequencies, where $\left\lvert A \right\rvert \geq \frac{1}{\sqrt{2}}  \cdot \left\lvert A_{max} \right\lvert$ is also shown in figure \ref{fig:Ampresp}. The phase reponse is calculated with the measured data on page 5 of the appended pdf with measurement data. If $t$ is the time shift between input and output in microseconds and $f$ is the frequency the phase shift is calculated with
+\begin{align}
+    \phi &= t \cdot 10^{-6} \cdot f \cdot 360 \,.
+\end{align}
+
 
 
 \begin{figure}[h]

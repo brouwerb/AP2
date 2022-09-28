@@ -24,7 +24,7 @@ for i in range (len(freq)):
     if rawPha[i] == 180:
         buf = 180
     else:
-        buf = 360 - (rawPha[i] *1e-6 * freq[i] * 360)
+        buf = rawPha[i] *1e-6 * freq[i] * 360
     Pha.append(buf)
 #print(Pha)
 
